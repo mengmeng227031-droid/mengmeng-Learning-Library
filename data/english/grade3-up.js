@@ -17,98 +17,98 @@ window.ENGLISH_LESSON_BOOK = {
           "meaning": "你好",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing hello, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/smile.png"
+          "image": "./assets/english/generated-word-art/hello.png"
         },
         {
           "word": "hi",
           "meaning": "嗨",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing hi, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/smile.png"
+          "image": "./assets/english/generated-word-art/hello.png"
         },
         {
           "word": "I",
           "meaning": "我",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing I, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/my.png"
+          "image": "./assets/english/generated-word-art/name.png"
         },
         {
           "word": "am",
           "meaning": "是",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing am, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/name.png"
+          "image": "./assets/english/generated-word-art/name.png"
         },
         {
           "word": "I'm",
           "meaning": "= I am 我是",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing I'm, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/my.png"
+          "image": "./assets/english/generated-word-art/name.png"
         },
         {
           "word": "name",
           "meaning": "名字",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing name, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/name.png"
+          "image": "./assets/english/generated-word-art/name.png"
         },
         {
           "word": "my",
           "meaning": "我的",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing my, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/my.png"
+          "image": "./assets/english/generated-word-art/name.png"
         },
         {
           "word": "your",
           "meaning": "你的",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing your, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/my.png"
+          "image": "./assets/english/generated-word-art/name.png"
         },
         {
           "word": "Miss",
           "meaning": "小姐/老师",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing Miss, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "word": "Mr",
           "meaning": "先生",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing Mr, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "boy",
           "meaning": "男孩",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing boy, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "girl",
           "meaning": "女孩",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing girl, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "word": "friend",
           "meaning": "朋友",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing friend, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "goodbye",
           "meaning": "再见",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing goodbye, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/go.png"
+          "image": "./assets/english/generated-word-art/goodbye.png"
         },
         {
           "word": "new friend",
@@ -122,7 +122,7 @@ window.ENGLISH_LESSON_BOOK = {
           "meaning": "同班同学",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing classmate, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "meet",
@@ -136,7 +136,7 @@ window.ENGLISH_LESSON_BOOK = {
           "meaning": "老师",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing teacher, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         }
       ],
       "keySentences": [
@@ -181,7 +181,7 @@ window.ENGLISH_LESSON_BOOK = {
             "A. hello",
             "B. am"
           ],
-          "image": "./assets/english/word-art/smile.png"
+          "image": "./assets/english/generated-word-art/hello.png"
         },
         {
           "answer": "hi",
@@ -190,7 +190,7 @@ window.ENGLISH_LESSON_BOOK = {
             "A. hi",
             "B. I'm"
           ],
-          "image": "./assets/english/word-art/smile.png"
+          "image": "./assets/english/generated-word-art/hello.png"
         },
         {
           "answer": "I",
@@ -199,7 +199,7 @@ window.ENGLISH_LESSON_BOOK = {
             "A. I",
             "B. name"
           ],
-          "image": "./assets/english/word-art/my.png"
+          "image": "./assets/english/generated-word-art/name.png"
         }
       ],
       "homework": "Read Unit 1 words and make two sentences.",
@@ -277,17 +277,17 @@ window.ENGLISH_LESSON_BOOK = {
         {
           "answer": "am",
           "imagePrompt": "A cute educational mascot-style illustration representing am, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/name.png"
+          "image": "./assets/english/generated-word-art/name.png"
         },
         {
           "answer": "I'm",
           "imagePrompt": "A cute educational mascot-style illustration representing I'm, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/my.png"
+          "image": "./assets/english/generated-word-art/name.png"
         },
         {
           "answer": "name",
           "imagePrompt": "A cute educational mascot-style illustration representing name, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/name.png"
+          "image": "./assets/english/generated-word-art/name.png"
         }
       ],
       "summaryChecks": [
@@ -311,42 +311,42 @@ window.ENGLISH_LESSON_BOOK = {
           "meaning": "父亲；爸爸",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing father, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "dad",
           "meaning": "爸爸（口语）",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing dad, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "mother",
           "meaning": "母亲；妈妈",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing mother, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "word": "mum",
           "meaning": "妈妈（口语）",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing mum, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "word": "brother",
           "meaning": "兄弟",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing brother, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "sister",
           "meaning": "姐妹",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing sister, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "word": "grandfather",
@@ -360,7 +360,7 @@ window.ENGLISH_LESSON_BOOK = {
           "meaning": "（外）祖母",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing grandmother, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "word": "family",
@@ -395,28 +395,28 @@ window.ENGLISH_LESSON_BOOK = {
           "meaning": "奶奶；外婆（口语）",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing grandma, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "word": "uncle",
           "meaning": "叔叔；舅舅；伯父；姑父",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing uncle, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "aunt",
           "meaning": "婶婶；舅妈；姑姑；阿姨",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing aunt, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "word": "cousin",
           "meaning": "堂/表兄弟姐妹",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing cousin, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "word": "parent",
@@ -475,7 +475,7 @@ window.ENGLISH_LESSON_BOOK = {
             "A. father",
             "B. mum"
           ],
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "answer": "dad",
@@ -484,7 +484,7 @@ window.ENGLISH_LESSON_BOOK = {
             "A. dad",
             "B. brother"
           ],
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "answer": "mother",
@@ -493,7 +493,7 @@ window.ENGLISH_LESSON_BOOK = {
             "A. mother",
             "B. sister"
           ],
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         }
       ],
       "homework": "Read Unit 2 words and make two sentences.",
@@ -579,17 +579,17 @@ window.ENGLISH_LESSON_BOOK = {
         {
           "answer": "mum",
           "imagePrompt": "A cute educational mascot-style illustration representing mum, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         },
         {
           "answer": "brother",
           "imagePrompt": "A cute educational mascot-style illustration representing brother, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/boy.png"
+          "image": "./assets/english/generated-word-art/boy.png"
         },
         {
           "answer": "sister",
           "imagePrompt": "A cute educational mascot-style illustration representing sister, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
-          "image": "./assets/english/word-art/her.png"
+          "image": "./assets/english/generated-word-art/girl.png"
         }
       ],
       "summaryChecks": [
