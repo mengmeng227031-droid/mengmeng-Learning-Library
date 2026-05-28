@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>英文学习卡片 - 蒙蒙学习库</title>
+  <link rel="stylesheet" href="./english-card.css">
+</head>
+<body>
+  <main class="card-page">
+    <header class="card-topbar">
+      <button class="back-link" id="backButton" type="button" aria-label="返回上一页">‹ 返回</button>
+      <img src="./assets/brand/brand-logo.png" alt="蒙蒙学习库">
+      <div class="card-actions">
+        <span class="card-status">今日英文学习</span>
+        <button class="print-link" id="printButton" type="button">打印</button>
+      </div>
+    </header>
+
+    <section class="card-stage" aria-label="英文学习卡片">
+      <article class="lesson-card side-a" aria-labelledby="frontTitle">
+        <div class="card-title-row">
+          <span class="sparkle" aria-hidden="true">✦</span>
+          <h1 id="frontTitle"></h1>
+          <span class="book-mark" aria-hidden="true">▰</span>
+        </div>
+
+        <div class="meta-bar">
+          <span><strong>Grade:</strong> <em id="gradeText"></em></span>
+          <span><strong>Lesson:</strong> <em id="lessonText"></em></span>
+        </div>
+
+        <section class="card-section words-section">
+          <h2><span>1.</span> Key Words <b>核心单词</b></h2>
+          <div class="word-grid" id="wordGrid"></div>
+        </section>
+
+        <section class="card-section sentence-section">
+          <h2><span>2.</span> Key Sentences <b>核心句型</b></h2>
+          <div class="sentence-layout">
+            <div class="bubble-list" id="sentenceList"></div>
+            <div class="pencil-art" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <section class="card-section talk-section">
+          <h2><span>3.</span> Let's Talk <b>课文对话</b></h2>
+          <div class="talk-layout">
+            <div class="dialogue-list" id="talkList"></div>
+            <img src="./assets/brand/brand-mascots.png" alt="" aria-hidden="true">
+          </div>
+        </section>
+
+        <section class="card-section practice-section">
+          <h2><span>4.</span> Practice <b>练习</b></h2>
+          <p>Look and choose.</p>
+          <div class="practice-grid" id="practiceGrid"></div>
+        </section>
+
+        <section class="card-section homework-section">
+          <h2><span>5.</span> Homework <b>作业</b></h2>
+          <p id="homeworkText"></p>
+          <span class="home-icon" aria-hidden="true">⌂</span>
+        </section>
+      </article>
+
+      <article class="lesson-card side-b" aria-labelledby="backTitle">
+        <section class="card-section dialogue-section">
+          <h2 id="backTitle"><span>5.</span> Dialogue <b>对话练习</b></h2>
+          <div class="dialogue-scene">
+            <div class="dialogue-list" id="dialogueList"></div>
+            <div class="children-scene" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <i></i>
+            </div>
+          </div>
+        </section>
+
+        <section class="card-section read-section">
+          <h2><span>6.</span> Let's Read <b>一起阅读</b></h2>
+          <div class="read-layout">
+            <div>
+              <h3 id="readingTitle"></h3>
+              <ul id="readingLines"></ul>
+            </div>
+            <div class="family-scene" aria-hidden="true">
+              <span class="family-head"></span>
+              <span class="family-head"></span>
+              <span class="family-head"></span>
+              <i></i>
+            </div>
+          </div>
+        </section>
+
+        <section class="card-section grammar-section">
+          <h2><span>7.</span> Grammar Focus <b>语法小贴士</b></h2>
+          <div class="grammar-layout">
+            <ul id="grammarList"></ul>
+            <span class="bulb" aria-hidden="true"></span>
+          </div>
+        </section>
+
+        <section class="card-section exercise-section">
+          <h2><span>8.</span> Exercise <b>练一练</b></h2>
+          <p>Look and write.</p>
+          <div class="exercise-grid" id="exerciseGrid"></div>
+        </section>
+
+        <section class="card-section summary-section">
+          <h2><span>9.</span> Summary <b>本课小结</b></h2>
+          <div class="summary-layout">
+            <div>
+              <strong>今天我们学习了：</strong>
+              <ul id="summaryChecks"></ul>
+            </div>
+            <div class="rating-box">
+              <strong>我学会了：</strong>
+              <div class="stars" id="starRating" aria-label="自评星级"></div>
+            </div>
+          </div>
+        </section>
+      </article>
+    </section>
+  </main>
+
+  <script src="./english-card.js"></script>
+</body>
+</html>

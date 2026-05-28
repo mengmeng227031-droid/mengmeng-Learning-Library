@@ -1,0 +1,1315 @@
+[
+  {
+    "page": 1,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Aa",
+    "sound": "letter sound /a/",
+    "words": [
+      "apple",
+      "ant",
+      "alligator"
+    ],
+    "card": "cards/001-aa.png"
+  },
+  {
+    "page": 2,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Bb",
+    "sound": "letter sound /b/",
+    "words": [
+      "banana",
+      "ball",
+      "bed"
+    ],
+    "card": "cards/002-bb.png"
+  },
+  {
+    "page": 3,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Cc",
+    "sound": "letter sound /k/",
+    "words": [
+      "cat",
+      "cup",
+      "cake"
+    ],
+    "card": "cards/003-cc.png"
+  },
+  {
+    "page": 4,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Dd",
+    "sound": "letter sound /d/",
+    "words": [
+      "donut",
+      "dog",
+      "duck"
+    ],
+    "card": "cards/004-dd.png"
+  },
+  {
+    "page": 5,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Ee",
+    "sound": "letter sound /e/",
+    "words": [
+      "elephant",
+      "egg",
+      "elf"
+    ],
+    "card": "cards/005-ee.png"
+  },
+  {
+    "page": 6,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Ff",
+    "sound": "letter sound /f/",
+    "words": [
+      "fish",
+      "fan",
+      "frog"
+    ],
+    "card": "cards/006-ff.png"
+  },
+  {
+    "page": 7,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Gg",
+    "sound": "letter sound /g/",
+    "words": [
+      "gum",
+      "goat",
+      "gift"
+    ],
+    "card": "cards/007-gg.png"
+  },
+  {
+    "page": 8,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Hh",
+    "sound": "letter sound /h/",
+    "words": [
+      "heart",
+      "hat",
+      "hen"
+    ],
+    "card": "cards/008-hh.png"
+  },
+  {
+    "page": 9,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Ii",
+    "sound": "letter sound /i/",
+    "words": [
+      "igloo",
+      "insect",
+      "ink"
+    ],
+    "card": "cards/009-ii.png"
+  },
+  {
+    "page": 10,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Jj",
+    "sound": "letter sound /j/",
+    "words": [
+      "jellyfish",
+      "jam",
+      "jet"
+    ],
+    "card": "cards/010-jj.png"
+  },
+  {
+    "page": 11,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Kk",
+    "sound": "letter sound /k/",
+    "words": [
+      "kite",
+      "king",
+      "key"
+    ],
+    "card": "cards/011-kk.png"
+  },
+  {
+    "page": 12,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Ll",
+    "sound": "letter sound /l/",
+    "words": [
+      "lion",
+      "leaf",
+      "lamp"
+    ],
+    "card": "cards/012-ll.png"
+  },
+  {
+    "page": 13,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Mm",
+    "sound": "letter sound /m/",
+    "words": [
+      "monkey",
+      "map",
+      "moon"
+    ],
+    "card": "cards/013-mm.png"
+  },
+  {
+    "page": 14,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Nn",
+    "sound": "letter sound /n/",
+    "words": [
+      "nose",
+      "nest",
+      "net"
+    ],
+    "card": "cards/014-nn.png"
+  },
+  {
+    "page": 15,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Oo",
+    "sound": "letter sound /o/",
+    "words": [
+      "octopus",
+      "ox",
+      "ostrich"
+    ],
+    "card": "cards/015-oo.png"
+  },
+  {
+    "page": 16,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Pp",
+    "sound": "letter sound /p/",
+    "words": [
+      "pizza",
+      "pig",
+      "pan"
+    ],
+    "card": "cards/016-pp.png"
+  },
+  {
+    "page": 17,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Qq",
+    "sound": "letter sound /kw/",
+    "words": [
+      "queen",
+      "quilt",
+      "quiz"
+    ],
+    "card": "cards/017-qq.png"
+  },
+  {
+    "page": 18,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Rr",
+    "sound": "letter sound /r/",
+    "words": [
+      "rainbow",
+      "red",
+      "ring"
+    ],
+    "card": "cards/018-rr.png"
+  },
+  {
+    "page": 19,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Ss",
+    "sound": "letter sound /s/",
+    "words": [
+      "star",
+      "sun",
+      "sock"
+    ],
+    "card": "cards/019-ss.png"
+  },
+  {
+    "page": 20,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Tt",
+    "sound": "letter sound /t/",
+    "words": [
+      "turtle",
+      "top",
+      "ten"
+    ],
+    "card": "cards/020-tt.png"
+  },
+  {
+    "page": 21,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Uu",
+    "sound": "letter sound /u/",
+    "words": [
+      "umbrella",
+      "up",
+      "under"
+    ],
+    "card": "cards/021-uu.png"
+  },
+  {
+    "page": 22,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Vv",
+    "sound": "letter sound /v/",
+    "words": [
+      "volcano",
+      "van",
+      "vest"
+    ],
+    "card": "cards/022-vv.png"
+  },
+  {
+    "page": 23,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Ww",
+    "sound": "letter sound /w/",
+    "words": [
+      "watermelon",
+      "web",
+      "wind"
+    ],
+    "card": "cards/023-ww.png"
+  },
+  {
+    "page": 24,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Xx",
+    "sound": "letter sound /ks/",
+    "words": [
+      "x-ray",
+      "box",
+      "fox"
+    ],
+    "card": "cards/024-xx.png"
+  },
+  {
+    "page": 25,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Yy",
+    "sound": "letter sound /y/",
+    "words": [
+      "yo-yo",
+      "yellow",
+      "yak"
+    ],
+    "card": "cards/025-yy.png"
+  },
+  {
+    "page": 26,
+    "stage": "阶段  1",
+    "topic": "Alphabet 字母表",
+    "grapheme": "Zz",
+    "sound": "letter sound /z/",
+    "words": [
+      "zebra",
+      "zip",
+      "zoo"
+    ],
+    "card": "cards/026-zz.png"
+  },
+  {
+    "page": 27,
+    "stage": "阶段  1",
+    "topic": "Vowel 短元音",
+    "grapheme": "a",
+    "sound": "short /a/",
+    "words": [
+      "hat",
+      "cat",
+      "map"
+    ],
+    "card": "cards/027-a.png"
+  },
+  {
+    "page": 28,
+    "stage": "阶段  1",
+    "topic": "Vowel 短元音",
+    "grapheme": "e",
+    "sound": "short /e/",
+    "words": [
+      "bed",
+      "hen",
+      "pen"
+    ],
+    "card": "cards/028-e.png"
+  },
+  {
+    "page": 29,
+    "stage": "阶段  1",
+    "topic": "Vowel 短元音",
+    "grapheme": "i",
+    "sound": "short /i/",
+    "words": [
+      "pig",
+      "sit",
+      "pin"
+    ],
+    "card": "cards/029-i.png"
+  },
+  {
+    "page": 30,
+    "stage": "阶段  1",
+    "topic": "Vowel 短元音",
+    "grapheme": "o",
+    "sound": "short /o/",
+    "words": [
+      "dog",
+      "box",
+      "hop"
+    ],
+    "card": "cards/030-o.png"
+  },
+  {
+    "page": 31,
+    "stage": "阶段  1",
+    "topic": "Vowel 短元音",
+    "grapheme": "u",
+    "sound": "short /u/",
+    "words": [
+      "bus",
+      "sun",
+      "cup"
+    ],
+    "card": "cards/031-u.png"
+  },
+  {
+    "page": 32,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "bl",
+    "sound": "blend /bl/",
+    "words": [
+      "block",
+      "black",
+      "blue"
+    ],
+    "card": "cards/032-bl.png"
+  },
+  {
+    "page": 33,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "cl",
+    "sound": "blend /cl/",
+    "words": [
+      "clock",
+      "clap",
+      "clip"
+    ],
+    "card": "cards/033-cl.png"
+  },
+  {
+    "page": 34,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "fl",
+    "sound": "blend /fl/",
+    "words": [
+      "flower",
+      "flag",
+      "flip"
+    ],
+    "card": "cards/034-fl.png"
+  },
+  {
+    "page": 35,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "gl",
+    "sound": "blend /gl/",
+    "words": [
+      "glasses",
+      "glue",
+      "glow"
+    ],
+    "card": "cards/035-gl.png"
+  },
+  {
+    "page": 36,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "pl",
+    "sound": "blend /pl/",
+    "words": [
+      "plug",
+      "plant",
+      "plane"
+    ],
+    "card": "cards/036-pl.png"
+  },
+  {
+    "page": 37,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "sl",
+    "sound": "blend /sl/",
+    "words": [
+      "slide",
+      "sled",
+      "sleep"
+    ],
+    "card": "cards/037-sl.png"
+  },
+  {
+    "page": 38,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "br",
+    "sound": "blend /br/",
+    "words": [
+      "bread",
+      "brush",
+      "brick"
+    ],
+    "card": "cards/038-br.png"
+  },
+  {
+    "page": 39,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "cr",
+    "sound": "blend /cr/",
+    "words": [
+      "crab",
+      "crayon",
+      "crown"
+    ],
+    "card": "cards/039-cr.png"
+  },
+  {
+    "page": 40,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "dr",
+    "sound": "blend /dr/",
+    "words": [
+      "drum",
+      "dress",
+      "dragon"
+    ],
+    "card": "cards/040-dr.png"
+  },
+  {
+    "page": 41,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "fr",
+    "sound": "blend /fr/",
+    "words": [
+      "fries",
+      "frog",
+      "fruit"
+    ],
+    "card": "cards/041-fr.png"
+  },
+  {
+    "page": 42,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "gr",
+    "sound": "blend /gr/",
+    "words": [
+      "grapes",
+      "grass",
+      "green"
+    ],
+    "card": "cards/042-gr.png"
+  },
+  {
+    "page": 43,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "pr",
+    "sound": "blend /pr/",
+    "words": [
+      "pretzel",
+      "prince",
+      "prize"
+    ],
+    "card": "cards/043-pr.png"
+  },
+  {
+    "page": 44,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "tr",
+    "sound": "blend /tr/",
+    "words": [
+      "tree",
+      "train",
+      "truck"
+    ],
+    "card": "cards/044-tr.png"
+  },
+  {
+    "page": 45,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "sc",
+    "sound": "blend /sc/",
+    "words": [
+      "scarf",
+      "scale",
+      "scooter"
+    ],
+    "card": "cards/045-sc.png"
+  },
+  {
+    "page": 46,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "sk",
+    "sound": "blend /sk/",
+    "words": [
+      "skateboard",
+      "skip",
+      "skunk"
+    ],
+    "card": "cards/046-sk.png"
+  },
+  {
+    "page": 47,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "sm",
+    "sound": "blend /sm/",
+    "words": [
+      "small",
+      "smile",
+      "smell"
+    ],
+    "card": "cards/047-sm.png"
+  },
+  {
+    "page": 48,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "sn",
+    "sound": "blend /sn/",
+    "words": [
+      "snake",
+      "snow",
+      "snail"
+    ],
+    "card": "cards/048-sn.png"
+  },
+  {
+    "page": 49,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "sp",
+    "sound": "blend /sp/",
+    "words": [
+      "spider",
+      "spoon",
+      "spin"
+    ],
+    "card": "cards/049-sp.png"
+  },
+  {
+    "page": 50,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "st",
+    "sound": "blend /st/",
+    "words": [
+      "star",
+      "stop",
+      "stone"
+    ],
+    "card": "cards/050-st.png"
+  },
+  {
+    "page": 51,
+    "stage": "阶段  2",
+    "topic": "Beginning Blends 词首辅音连缀",
+    "grapheme": "sw",
+    "sound": "blend /sw/",
+    "words": [
+      "swim",
+      "swan",
+      "sweet"
+    ],
+    "card": "cards/051-sw.png"
+  },
+  {
+    "page": 52,
+    "stage": "阶段  2",
+    "topic": "Digraph 辅音组合",
+    "grapheme": "qu",
+    "sound": "/kw/",
+    "words": [
+      "queen",
+      "quick",
+      "quack"
+    ],
+    "card": "cards/052-qu.png"
+  },
+  {
+    "page": 53,
+    "stage": "阶段  2",
+    "topic": "Digraph 辅音组合",
+    "grapheme": "sh",
+    "sound": "/sh/",
+    "words": [
+      "shark",
+      "ship",
+      "shop"
+    ],
+    "card": "cards/053-sh.png"
+  },
+  {
+    "page": 54,
+    "stage": "阶段  2",
+    "topic": "Digraph 辅音组合",
+    "grapheme": "ch",
+    "sound": "/ch/",
+    "words": [
+      "cheese",
+      "chair",
+      "chick"
+    ],
+    "card": "cards/054-ch.png"
+  },
+  {
+    "page": 55,
+    "stage": "阶段  2",
+    "topic": "Digraph 辅音组合",
+    "grapheme": "wh",
+    "sound": "/w/",
+    "words": [
+      "wheel",
+      "whale",
+      "white"
+    ],
+    "card": "cards/055-wh.png"
+  },
+  {
+    "page": 56,
+    "stage": "阶段  2",
+    "topic": "Digraph 辅音组合",
+    "grapheme": "th",
+    "sound": "voiceless /th/",
+    "words": [
+      "thumb",
+      "thin",
+      "three"
+    ],
+    "card": "cards/056-th.png"
+  },
+  {
+    "page": 57,
+    "stage": "阶段  2",
+    "topic": "Digraph 辅音组合",
+    "grapheme": "th",
+    "sound": "voiced /th/",
+    "words": [
+      "this",
+      "then",
+      "they"
+    ],
+    "card": "cards/057-th.png"
+  },
+  {
+    "page": 58,
+    "stage": "阶段  2",
+    "topic": "Digraph 辅音组合",
+    "grapheme": "ph",
+    "sound": "/f/",
+    "words": [
+      "phone",
+      "photo",
+      "dolphin"
+    ],
+    "card": "cards/058-ph.png"
+  },
+  {
+    "page": 59,
+    "stage": "阶段  2",
+    "topic": "Digraph 辅音组合",
+    "grapheme": "ck",
+    "sound": "/k/",
+    "words": [
+      "sock",
+      "duck",
+      "rock"
+    ],
+    "card": "cards/059-ck.png"
+  },
+  {
+    "page": 60,
+    "stage": "阶段  2",
+    "topic": "Hard and Soft Sounds 辅音软硬音",
+    "grapheme": "c",
+    "sound": "hard /k/",
+    "words": [
+      "cat",
+      "cup",
+      "cake"
+    ],
+    "card": "cards/060-c.png"
+  },
+  {
+    "page": 61,
+    "stage": "阶段  2",
+    "topic": "Hard and Soft Sounds 辅音软硬音",
+    "grapheme": "c",
+    "sound": "soft /s/",
+    "words": [
+      "circle",
+      "city",
+      "cent"
+    ],
+    "card": "cards/061-c.png"
+  },
+  {
+    "page": 62,
+    "stage": "阶段  2",
+    "topic": "Hard and Soft Sounds 辅音软硬音",
+    "grapheme": "g",
+    "sound": "hard /g/",
+    "words": [
+      "gum",
+      "goat",
+      "gate"
+    ],
+    "card": "cards/062-g.png"
+  },
+  {
+    "page": 63,
+    "stage": "阶段  2",
+    "topic": "Hard and Soft Sounds 辅音软硬音",
+    "grapheme": "g",
+    "sound": "soft /j/",
+    "words": [
+      "giraffe",
+      "gem",
+      "giant"
+    ],
+    "card": "cards/063-g.png"
+  },
+  {
+    "page": 64,
+    "stage": "阶段  2",
+    "topic": "Double Letter Endings 双写辅音结",
+    "grapheme": "尾",
+    "sound": "ff",
+    "words": [
+      "cliff",
+      "puff",
+      "off"
+    ],
+    "card": "cards/064-phonics.png"
+  },
+  {
+    "page": 65,
+    "stage": "阶段  2",
+    "topic": "Double Letter Endings 双写辅音结",
+    "grapheme": "尾",
+    "sound": "ll",
+    "words": [
+      "bell",
+      "hill",
+      "shell"
+    ],
+    "card": "cards/065-phonics.png"
+  },
+  {
+    "page": 66,
+    "stage": "阶段  2",
+    "topic": "Double Letter Endings 双写辅音结",
+    "grapheme": "尾",
+    "sound": "ss",
+    "words": [
+      "kiss",
+      "dress",
+      "glass"
+    ],
+    "card": "cards/066-phonics.png"
+  },
+  {
+    "page": 67,
+    "stage": "阶段  2",
+    "topic": "Double Letter Endings 双写辅音结",
+    "grapheme": "尾",
+    "sound": "zz",
+    "words": [
+      "buzz",
+      "fizz",
+      "jazz"
+    ],
+    "card": "cards/067-phonics.png"
+  },
+  {
+    "page": 68,
+    "stage": "阶段  2",
+    "topic": "Magic e 长元音魔法  e",
+    "grapheme": "a_e",
+    "sound": "/ay/",
+    "words": [
+      "tape",
+      "cake",
+      "name"
+    ],
+    "card": "cards/068-a-e.png"
+  },
+  {
+    "page": 69,
+    "stage": "阶段  2",
+    "topic": "Magic e 长元音魔法  e",
+    "grapheme": "i_e",
+    "sound": "/ie/",
+    "words": [
+      "pipe",
+      "kite",
+      "bike"
+    ],
+    "card": "cards/069-i-e.png"
+  },
+  {
+    "page": 70,
+    "stage": "阶段  2",
+    "topic": "Magic e 长元音魔法  e",
+    "grapheme": "o_e",
+    "sound": "/oa/",
+    "words": [
+      "cone",
+      "home",
+      "rope"
+    ],
+    "card": "cards/070-o-e.png"
+  },
+  {
+    "page": 71,
+    "stage": "阶段  2",
+    "topic": "Magic e 长元音魔法  e",
+    "grapheme": "u_e",
+    "sound": "/ue/",
+    "words": [
+      "cube",
+      "cute",
+      "mule"
+    ],
+    "card": "cards/071-u-e.png"
+  },
+  {
+    "page": 72,
+    "stage": "阶段  2",
+    "topic": "Vowel 长元音基础",
+    "grapheme": "a",
+    "sound": "long /a/",
+    "words": [
+      "acorn",
+      "apron",
+      "angel"
+    ],
+    "card": "cards/072-a.png"
+  },
+  {
+    "page": 73,
+    "stage": "阶段  2",
+    "topic": "Vowel 长元音基础",
+    "grapheme": "e",
+    "sound": "long /e/",
+    "words": [
+      "sheep",
+      "bee",
+      "tree"
+    ],
+    "card": "cards/073-e.png"
+  },
+  {
+    "page": 74,
+    "stage": "阶段  2",
+    "topic": "Vowel 长元音基础",
+    "grapheme": "i",
+    "sound": "long /i/",
+    "words": [
+      "pie",
+      "tie",
+      "fly"
+    ],
+    "card": "cards/074-i.png"
+  },
+  {
+    "page": 75,
+    "stage": "阶段  2",
+    "topic": "Vowel 长元音基础",
+    "grapheme": "o",
+    "sound": "long /o/",
+    "words": [
+      "ghost",
+      "go",
+      "boat"
+    ],
+    "card": "cards/075-o.png"
+  },
+  {
+    "page": 76,
+    "stage": "阶段  2",
+    "topic": "Vowel 长元音基础",
+    "grapheme": "u",
+    "sound": "long /u/",
+    "words": [
+      "unicorn",
+      "music",
+      "unit"
+    ],
+    "card": "cards/076-u.png"
+  },
+  {
+    "page": 77,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "ai",
+    "sound": "/ay/",
+    "words": [
+      "rain",
+      "snail",
+      "train"
+    ],
+    "card": "cards/077-ai.png"
+  },
+  {
+    "page": 78,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "ay",
+    "sound": "/ay/",
+    "words": [
+      "hay",
+      "day",
+      "play"
+    ],
+    "card": "cards/078-ay.png"
+  },
+  {
+    "page": 79,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "ea",
+    "sound": "/ee/",
+    "words": [
+      "leaf",
+      "read",
+      "beach"
+    ],
+    "card": "cards/079-ea.png"
+  },
+  {
+    "page": 80,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "ee",
+    "sound": "/ee/",
+    "words": [
+      "sleep",
+      "feet",
+      "green"
+    ],
+    "card": "cards/080-ee.png"
+  },
+  {
+    "page": 81,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "ey",
+    "sound": "/ay/",
+    "words": [
+      "turkey",
+      "key",
+      "money"
+    ],
+    "card": "cards/081-ey.png"
+  },
+  {
+    "page": 82,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "ie",
+    "sound": "/ie/",
+    "words": [
+      "tie",
+      "pie",
+      "cried"
+    ],
+    "card": "cards/082-ie.png"
+  },
+  {
+    "page": 83,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "oa",
+    "sound": "/oa/",
+    "words": [
+      "boat",
+      "coat",
+      "soap"
+    ],
+    "card": "cards/083-oa.png"
+  },
+  {
+    "page": 84,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "oe",
+    "sound": "/oa/",
+    "words": [
+      "toe",
+      "doe",
+      "hoe"
+    ],
+    "card": "cards/084-oe.png"
+  },
+  {
+    "page": 85,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "ue",
+    "sound": "/ue/",
+    "words": [
+      "glue",
+      "blue",
+      "clue"
+    ],
+    "card": "cards/085-ue.png"
+  },
+  {
+    "page": 86,
+    "stage": "阶段  3",
+    "topic": "Vowel Teams 元音组合",
+    "grapheme": "ui",
+    "sound": "/ue/",
+    "words": [
+      "juice",
+      "fruit",
+      "suit"
+    ],
+    "card": "cards/086-ui.png"
+  },
+  {
+    "page": 87,
+    "stage": "阶段  3",
+    "topic": "Bossy R r 控制元音",
+    "grapheme": "ar",
+    "sound": "/ar/",
+    "words": [
+      "card",
+      "harp",
+      "star"
+    ],
+    "card": "cards/087-ar.png"
+  },
+  {
+    "page": 88,
+    "stage": "阶段  3",
+    "topic": "Bossy R r 控制元音",
+    "grapheme": "or",
+    "sound": "/or/",
+    "words": [
+      "fork",
+      "horse",
+      "corn"
+    ],
+    "card": "cards/088-or.png"
+  },
+  {
+    "page": 89,
+    "stage": "阶段  3",
+    "topic": "Bossy R r 控制元音",
+    "grapheme": "er",
+    "sound": "/er/",
+    "words": [
+      "jersey",
+      "eraser",
+      "her"
+    ],
+    "card": "cards/089-er.png"
+  },
+  {
+    "page": 90,
+    "stage": "阶段  3",
+    "topic": "Bossy R r 控制元音",
+    "grapheme": "ir",
+    "sound": "/er/",
+    "words": [
+      "stir",
+      "skirt",
+      "bird"
+    ],
+    "card": "cards/090-ir.png"
+  },
+  {
+    "page": 91,
+    "stage": "阶段  3",
+    "topic": "Bossy R r 控制元音",
+    "grapheme": "ur",
+    "sound": "/er/",
+    "words": [
+      "church",
+      "hurt",
+      "turn"
+    ],
+    "card": "cards/091-ur.png"
+  },
+  {
+    "page": 92,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "oo",
+    "sound": "/oo/",
+    "words": [
+      "boot",
+      "moon",
+      "spoon"
+    ],
+    "card": "cards/092-oo.png"
+  },
+  {
+    "page": 93,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "ou",
+    "sound": "/ow/",
+    "words": [
+      "mouth",
+      "cloud",
+      "house"
+    ],
+    "card": "cards/093-ou.png"
+  },
+  {
+    "page": 94,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "oi",
+    "sound": "/oy/",
+    "words": [
+      "coin",
+      "oil",
+      "boil"
+    ],
+    "card": "cards/094-oi.png"
+  },
+  {
+    "page": 95,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "oy",
+    "sound": "/oy/",
+    "words": [
+      "boy",
+      "toy",
+      "joy"
+    ],
+    "card": "cards/095-oy.png"
+  },
+  {
+    "page": 96,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "au",
+    "sound": "/aw/",
+    "words": [
+      "caught",
+      "sauce",
+      "August"
+    ],
+    "card": "cards/096-au.png"
+  },
+  {
+    "page": 97,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "aw",
+    "sound": "/aw/",
+    "words": [
+      "strawberry",
+      "saw",
+      "draw"
+    ],
+    "card": "cards/097-aw.png"
+  },
+  {
+    "page": 98,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "ow",
+    "sound": "/ow/",
+    "words": [
+      "cow",
+      "owl",
+      "brown"
+    ],
+    "card": "cards/098-ow.png"
+  },
+  {
+    "page": 99,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "ew",
+    "sound": "/ue/",
+    "words": [
+      "pew",
+      "new",
+      "chew"
+    ],
+    "card": "cards/099-ew.png"
+  },
+  {
+    "page": 100,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "y",
+    "sound": "consonant /y/",
+    "words": [
+      "yellow",
+      "yo-yo",
+      "yak"
+    ],
+    "card": "cards/100-y.png"
+  },
+  {
+    "page": 101,
+    "stage": "阶段  3",
+    "topic": "Tricky Vowels 特殊元音",
+    "grapheme": "y",
+    "sound": "vowel /ie/",
+    "words": [
+      "fly",
+      "sky",
+      "my"
+    ],
+    "card": "cards/101-y.png"
+  }
+]

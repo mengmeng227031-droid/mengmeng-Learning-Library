@@ -1,0 +1,346 @@
+{
+  "templateId": "phonics-card-v1",
+  "name": "Phonics learning card",
+  "description": "A reusable phonics card layout. Text is represented as data slots so markdown phonics documents can be converted into batches of cards.",
+  "canvas": {
+    "width": 768,
+    "height": 1536,
+    "unit": "px",
+    "background": {
+      "type": "softPattern",
+      "color": "#F7F9E8",
+      "texture": "light watercolor paper with pale green and cream patches"
+    },
+    "padding": 28,
+    "cornerRadius": 28,
+    "border": {
+      "color": "#B8DD83",
+      "width": 3
+    }
+  },
+  "brandStyle": {
+    "palette": {
+      "green": "#8BC85A",
+      "lightGreen": "#E8F5C9",
+      "yellow": "#FFC83D",
+      "orange": "#FF8A42",
+      "cream": "#FFFDF4",
+      "ink": "#333333",
+      "muted": "#666666",
+      "line": "#B8DD83"
+    },
+    "fontFamily": {
+      "zh": "Microsoft YaHei",
+      "en": "Poppins"
+    },
+    "illustrationStyle": "cute children textbook illustration, soft edges, clean colors, no watermark"
+  },
+  "dataSchema": {
+    "title": "string",
+    "letterGroup": "string",
+    "phoneme": "string",
+    "rule": "string",
+    "examples": [
+      {
+        "word": "string",
+        "imagePrompt": "string",
+        "image": "asset path after generation"
+      }
+    ],
+    "sentences": [
+      "string"
+    ],
+    "practice": [
+      {
+        "imagePrompt": "string",
+        "image": "asset path after generation",
+        "options": [
+          "string"
+        ],
+        "answer": "string"
+      }
+    ],
+    "tip": "string"
+  },
+  "markdownMapping": {
+    "title": "first h1 or default Phonics",
+    "letterGroup": "heading or field named 字母组合",
+    "phoneme": "field named 发音 or phoneme",
+    "rule": "paragraph under 发音规则",
+    "examples": "list or table under 例词",
+    "sentences": "list under 跟读句子",
+    "practice": "list or table under 练习",
+    "tip": "paragraph under 小贴士"
+  },
+  "layout": [
+    {
+      "id": "outerCard",
+      "type": "container",
+      "x": 10,
+      "y": 10,
+      "width": 748,
+      "height": 1516,
+      "radius": 28,
+      "fill": "rgba(255, 255, 255, 0.38)",
+      "border": "#B8DD83"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "slot": "title",
+      "x": 190,
+      "y": 62,
+      "width": 388,
+      "height": 80,
+      "align": "center",
+      "fontSize": 66,
+      "fontWeight": 800,
+      "textStyle": "rainbow letters with soft orange shadow"
+    },
+    {
+      "id": "decorLeftStar",
+      "type": "decor",
+      "shape": "star",
+      "x": 62,
+      "y": 96,
+      "width": 42,
+      "height": 42,
+      "fill": "#FFC83D"
+    },
+    {
+      "id": "decorRightStar",
+      "type": "decor",
+      "shape": "star",
+      "x": 654,
+      "y": 88,
+      "width": 54,
+      "height": 54,
+      "fill": "#FFC83D"
+    },
+    {
+      "id": "letterPanel",
+      "type": "panel",
+      "x": 42,
+      "y": 196,
+      "width": 318,
+      "height": 276,
+      "radius": 16,
+      "headerSlot": "字母组合",
+      "body": [
+        {
+          "type": "text",
+          "slot": "letterGroup",
+          "x": 88,
+          "y": 262,
+          "width": 226,
+          "height": 164,
+          "align": "center",
+          "fontSize": 104,
+          "fontWeight": 800,
+          "textStyle": "large green rounded letters with subtle bevel"
+        }
+      ]
+    },
+    {
+      "id": "rulePanel",
+      "type": "panel",
+      "x": 386,
+      "y": 196,
+      "width": 340,
+      "height": 276,
+      "radius": 16,
+      "headerSlot": "发音规则",
+      "body": [
+        {
+          "type": "text",
+          "slot": "phoneme",
+          "x": 418,
+          "y": 292,
+          "width": 270,
+          "height": 36,
+          "fontSize": 26,
+          "fontWeight": 800
+        },
+        {
+          "type": "text",
+          "slot": "rule",
+          "x": 418,
+          "y": 360,
+          "width": 270,
+          "height": 80,
+          "fontSize": 24,
+          "lineHeight": 1.45
+        }
+      ]
+    },
+    {
+      "id": "examplesPanel",
+      "type": "panel",
+      "x": 42,
+      "y": 500,
+      "width": 318,
+      "height": 430,
+      "radius": 16,
+      "headerSlot": "例词 Examples",
+      "repeat": {
+        "slot": "examples",
+        "maxItems": 4,
+        "grid": {
+          "columns": 2,
+          "rows": 2,
+          "gapX": 26,
+          "gapY": 28,
+          "itemWidth": 110,
+          "itemHeight": 158,
+          "startX": 76,
+          "startY": 586
+        },
+        "item": [
+          {
+            "type": "image",
+            "slot": "image",
+            "width": 88,
+            "height": 88,
+            "fit": "contain",
+            "generation": {
+              "tool": "imagegen",
+              "promptSlot": "imagePrompt",
+              "constraints": "single object, cute children textbook illustration, white or transparent background, no text, no watermark"
+            }
+          },
+          {
+            "type": "text",
+            "slot": "word",
+            "width": 110,
+            "height": 30,
+            "align": "center",
+            "fontSize": 22,
+            "fontWeight": 800
+          }
+        ]
+      }
+    },
+    {
+      "id": "sentencesPanel",
+      "type": "panel",
+      "x": 386,
+      "y": 500,
+      "width": 340,
+      "height": 430,
+      "radius": 16,
+      "headerSlot": "跟读句子",
+      "body": [
+        {
+          "type": "textList",
+          "slot": "sentences",
+          "x": 438,
+          "y": 620,
+          "width": 238,
+          "height": 140,
+          "fontSize": 26,
+          "lineHeight": 2
+        },
+        {
+          "type": "image",
+          "slot": "sentenceMascot",
+          "x": 540,
+          "y": 764,
+          "width": 126,
+          "height": 118,
+          "fit": "contain",
+          "defaultPrompt": "cute happy young student reading with a small yellow toy, children textbook illustration, no text"
+        }
+      ]
+    },
+    {
+      "id": "practicePanel",
+      "type": "panel",
+      "x": 42,
+      "y": 958,
+      "width": 684,
+      "height": 382,
+      "radius": 16,
+      "headerSlot": "练习 Practice",
+      "introSlot": "practiceInstruction",
+      "repeat": {
+        "slot": "practice",
+        "maxItems": 3,
+        "grid": {
+          "columns": 3,
+          "rows": 1,
+          "gapX": 0,
+          "itemWidth": 214,
+          "itemHeight": 232,
+          "startX": 66,
+          "startY": 1082
+        },
+        "item": [
+          {
+            "type": "index",
+            "fontSize": 22,
+            "fontWeight": 800
+          },
+          {
+            "type": "image",
+            "slot": "image",
+            "width": 88,
+            "height": 88,
+            "fit": "contain",
+            "generation": {
+              "tool": "imagegen",
+              "promptSlot": "imagePrompt",
+              "constraints": "single object, cute children textbook illustration, white or transparent background, no text, no watermark"
+            }
+          },
+          {
+            "type": "choiceList",
+            "slot": "options",
+            "fontSize": 24,
+            "fontWeight": 700,
+            "lineHeight": 1.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "tipPanel",
+      "type": "panel",
+      "x": 42,
+      "y": 1370,
+      "width": 684,
+      "height": 118,
+      "radius": 16,
+      "headerSlot": "小贴士",
+      "body": [
+        {
+          "type": "text",
+          "slot": "tip",
+          "x": 70,
+          "y": 1432,
+          "width": 590,
+          "height": 34,
+          "fontSize": 22,
+          "fontWeight": 700
+        },
+        {
+          "type": "decor",
+          "shape": "pencil",
+          "x": 674,
+          "y": 1412,
+          "width": 34,
+          "height": 58
+        }
+      ]
+    }
+  ],
+  "imageGenerationPolicy": {
+    "exampleImagePromptTemplate": "A cute children textbook illustration of {word}, single object, front view or three-quarter view, soft rounded shape, clean colors, white or transparent background, no letters, no caption, no watermark.",
+    "practiceImagePromptTemplate": "A cute children textbook illustration of {answer}, single object, easy for children to recognize, clean colors, white or transparent background, no letters, no caption, no watermark.",
+    "styleConsistency": "Use the same soft educational illustration style across all generated word images."
+  },
+  "batchOutput": {
+    "fileNamePattern": "phonics-{letterGroup}.png",
+    "assetDirPattern": "assets/phonics/{letterGroup}/",
+    "jsonDataPattern": "data/phonics/{letterGroup}.json"
+  }
+}

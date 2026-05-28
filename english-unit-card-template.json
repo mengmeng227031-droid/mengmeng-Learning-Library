@@ -1,0 +1,766 @@
+{
+  "templateId": "english-unit-card-ab-v1",
+  "name": "English unit learning card A/B",
+  "description": "Reusable double-sided English lesson card template. Text is separated into slots so Markdown word and phonics documents can be converted into batches of cards.",
+  "canvas": {
+    "width": 768,
+    "height": 1536,
+    "unit": "px",
+    "safeArea": {
+      "x": 24,
+      "y": 24,
+      "width": 720,
+      "height": 1488
+    },
+    "background": {
+      "type": "softPaper",
+      "color": "#FFF9E8",
+      "texture": "warm cream watercolor paper with subtle corner stains"
+    },
+    "border": {
+      "color": "#FFC83D",
+      "width": 3,
+      "radius": 24
+    }
+  },
+  "brandStyle": {
+    "palette": {
+      "blue": "#4D8BFF",
+      "pink": "#FF6EC7",
+      "yellow": "#FFC83D",
+      "cyan": "#37D2C6",
+      "purple": "#7B61FF",
+      "orange": "#FF8A42",
+      "coral": "#FF6F91",
+      "cream": "#FFFDF4",
+      "paper": "#FFF9E8",
+      "ink": "#333333",
+      "body": "#666666",
+      "muted": "#999999",
+      "line": "#FFD46A"
+    },
+    "fontFamily": {
+      "zh": "Microsoft YaHei",
+      "en": "Nunito"
+    },
+    "sectionStyle": {
+      "fill": "#FFFDF4",
+      "border": "#FFD46A",
+      "radius": 18,
+      "headerNumberFill": "#FFE7A8",
+      "headerTitleColor": "#FF5A2F",
+      "shadow": "0 4px 12px rgba(255, 200, 61, 0.16)"
+    },
+    "illustrationStyle": "cute children textbook illustration, soft rounded edges, bright clean colors, warm classroom workbook style, white or transparent background, no watermark, no text"
+  },
+  "dataSchema": {
+    "unitTitle": "string",
+    "grade": "string",
+    "lesson": "string",
+    "keywords": [
+      {
+        "word": "string",
+        "phonetic": "optional string",
+        "imagePrompt": "string",
+        "image": "asset path after generation"
+      }
+    ],
+    "keySentences": [
+      "string"
+    ],
+    "talk": [
+      {
+        "speaker": "string",
+        "text": "string"
+      }
+    ],
+    "practice": [
+      {
+        "imagePrompt": "string",
+        "image": "asset path after generation",
+        "options": [
+          "string"
+        ],
+        "answer": "string"
+      }
+    ],
+    "homework": "string",
+    "dialogue": [
+      {
+        "speaker": "string",
+        "text": "string"
+      }
+    ],
+    "reading": {
+      "title": "string",
+      "lines": [
+        "string"
+      ],
+      "scenePrompt": "string",
+      "image": "asset path after generation"
+    },
+    "grammar": [
+      {
+        "pattern": "string",
+        "meaning": "string"
+      }
+    ],
+    "exercise": [
+      {
+        "imagePrompt": "string",
+        "image": "asset path after generation",
+        "answer": "string"
+      }
+    ],
+    "summaryChecks": [
+      "string"
+    ],
+    "selfRating": {
+      "maxStars": "number",
+      "value": "number"
+    }
+  },
+  "markdownMapping": {
+    "unitTitle": "first H1, or front matter field unitTitle",
+    "grade": "front matter grade, default K2",
+    "lesson": "front matter lesson",
+    "keywords": "table or list under headings: Key Words, 核心单词, 单词",
+    "keySentences": "list under headings: Key Sentences, 核心句型, 句子",
+    "talk": "speaker lines under headings: Let's Talk, 课文对话",
+    "practice": "table or list under headings: Practice, 练习",
+    "homework": "paragraph under headings: Homework, 作业",
+    "dialogue": "speaker lines under headings: Dialogue, 对话练习",
+    "reading": "title and lines under headings: Let's Read, 一起阅读",
+    "grammar": "pattern list under headings: Grammar Focus, 语法小贴士",
+    "exercise": "image-answer list under headings: Exercise, 练一练",
+    "summaryChecks": "checkbox list under headings: Summary, 本课小结"
+  },
+  "layout": {
+    "front": {
+      "sideId": "A",
+      "sections": [
+        {
+          "id": "title",
+          "type": "titleBlock",
+          "x": 48,
+          "y": 54,
+          "width": 672,
+          "height": 110,
+          "titleSlot": "unitTitle",
+          "fontSize": 52,
+          "fontWeight": 900,
+          "align": "center",
+          "decor": [
+            {
+              "type": "sparkle",
+              "x": 36,
+              "y": 72,
+              "color": "#FFC83D"
+            },
+            {
+              "type": "book",
+              "x": 650,
+              "y": 70,
+              "width": 56,
+              "height": 56
+            }
+          ]
+        },
+        {
+          "id": "meta",
+          "type": "metaBar",
+          "x": 48,
+          "y": 164,
+          "width": 672,
+          "height": 62,
+          "leftLabel": "Grade:",
+          "leftSlot": "grade",
+          "rightLabel": "Lesson:",
+          "rightSlot": "lesson"
+        },
+        {
+          "id": "keywords",
+          "type": "section",
+          "number": 1,
+          "title": "Key Words",
+          "titleZh": "核心单词",
+          "x": 48,
+          "y": 256,
+          "width": 672,
+          "height": 210,
+          "repeat": {
+            "slot": "keywords",
+            "maxItems": 4,
+            "overflow": "createAdditionalFrontCard",
+            "grid": {
+              "columns": 4,
+              "itemWidth": 132,
+              "itemHeight": 132,
+              "startX": 90,
+              "startY": 334,
+              "gapX": 30
+            },
+            "item": [
+              {
+                "type": "image",
+                "slot": "image",
+                "width": 76,
+                "height": 76,
+                "fit": "contain",
+                "generation": {
+                  "tool": "imagegen",
+                  "promptSlot": "imagePrompt",
+                  "constraints": "single recognizable object or person, no letters, no caption"
+                }
+              },
+              {
+                "type": "text",
+                "slot": "word",
+                "width": 132,
+                "height": 28,
+                "align": "center",
+                "fontSize": 24,
+                "fontWeight": 800
+              }
+            ]
+          }
+        },
+        {
+          "id": "keySentences",
+          "type": "section",
+          "number": 2,
+          "title": "Key Sentences",
+          "titleZh": "核心句型",
+          "x": 48,
+          "y": 500,
+          "width": 672,
+          "height": 210,
+          "body": [
+            {
+              "type": "speechBubbleList",
+              "slot": "keySentences",
+              "x": 96,
+              "y": 570,
+              "width": 408,
+              "height": 104,
+              "maxItems": 2,
+              "fontSize": 25
+            },
+            {
+              "type": "image",
+              "slot": "sentenceMascot",
+              "x": 552,
+              "y": 566,
+              "width": 92,
+              "height": 116,
+              "fit": "contain",
+              "defaultPrompt": "cute pencil character for a children's English workbook, no text"
+            }
+          ]
+        },
+        {
+          "id": "talk",
+          "type": "section",
+          "number": 3,
+          "title": "Let's Talk",
+          "titleZh": "课文对话",
+          "x": 48,
+          "y": 744,
+          "width": 672,
+          "height": 210,
+          "body": [
+            {
+              "type": "dialogueList",
+              "slot": "talk",
+              "x": 96,
+              "y": 824,
+              "width": 360,
+              "height": 92,
+              "fontSize": 24,
+              "lineHeight": 1.55
+            },
+            {
+              "type": "image",
+              "slot": "talkSceneImage",
+              "x": 514,
+              "y": 806,
+              "width": 138,
+              "height": 122,
+              "fit": "contain",
+              "defaultPrompt": "two children talking happily at a desk, cute children's textbook illustration, no text"
+            }
+          ]
+        },
+        {
+          "id": "practice",
+          "type": "section",
+          "number": 4,
+          "title": "Practice",
+          "titleZh": "练习",
+          "x": 48,
+          "y": 988,
+          "width": 672,
+          "height": 300,
+          "intro": "Look and choose.",
+          "repeat": {
+            "slot": "practice",
+            "maxItems": 3,
+            "grid": {
+              "columns": 3,
+              "itemWidth": 204,
+              "itemHeight": 196,
+              "startX": 70,
+              "startY": 1078,
+              "gapX": 14
+            },
+            "item": [
+              {
+                "type": "index",
+                "fontSize": 20,
+                "fontWeight": 800
+              },
+              {
+                "type": "image",
+                "slot": "image",
+                "width": 88,
+                "height": 88,
+                "fit": "contain",
+                "generation": {
+                  "tool": "imagegen",
+                  "promptSlot": "imagePrompt",
+                  "constraints": "single recognizable object or person, no letters, no caption"
+                }
+              },
+              {
+                "type": "choiceList",
+                "slot": "options",
+                "fontSize": 23,
+                "fontWeight": 800,
+                "lineHeight": 1.55
+              }
+            ]
+          }
+        },
+        {
+          "id": "homework",
+          "type": "section",
+          "number": 5,
+          "title": "Homework",
+          "titleZh": "作业",
+          "x": 48,
+          "y": 1322,
+          "width": 672,
+          "height": 114,
+          "body": [
+            {
+              "type": "text",
+              "slot": "homework",
+              "x": 72,
+              "y": 1390,
+              "width": 540,
+              "height": 34,
+              "fontSize": 21,
+              "fontWeight": 700
+            },
+            {
+              "type": "decor",
+              "shape": "schoolHouse",
+              "x": 636,
+              "y": 1358,
+              "width": 54,
+              "height": 54
+            }
+          ]
+        }
+      ]
+    },
+    "back": {
+      "sideId": "B",
+      "sections": [
+        {
+          "id": "dialogue",
+          "type": "section",
+          "number": 5,
+          "title": "Dialogue",
+          "titleZh": "对话练习",
+          "x": 48,
+          "y": 48,
+          "width": 672,
+          "height": 424,
+          "body": [
+            {
+              "type": "dialogueList",
+              "slot": "dialogue",
+              "x": 72,
+              "y": 118,
+              "width": 330,
+              "height": 254,
+              "fontSize": 24,
+              "lineHeight": 1.65
+            },
+            {
+              "type": "image",
+              "slot": "dialogueSceneImage",
+              "x": 396,
+              "y": 156,
+              "width": 274,
+              "height": 240,
+              "fit": "contain",
+              "defaultPrompt": "two children smiling and practicing English at a classroom desk, cute children's textbook illustration, no text"
+            }
+          ]
+        },
+        {
+          "id": "reading",
+          "type": "section",
+          "number": 6,
+          "title": "Let's Read",
+          "titleZh": "一起阅读",
+          "x": 48,
+          "y": 502,
+          "width": 672,
+          "height": 300,
+          "body": [
+            {
+              "type": "text",
+              "slot": "reading.title",
+              "x": 104,
+              "y": 580,
+              "width": 220,
+              "height": 40,
+              "fontSize": 30,
+              "fontWeight": 900,
+              "color": "#4D8BFF"
+            },
+            {
+              "type": "textList",
+              "slot": "reading.lines",
+              "x": 104,
+              "y": 642,
+              "width": 270,
+              "height": 104,
+              "fontSize": 23,
+              "lineHeight": 1.45
+            },
+            {
+              "type": "image",
+              "slot": "reading.image",
+              "x": 388,
+              "y": 566,
+              "width": 270,
+              "height": 190,
+              "fit": "contain",
+              "generation": {
+                "tool": "imagegen",
+                "promptSlot": "reading.scenePrompt",
+                "constraints": "simple scene, cute children's textbook illustration, no text"
+              }
+            }
+          ]
+        },
+        {
+          "id": "grammar",
+          "type": "section",
+          "number": 7,
+          "title": "Grammar Focus",
+          "titleZh": "语法小贴士",
+          "x": 48,
+          "y": 832,
+          "width": 672,
+          "height": 210,
+          "body": [
+            {
+              "type": "grammarList",
+              "slot": "grammar",
+              "x": 110,
+              "y": 912,
+              "width": 430,
+              "height": 96,
+              "fontSize": 23,
+              "lineHeight": 1.55
+            },
+            {
+              "type": "decor",
+              "shape": "lightBulb",
+              "x": 596,
+              "y": 914,
+              "width": 64,
+              "height": 72,
+              "color": "#FFC83D"
+            }
+          ]
+        },
+        {
+          "id": "exercise",
+          "type": "section",
+          "number": 8,
+          "title": "Exercise",
+          "titleZh": "练一练",
+          "x": 48,
+          "y": 1072,
+          "width": 672,
+          "height": 256,
+          "intro": "Look and write.",
+          "repeat": {
+            "slot": "exercise",
+            "maxItems": 3,
+            "grid": {
+              "columns": 3,
+              "itemWidth": 196,
+              "itemHeight": 142,
+              "startX": 76,
+              "startY": 1162,
+              "gapX": 20
+            },
+            "item": [
+              {
+                "type": "index",
+                "fontSize": 19,
+                "fontWeight": 800
+              },
+              {
+                "type": "image",
+                "slot": "image",
+                "width": 90,
+                "height": 90,
+                "fit": "contain",
+                "generation": {
+                  "tool": "imagegen",
+                  "promptSlot": "imagePrompt",
+                  "constraints": "single recognizable object or person, no letters, no caption"
+                }
+              },
+              {
+                "type": "answerLine",
+                "width": 146,
+                "color": "#999999"
+              }
+            ]
+          }
+        },
+        {
+          "id": "summary",
+          "type": "section",
+          "number": 9,
+          "title": "Summary",
+          "titleZh": "本课小结",
+          "x": 48,
+          "y": 1358,
+          "width": 672,
+          "height": 130,
+          "body": [
+            {
+              "type": "checkList",
+              "slot": "summaryChecks",
+              "x": 94,
+              "y": 1422,
+              "width": 210,
+              "height": 54,
+              "fontSize": 19
+            },
+            {
+              "type": "divider",
+              "x": 334,
+              "y": 1410,
+              "width": 1,
+              "height": 70,
+              "color": "#FFD46A"
+            },
+            {
+              "type": "starRating",
+              "slot": "selfRating",
+              "x": 400,
+              "y": 1430,
+              "width": 240,
+              "height": 42,
+              "maxStars": 5
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "imageGenerationPolicy": {
+    "wordImagePromptTemplate": "A cute children textbook illustration of {word}, single clear subject, easy for K2 children to recognize, soft rounded shape, bright clean colors, white or transparent background, no letters, no caption, no watermark.",
+    "personWordPromptTemplate": "A cute children textbook illustration representing {word}, friendly family member portrait, waist-up, soft rounded shape, bright clean colors, white or transparent background, no letters, no caption, no watermark.",
+    "scenePromptTemplate": "A cute children textbook illustration of {scene}, warm classroom workbook style, simple composition, no letters, no caption, no watermark.",
+    "useImage2For": [
+      "word illustrations",
+      "practice illustrations",
+      "dialogue scene",
+      "reading scene"
+    ],
+    "styleConsistency": "Generate all illustrations in the same workbook style and keep the subjects isolated unless the slot is a scene."
+  },
+  "batchOutput": {
+    "fileNamePattern": "english-{lessonSlug}-{side}.png",
+    "assetDirPattern": "assets/generated/english/{lessonSlug}/",
+    "jsonDataPattern": "data/english/{lessonSlug}.json",
+    "sides": [
+      "A",
+      "B"
+    ]
+  },
+  "sampleLesson": {
+    "lessonSlug": "family-body-lesson-1",
+    "unitTitle": "Unit 3  My Family",
+    "grade": "K2",
+    "lesson": "1",
+    "keywords": [
+      {
+        "word": "sister",
+        "imagePrompt": "A cute children textbook illustration representing sister, friendly young girl family member portrait, white or transparent background, no text"
+      },
+      {
+        "word": "have",
+        "imagePrompt": "A cute children textbook illustration of a child holding a toy to show have, white or transparent background, no text"
+      },
+      {
+        "word": "ear",
+        "imagePrompt": "A cute children textbook illustration of an ear, single clear body part, white or transparent background, no text"
+      },
+      {
+        "word": "share",
+        "imagePrompt": "A cute children textbook illustration of two children sharing one toy happily, white or transparent background, no text"
+      },
+      {
+        "word": "aunt",
+        "imagePrompt": "A cute children textbook illustration representing aunt, friendly adult woman family member portrait, white or transparent background, no text"
+      },
+      {
+        "word": "arm",
+        "imagePrompt": "A cute children textbook illustration of an arm, single clear body part, white or transparent background, no text"
+      },
+      {
+        "word": "eye",
+        "imagePrompt": "A cute children textbook illustration of an eye, single clear body part, white or transparent background, no text"
+      },
+      {
+        "word": "help",
+        "imagePrompt": "A cute children textbook illustration of one child helping another pick up books, white or transparent background, no text"
+      },
+      {
+        "word": "cousin",
+        "imagePrompt": "A cute children textbook illustration representing cousin, friendly child family member portrait, white or transparent background, no text"
+      },
+      {
+        "word": "grandma",
+        "imagePrompt": "A cute children textbook illustration representing grandma, friendly grandmother portrait, white or transparent background, no text"
+      },
+      {
+        "word": "smile",
+        "imagePrompt": "A cute children textbook illustration of a smiling child face, white or transparent background, no text"
+      }
+    ],
+    "keySentences": [
+      "Is this your sister?",
+      "Is that your brother?"
+    ],
+    "talk": [
+      {
+        "speaker": "A",
+        "text": "Is this your sister?"
+      },
+      {
+        "speaker": "B",
+        "text": "Yes, it is."
+      },
+      {
+        "speaker": "B",
+        "text": "No, it's my cousin."
+      }
+    ],
+    "practice": [
+      {
+        "imagePrompt": "A cute children textbook illustration representing sister, friendly young girl family member portrait, no text",
+        "options": [
+          "A. sister",
+          "B. aunt"
+        ],
+        "answer": "sister"
+      },
+      {
+        "imagePrompt": "A cute children textbook illustration of an ear, single body part, no text",
+        "options": [
+          "A. eye",
+          "B. ear"
+        ],
+        "answer": "ear"
+      },
+      {
+        "imagePrompt": "A cute children textbook illustration representing grandma, friendly grandmother portrait, no text",
+        "options": [
+          "A. grandma",
+          "B. cousin"
+        ],
+        "answer": "grandma"
+      }
+    ],
+    "homework": "Use \"Is this/that your ___?\" to ask and answer with your family.",
+    "dialogue": [
+      {
+        "speaker": "A",
+        "text": "Is this your sister?"
+      },
+      {
+        "speaker": "B",
+        "text": "Yes, it is."
+      },
+      {
+        "speaker": "A",
+        "text": "Is that your brother?"
+      },
+      {
+        "speaker": "B",
+        "text": "No, it's my cousin."
+      }
+    ],
+    "reading": {
+      "title": "My Family",
+      "lines": [
+        "I have a sister.",
+        "I have a cousin.",
+        "I help my grandma.",
+        "We share and smile."
+      ],
+      "scenePrompt": "a happy family with grandma, sister, and cousin smiling together, cute children's textbook illustration, no text"
+    },
+    "grammar": [
+      {
+        "pattern": "Is this ...?",
+        "meaning": "这是……吗？"
+      },
+      {
+        "pattern": "Is that ...?",
+        "meaning": "那是……吗？"
+      },
+      {
+        "pattern": "Yes, it is. / No, it isn't.",
+        "meaning": "是的。/ 不是。"
+      }
+    ],
+    "exercise": [
+      {
+        "imagePrompt": "A cute children textbook illustration of an eye, single body part, no text",
+        "answer": "eye"
+      },
+      {
+        "imagePrompt": "A cute children textbook illustration of an arm, single body part, no text",
+        "answer": "arm"
+      },
+      {
+        "imagePrompt": "A cute children textbook illustration of a smiling child face, no text",
+        "answer": "smile"
+      }
+    ],
+    "summaryChecks": [
+      "核心单词",
+      "核心句型",
+      "日常对话"
+    ],
+    "selfRating": {
+      "maxStars": 5,
+      "value": 0
+    }
+  }
+}
