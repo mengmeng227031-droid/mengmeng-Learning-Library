@@ -89,6 +89,11 @@ loadLesson().then(renderLesson);
 
 async function loadLesson() {
   const targetUnit = getTargetUnit();
+  const inlineBook = window.ENGLISH_LESSON_BOOK;
+  if (inlineBook?.units) {
+    const lesson = inlineBook.units.find((item) => Number(item.unit) === targetUnit);
+    if (lesson) return lesson;
+  }
   try {
     const response = await fetch("./data/english/grade3-up.json");
     if (!response.ok) {
@@ -103,6 +108,7 @@ async function loadLesson() {
 }
 
 function renderLesson(data) {
+  document.title = `${data.unitTitle} - 英文学习卡片 - 蒙蒙学习库`;
   setText("frontTitle", data.unitTitle);
   setText("gradeText", data.gradeLabel || data.grade);
   setText("lessonText", data.lesson);

@@ -1,4 +1,4 @@
-{
+window.ENGLISH_LESSON_BOOK = {
   "grade": "grade3",
   "semester": "上册",
   "label": "三年级上",
@@ -1737,4 +1737,4 @@
     "missing": [],
     "style": "imagegen-phonics-card-style compatible cute educational mascot art"
   }
-}
+};
