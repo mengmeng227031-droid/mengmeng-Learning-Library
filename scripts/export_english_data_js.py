@@ -1,3 +1,6 @@
+# 功能：把英文学习 JSON 数据导出为浏览器可直接加载的 JS 数据文件。
+# 输入：data/english/grade3-up.json。
+# 输出：data/english/grade3-up.js，内容挂载到 window.ENGLISH_LESSON_BOOK。
 import json
 from pathlib import Path
 

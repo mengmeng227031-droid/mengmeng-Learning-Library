@@ -1,3 +1,6 @@
+# 功能：从三年级上册整页单词素材图中裁切单词配图，并同步更新英文学习数据。
+# 输入：照片素材库中的 unit 图片、data/english/grade3-up.json，以及脚本内置的裁切坐标。
+# 输出：assets/english/tagged-word-art 单词图片、word-image-manifest.json、预览图和更新后的英文数据 JS/JSON。
 import json
 import re
 from pathlib import Path

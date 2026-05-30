@@ -1,3 +1,6 @@
+# 功能：解析三年级上册英语 Markdown 单元资料，生成统一的英文学习 JSON 数据。
+# 输入：命令行传入的 Markdown 文件路径，内容包含单元标题、重点单词、核心句型和对话。
+# 输出：data/english/grade3-up.json，并可配合 export_english_data_js.py 生成前端 JS 数据。
 import json
 import re
 import sys
@@ -22,9 +25,14 @@ def clean_english(text):
 
 def english_part(text):
     text = clean_english(text)
-    text = re.split(r"\s+[\u4e00-\u9fff]", text, maxsplit=1)[0]
+    text = re.split(r"\s*[\u4e00-\u9fff]", text, maxsplit=1)[0]
     text = re.sub(r"\s*[；;].*$", "", text)
     return text.strip(" -")
+
+
+def reading_title_from_unit_title(unit_title, unit_number):
+    title = english_part(unit_title)
+    return title.title() if title else f"Unit {unit_number}"
 
 
 def split_word_line(line):
@@ -133,7 +141,7 @@ def parse_unit(unit_number, unit_title, body):
         "homework": f"Read Unit {unit_number} words and make two sentences.",
         "dialogue": dialogues,
         "reading": {
-            "title": unit_title.split()[0] if unit_title else f"Unit {unit_number}",
+            "title": reading_title_from_unit_title(unit_title, unit_number),
             "lines": reading_lines,
             "scenePrompt": (
                 f"A cute educational mascot-style scene for Unit {unit_number} {unit_title}, "

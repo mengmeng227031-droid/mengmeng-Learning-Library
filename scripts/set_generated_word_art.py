@@ -1,3 +1,6 @@
+# 功能：把指定生成图片绑定到一个或多个英文单词，并更新英文学习数据中的图片路径。
+# 输入：命令行参数 <image-path> <word> [<word>...] 和 data/english/grade3-up.json。
+# 输出：更新后的 data/english/grade3-up.json。
 import json
 import sys
 from pathlib import Path

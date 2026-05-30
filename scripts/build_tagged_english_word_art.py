@@ -1,3 +1,6 @@
+# 功能：根据单词图片 manifest 生成按 tag 命名的英文单词图片目录，并回写数据中的图片路径。
+# 输入：assets/english/word-image-manifest.json、data/english/grade3-up.json 和 manifest 指向的源图片。
+# 输出：assets/english/tagged-word-art 下的图片、更新后的 manifest 和 data/english/grade3-up.json。
 import json
 import os
 import shutil

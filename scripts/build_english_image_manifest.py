@@ -1,3 +1,6 @@
+# 功能：根据三年级上册英文学习 JSON 生成单词图片索引 manifest。
+# 输入：data/english/grade3-up.json 中的 units、keywords 和 image 字段。
+# 输出：assets/english/word-image-manifest.json，供后续按规范化 tag 查找单词图片。
 import json
 import re
 from pathlib import Path

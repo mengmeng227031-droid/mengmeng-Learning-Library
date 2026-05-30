@@ -1,3 +1,6 @@
+# 功能：根据自然拼读卡片 JSON 批量生成品牌风格的 phonics flashcard 图片和素材清单。
+# 输入：C:/Users/HP/Downloads/heathers_phonics_flashcards.json 以及脚本内置的卡片配置、字体和绘图规则。
+# 输出：outputs/abcflashcard/cards、outputs/abcflashcard/image_assets 和 outputs/abcflashcard/manifest.json。
 from __future__ import annotations
 
 import json

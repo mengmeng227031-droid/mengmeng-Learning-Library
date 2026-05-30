@@ -1,3 +1,6 @@
+# 功能：把音标练习生成的单词图片复制到英文学习资源目录，并为三年级上册单词数据补齐图片路径。
+# 输入：data/english/grade3-up.json、音标练习/word-art 下的图片，以及脚本内置的单词 fallback 映射。
+# 输出：assets/english/word-art 图片文件、更新后的 data/english/grade3-up.json。
 import json
 import re
 import shutil
