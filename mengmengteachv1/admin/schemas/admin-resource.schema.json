@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mengmengteach.local/schemas/admin-resource.schema.json",
+  "title": "AdminResource",
+  "type": "object",
+  "required": ["id", "schemaVersion", "status", "type", "title", "classification", "content", "publish"],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "default": ""
+    },
+    "schemaVersion": {
+      "type": "string",
+      "default": "1.0.0"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["uploaded", "parsed", "draft", "review", "published", "archived"],
+      "default": "draft"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["english_card", "phonics_card", "exercise", "reading", "document"],
+      "default": "english_card"
+    },
+    "title": {
+      "type": "string",
+      "default": "未命名资料"
+    },
+    "source": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "uploadId": {
+          "type": "string",
+          "default": ""
+        },
+        "originalFileName": {
+          "type": "string",
+          "default": ""
+        },
+        "privatePath": {
+          "type": "string",
+          "default": ""
+        },
+        "mimeType": {
+          "type": "string",
+          "default": ""
+        },
+        "uploadedAt": {
+          "type": "string",
+          "default": ""
+        },
+        "uploadedBy": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "required": ["subject", "grade", "term", "unit", "tags"],
+      "properties": {
+        "subject": {
+          "type": "string",
+          "default": "english"
+        },
+        "grade": {
+          "type": "string",
+          "default": ""
+        },
+        "term": {
+          "type": "string",
+          "default": ""
+        },
+        "unit": {
+          "type": "string",
+          "default": ""
+        },
+        "lesson": {
+          "type": "string",
+          "default": ""
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "required": ["cards", "exercises", "printLayout"],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "default": ""
+        },
+        "cards": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "object",
+            "required": ["id", "word", "meaning"],
+            "properties": {
+              "id": {
+                "type": "string",
+                "default": ""
+              },
+              "word": {
+                "type": "string",
+                "default": ""
+              },
+              "phonetic": {
+                "type": "string",
+                "default": ""
+              },
+              "meaning": {
+                "type": "string",
+                "default": ""
+              },
+              "example": {
+                "type": "string",
+                "default": ""
+              },
+              "image": {
+                "type": "string",
+                "default": "/assets/learning/default-card.png"
+              },
+              "audio": {
+                "type": "string",
+                "default": ""
+              },
+              "order": {
+                "type": "integer",
+                "default": 0
+              }
+            }
+          }
+        },
+        "exercises": {
+          "type": "array",
+          "default": []
+        },
+        "printLayout": {
+          "type": "object",
+          "default": {},
+          "properties": {
+            "pageSize": {
+              "type": "string",
+              "default": "A4"
+            },
+            "orientation": {
+              "type": "string",
+              "enum": ["portrait", "landscape"],
+              "default": "portrait"
+            }
+          }
+        }
+      }
+    },
+    "publish": {
+      "type": "object",
+      "required": ["version", "visibleToGrades", "isPublished"],
+      "properties": {
+        "version": {
+          "type": "integer",
+          "default": 1
+        },
+        "isPublished": {
+          "type": "boolean",
+          "default": false
+        },
+        "publishedAt": {
+          "type": "string",
+          "default": ""
+        },
+        "publishedBy": {
+          "type": "string",
+          "default": ""
+        },
+        "visibleToGrades": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "visibleToClasses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "default": {},
+      "properties": {
+        "missingText": {
+          "type": "string",
+          "default": ""
+        },
+        "missingImage": {
+          "type": "string",
+          "default": "/assets/learning/default-card.png"
+        },
+        "fallbackLevel": {
+          "type": "string",
+          "default": "basic"
+        }
+      }
+    }
+  }
+}
+

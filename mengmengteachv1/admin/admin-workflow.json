@@ -1,0 +1,49 @@
+{
+  "module": "admin",
+  "version": "1.0.0",
+  "name": "管理端资料生产流程",
+  "steps": [
+    {
+      "key": "upload",
+      "name": "上传",
+      "input": ["html", "pdf", "docx", "images"],
+      "output": "uploadRecord",
+      "description": "保存原始文件，生成上传记录。原始文件只允许管理端访问。"
+    },
+    {
+      "key": "parse",
+      "name": "解析",
+      "input": "uploadRecord",
+      "output": "resourceDraft",
+      "description": "把 HTML 或文档解析成统一 JSON 草稿。"
+    },
+    {
+      "key": "edit",
+      "name": "编辑",
+      "input": "resourceDraft",
+      "output": "editedDraft",
+      "description": "管理端编辑标题、单词、句子、图片、练习题和打印配置。"
+    },
+    {
+      "key": "classify",
+      "name": "分类",
+      "input": "editedDraft",
+      "output": "classifiedDraft",
+      "description": "补充学科、年级、学期、单元、标签和可见范围。"
+    },
+    {
+      "key": "publish",
+      "name": "发布",
+      "input": "classifiedDraft",
+      "output": "publishedResource",
+      "description": "校验 JSON Schema，补默认值，生成发布版本。"
+    }
+  ],
+  "rules": {
+    "adminOnlyOriginalFiles": true,
+    "appCanReadOnlyPublished": true,
+    "schemaValidationRequired": true,
+    "defaultsRequired": true
+  }
+}
+

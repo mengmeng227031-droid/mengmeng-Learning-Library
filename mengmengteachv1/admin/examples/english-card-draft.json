@@ -1,0 +1,66 @@
+{
+  "id": "res_english_card_001",
+  "schemaVersion": "1.0.0",
+  "status": "draft",
+  "type": "english_card",
+  "title": "三年级上 Unit 1 单词卡",
+  "source": {
+    "uploadId": "upload_001",
+    "originalFileName": "unit1-card.html",
+    "privatePath": "back/storage/private/uploads/upload_001/unit1-card.html",
+    "mimeType": "text/html",
+    "uploadedAt": "2026-05-30T00:00:00+08:00",
+    "uploadedBy": "admin_001"
+  },
+  "classification": {
+    "subject": "english",
+    "grade": "grade3",
+    "term": "上册",
+    "unit": "Unit 1",
+    "lesson": "",
+    "tags": ["课后复习", "单词卡", "可打印"]
+  },
+  "content": {
+    "summary": "三年级上册 Unit 1 英语课后单词卡。",
+    "cards": [
+      {
+        "id": "card_001",
+        "word": "hello",
+        "phonetic": "",
+        "meaning": "你好",
+        "example": "Hello, I am Mengmeng.",
+        "image": "/assets/learning/default-card.png",
+        "audio": "",
+        "order": 1
+      }
+    ],
+    "exercises": [
+      {
+        "id": "ex_001",
+        "type": "choice",
+        "question": "hello 的中文意思是？",
+        "options": ["你好", "再见", "名字"],
+        "answer": "你好",
+        "explanation": "",
+        "order": 1
+      }
+    ],
+    "printLayout": {
+      "pageSize": "A4",
+      "orientation": "portrait"
+    }
+  },
+  "publish": {
+    "version": 1,
+    "isPublished": false,
+    "publishedAt": "",
+    "publishedBy": "",
+    "visibleToGrades": ["grade3"],
+    "visibleToClasses": []
+  },
+  "defaults": {
+    "missingText": "",
+    "missingImage": "/assets/learning/default-card.png",
+    "fallbackLevel": "basic"
+  }
+}
