@@ -154,6 +154,17 @@ const todayTasks = [
     bg: "#eaf4ff"
   },
   {
+    id: "task-phonics",
+    title: "自然拼读课",
+    desc: "完成 1 组 Phonics 跟读与认读练习",
+    time: "15 min",
+    progress: 35,
+    icon: "Ph",
+    color: "#37D2C6",
+    bg: "#e9fbf8",
+    href: "file:///D:/天津考试合集/pdfcreatlatex/phonics-ppt-deck/index.html"
+  },
+  {
     id: "task-reading",
     title: "好句积累",
     desc: "收藏 5 条人物描写句",
