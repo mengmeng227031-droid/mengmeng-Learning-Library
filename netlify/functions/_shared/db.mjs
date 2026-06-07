@@ -1,4 +1,4 @@
-import { neon } from "@neondatabase/serverless";
+import postgres from "postgres";
 
 let sql;
 
@@ -10,7 +10,13 @@ export function getSql() {
     throw new Error("DATABASE_URL is not configured");
   }
 
-  sql = neon(databaseUrl);
+  sql = postgres(databaseUrl, {
+    max: 1,
+    prepare: false,
+    idle_timeout: 20,
+    connect_timeout: 15,
+    ssl: "require"
+  });
   return sql;
 }
 

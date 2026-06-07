@@ -1,6 +1,6 @@
 # 蒙蒙学习库
 
-蒙蒙学习库是面向儿童学习场景的 Windows 客户端 / Web MVP 原型。当前以静态 `HTML/CSS/JavaScript` 页面为主体，并预留 Netlify Functions + Neon Postgres 的云端账号、权限、学习进度与练习记录能力。
+蒙蒙学习库是面向儿童学习场景的 Windows 客户端 / Web MVP 原型。当前以静态 `HTML/CSS/JavaScript` 页面为主体，并预留 Netlify Functions + Supabase Postgres 的云端账号、权限、学习进度与练习记录能力。
 
 ## 当前功能
 
@@ -16,7 +16,7 @@
 - 本地后端：Node.js `back/server.js`
 - 云端部署：Netlify
 - 云端接口：Netlify Functions
-- 数据库：Neon Postgres
+- 数据库：Supabase Postgres
 - 登录态：HttpOnly Cookie + `sessions` 表
 
 ## 本地运行
@@ -41,8 +41,8 @@ back/library
 
 ## 云端准备
 
-1. 在 Neon 创建 Postgres 数据库。
-2. 在 Neon SQL Editor 执行：
+1. 在 Supabase 创建 Postgres 数据库。
+2. 在 Supabase SQL Editor 执行：
 
 ```text
 migrations/001_init.sql
@@ -51,7 +51,7 @@ migrations/001_init.sql
 3. 在 Netlify 环境变量中配置：
 
 ```text
-DATABASE_URL=你的 Neon 连接串
+DATABASE_URL=你的 Supabase transaction pooler 连接串
 ```
 
 4. 生成学生账号 SQL：
@@ -60,7 +60,7 @@ DATABASE_URL=你的 Neon 连接串
 node .\scripts\create-user-sql.mjs --username=student001 --password=初始密码 --name=学生昵称 --phone=手机号
 ```
 
-5. 将输出 SQL 复制到 Neon SQL Editor 执行。
+5. 将输出 SQL 复制到 Supabase SQL Editor 执行。
 
 ## 部署说明
 
