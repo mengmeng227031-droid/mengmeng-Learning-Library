@@ -1,0 +1,11 @@
+{
+  "name": "mengmengteach",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "check:functions": "node --check netlify/functions/auth-login.mjs && node --check netlify/functions/auth-logout.mjs && node --check netlify/functions/me.mjs && node --check netlify/functions/resources.mjs && node --check netlify/functions/progress.mjs && node --check netlify/functions/practice-attempts.mjs && node --check netlify/functions/admin-permissions.mjs && node --check scripts/create-user-sql.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4"
+  }
+}

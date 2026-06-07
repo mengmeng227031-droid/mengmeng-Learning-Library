@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>蒙蒙学习库 - 账号登录</title>
+  <link rel="stylesheet" href="./login.css">
+</head>
+<body>
+  <main class="login-page" aria-label="蒙蒙学习库登录页">
+    <section class="brand-panel" aria-label="品牌展示">
+      <div class="brand-card">
+        <img class="brand-logo" src="./assets/brand/brand-logo.png" alt="蒙蒙学习库">
+        <div class="brand-copy">
+          <p class="brand-kicker">MENGMENG LEARNING LIBRARY</p>
+          <h1>让学习成为探索世界的快乐冒险</h1>
+          <p>用轻盈、明亮、圆润的学习空间，陪孩子每天稳定进步。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="login-card" aria-labelledby="loginTitle">
+      <div class="login-tabs" role="tablist" aria-label="登录方式">
+        <button class="login-tab" type="button" role="tab" aria-selected="false">手机号登录</button>
+        <span aria-hidden="true"></span>
+        <button class="login-tab is-active" type="button" role="tab" aria-selected="true">账号登录</button>
+      </div>
+
+      <div class="login-heading">
+        <h2 id="loginTitle">账号登录</h2>
+        <p>输入分配给学生的账号或手机号，再输入初始密码登录学习库。</p>
+      </div>
+
+      <form class="phone-login-form" id="phoneLoginForm" novalidate>
+        <div class="field-row">
+          <label for="phoneInput">账号</label>
+          <input id="phoneInput" name="account" type="text" autocomplete="username" placeholder="账号或手机号">
+        </div>
+
+        <div class="field-row code-row">
+          <label for="codeInput">密码</label>
+          <input id="codeInput" name="password" type="password" autocomplete="current-password" placeholder="输入密码">
+        </div>
+
+        <p class="form-message" id="formMessage" aria-live="polite"></p>
+
+        <button class="login-button" type="submit">登录</button>
+
+        <div class="agreement-row">
+          <input id="agreementInput" type="checkbox" checked>
+          <label for="agreementInput">我已阅读并同意</label>
+          <button class="text-link" type="button" data-policy="terms">《用户协议》</button>
+          <button class="text-link" type="button" data-policy="privacy">《隐私政策》</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div class="policy-modal is-hidden" id="policyModal" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+    <div class="policy-backdrop" data-close-policy></div>
+    <section class="policy-dialog">
+      <header class="policy-head">
+        <div>
+          <p>蒙蒙学习库</p>
+          <h2 id="policyTitle">用户协议</h2>
+        </div>
+        <button class="policy-close" type="button" aria-label="关闭弹窗" data-close-policy>×</button>
+      </header>
+      <article class="policy-body" id="policyBody" tabindex="0"></article>
+      <footer class="policy-foot">
+        <button class="policy-confirm" type="button" data-close-policy>我知道了</button>
+      </footer>
+    </section>
+  </div>
+
+  <script src="./login-account.js"></script>
+</body>
+</html>
