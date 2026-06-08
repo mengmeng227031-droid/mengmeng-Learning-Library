@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>蒙蒙学习库 - 客户端 MVP</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="主导航">
+      <a class="brand" href="#home" aria-label="蒙蒙学习库首页">
+        <img src="./assets/brand/brand-logo.png" alt="蒙蒙学习库">
+      </a>
+
+      <nav class="side-nav" id="sideNav"></nav>
+
+      <div class="profile-card">
+        <span class="profile-avatar" aria-hidden="true">萌</span>
+        <div>
+          <strong>177****0675</strong>
+          <span>VIP会员</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <header class="topbar">
+        <div class="hello">
+          <h1>Hi，177****0675 <span aria-hidden="true">👋</span></h1>
+          <p>今天也要元气满满地学习哦！</p>
+        </div>
+
+        <div class="top-actions">
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="搜索课程、资料、知识点..." autocomplete="off">
+          </label>
+          <button class="icon-button" id="noticeButton" type="button" aria-label="查看通知">
+            <span aria-hidden="true">🔔</span>
+            <em>3</em>
+          </button>
+        </div>
+      </header>
+
+      <div class="home-view" id="homeView">
+      <section class="admission-home is-hidden" id="admissionHome" aria-labelledby="admissionHomeTitle">
+        <div class="admission-nav">
+          <a class="admission-logo" href="#home" aria-label="志愿未来首页">
+            <span aria-hidden="true">↗</span>
+            <strong>志愿未来</strong>
+            <em>智能志愿填报系统</em>
+          </a>
+          <div class="admission-tabs" aria-label="志愿填报导航">
+            <button class="is-active" type="button">首页</button>
+            <button type="button" data-admission-action="open-gaokao">智能填报</button>
+            <button type="button" data-admission-action="focus-schools">院校库</button>
+            <button type="button" data-admission-action="open-gaokao">专业库</button>
+            <button type="button" data-admission-action="focus-schools">数据查询</button>
+            <button type="button" data-admission-action="focus-schools">高考资讯</button>
+          </div>
+          <div class="admission-nav-actions">
+            <button class="admission-login" type="button" data-admission-action="scroll-learning">学习库</button>
+          </div>
+        </div>
+
+        <div class="admission-shell">
+          <div class="admission-map-panel">
+            <div class="admission-copy">
+              <h2 id="admissionHomeTitle">选择一次，影响<span>未来四年</span></h2>
+              <p>让每一分，都去最适合你的地方</p>
+            </div>
+
+            <div class="china-map-card" aria-label="院校分布地图">
+              <div class="china-map-surface">
+                <button class="map-province-dot is-active" style="--x: 66%; --y: 48%;" type="button" data-province="江苏">
+                  <span>江苏省</span>
+                </button>
+                <button class="map-province-dot" style="--x: 54%; --y: 38%;" type="button" data-province="河北">
+                  <span>河北省</span>
+                </button>
+                <button class="map-province-dot" style="--x: 58%; --y: 30%;" type="button" data-province="北京">
+                  <span>北京市</span>
+                </button>
+                <button class="map-province-dot" style="--x: 63%; --y: 62%;" type="button" data-province="浙江">
+                  <span>浙江省</span>
+                </button>
+                <button class="map-province-dot" style="--x: 45%; --y: 54%;" type="button" data-province="湖北">
+                  <span>湖北省</span>
+                </button>
+                <button class="map-province-dot" style="--x: 70%; --y: 63%;" type="button" data-province="上海">
+                  <span>上海市</span>
+                </button>
+              </div>
+              <div class="map-callout" id="admissionMapCallout">
+                <strong>江苏省</strong>
+                <span>名校数量 316 所</span>
+                <button type="button" data-admission-action="focus-schools">查看该地区院校 ›</button>
+              </div>
+            </div>
+
+            <div class="quick-region-card">
+              <strong>快速查看</strong>
+              <p>点击省份查看该地区院校信息</p>
+              <div class="quick-region-icons">
+                <button type="button" data-admission-filter="doubleFirst"><span>◆</span><b>双一流</b></button>
+                <button type="button" data-admission-filter="985"><span>9</span><b>985 院校</b></button>
+                <button type="button" data-admission-filter="211"><span>2</span><b>211 院校</b></button>
+                <button type="button" data-admission-filter="hot"><span>★</span><b>热门院校</b></button>
+              </div>
+            </div>
+          </div>
+
+          <aside class="admission-school-panel" id="admissionSchools">
+            <div class="admission-region-head">
+              <div>
+                <span aria-hidden="true">⌖</span>
+                <h3 id="admissionProvinceTitle">江苏省</h3>
+                <p id="admissionProvinceMeta">共 316 所高校</p>
+              </div>
+              <button type="button" id="admissionRegionButton">切换地区</button>
+            </div>
+            <div class="admission-filter-tabs" id="admissionFilterTabs">
+              <button class="is-active" type="button" data-filter="all">综合推荐</button>
+              <button type="button" data-filter="doubleFirst">双一流</button>
+              <button type="button" data-filter="985">985</button>
+              <button type="button" data-filter="211">211</button>
+              <button type="button" data-filter="hot">热门院校</button>
+            </div>
+            <div class="admission-school-list" id="admissionSchoolList"></div>
+            <button class="admission-more-button" id="admissionMoreButton" type="button">查看该地区全部高校 ›</button>
+            <div class="admission-stat-strip" id="admissionStatStrip"></div>
+          </aside>
+        </div>
+      </section>
+
+      <div class="learning-home-anchor" id="learningLibraryHome"></div>
+      <section class="hero-stage" aria-hidden="true">
+        <span class="brand-shape shape-circle"></span>
+        <span class="brand-shape shape-square"></span>
+        <span class="brand-shape shape-triangle"></span>
+        <span class="brand-shape shape-star">★</span>
+        <span class="brand-shape shape-note">♪</span>
+      </section>
+
+      <section class="brand-hero" aria-label="品牌欢迎区">
+        <div class="brand-hero-copy">
+          <span class="hero-kicker">MENGMENG LEARNING LIBRARY</span>
+          <h2>让学习成为探索世界的快乐冒险！</h2>
+          <p>围绕创造力、年轻感、节奏感和互动体验，陪孩子每天轻松成长。</p>
+          <div class="hero-pills">
+            <span>创造力</span>
+            <span>年轻感</span>
+            <span>节奏感</span>
+          </div>
+        </div>
+        <div class="mascot-card">
+          <img src="./assets/brand/brand-mascots.png" alt="蒙蒙学习库吉祥物">
+        </div>
+      </section>
+
+      <section class="panel today-panel" aria-labelledby="todayTitle">
+        <div class="section-head compact-head">
+          <div class="section-title">
+            <span class="section-icon today-icon" aria-hidden="true">✓</span>
+            <div>
+              <h2 id="todayTitle">今日学习计划</h2>
+              <p>先完成重点任务，再自由探索课程</p>
+            </div>
+          </div>
+        </div>
+        <div class="today-grid" id="todayGrid"></div>
+      </section>
+
+      <section class="section-block recommend-section" aria-labelledby="recommendTitle">
+        <div class="section-head">
+          <div class="section-title">
+            <span class="section-icon" aria-hidden="true">★</span>
+            <div>
+              <h2 id="recommendTitle">推荐内容</h2>
+              <p>为你精选优质课程和资料</p>
+            </div>
+          </div>
+          <button class="ghost-button" id="showAllButton" type="button">全部内容 <span aria-hidden="true">›</span></button>
+        </div>
+
+        <div class="course-row" id="courseList"></div>
+      </section>
+
+      <section class="panel quick-panel" aria-labelledby="quickTitle">
+        <h2 id="quickTitle">快速入口</h2>
+        <div class="quick-grid" id="quickGrid"></div>
+      </section>
+
+      <section class="panel recent-panel" aria-labelledby="recentTitle">
+        <div class="recent-head">
+          <div>
+            <h2 id="recentTitle">最近学习</h2>
+            <p>继续你上次的学习进度</p>
+          </div>
+        </div>
+        <div class="recent-grid" id="recentGrid"></div>
+      </section>
+      </div>
+
+      <section class="library-view is-hidden" id="libraryView" aria-label="资料库">
+        <div class="library-toolbar">
+          <button class="library-back" id="libraryBackButton" type="button" aria-label="返回上一级">‹</button>
+          <div>
+            <h2 id="libraryTitle">资料库</h2>
+            <p id="libraryCrumbs">小学 / 初中 / 其他</p>
+          </div>
+          <label class="library-search">
+            <span aria-hidden="true">⌕</span>
+            <input id="librarySearchInput" type="search" placeholder="请输入资料名称">
+          </label>
+          <label class="upload-button">
+            上传文档
+            <input id="libraryUploadInput" type="file" multiple>
+          </label>
+        </div>
+
+        <div class="library-tabs" id="libraryTabs"></div>
+        <div class="library-content" id="libraryContent"></div>
+      </section>
+
+      <section class="gaokao-view is-hidden" id="gaokaoView" aria-labelledby="gaokaoTitle">
+        <div class="gaokao-form" id="gaokaoForm"></div>
+      </section>
+
+      <section class="sentence-view is-hidden" id="sentenceView" aria-labelledby="sentenceTitle">
+        <div class="sentence-shell">
+          <div class="sentence-head">
+            <span class="sentence-head-icon" aria-hidden="true">⌕</span>
+            <div>
+              <h2 id="sentenceTitle">好句查询</h2>
+              <p>输入关键词，查找世界名言和排比作文素材。</p>
+            </div>
+            <img src="./assets/brand/brand-mascots.png" alt="蒙蒙学习库吉祥物">
+          </div>
+
+          <div class="sentence-search-panel">
+            <label class="sentence-type-field">
+              <span>类型</span>
+              <select id="sentenceTypeSelect" aria-label="选择好句类型">
+                <option value="all">全部素材</option>
+                <option value="quote">世界名言</option>
+                <option value="parallel">排比素材</option>
+              </select>
+            </label>
+            <label class="sentence-search-box">
+              <span aria-hidden="true">⌕</span>
+              <input id="sentenceSearchInput" type="search" value="坚持" placeholder="输入关键词，如：梦想、坚持、阅读、责任" autocomplete="off">
+            </label>
+            <button class="sentence-search-button" id="sentenceSearchButton" type="button">查询</button>
+          </div>
+
+          <div class="sentence-keyword-row" id="sentenceKeywordRow" aria-label="常用关键词"></div>
+          <div class="sentence-result-meta" id="sentenceResultMeta" aria-live="polite"></div>
+          <div class="sentence-result-list" id="sentenceResultList"></div>
+        </div>
+      </section>
+
+      <section class="english-learning-view is-hidden" id="englishLearningView" aria-labelledby="englishLearningTitle">
+        <div class="learning-page-head">
+          <span class="learning-page-icon" aria-hidden="true">Aa</span>
+          <div>
+            <h2 id="englishLearningTitle">英文学习</h2>
+            <p id="englishLearningSummary">根据当前账号显示可学习的年级和单元</p>
+          </div>
+        </div>
+
+        <div class="learning-controls">
+          <label class="learning-field is-hidden" id="englishStudentField">
+            <span>学生</span>
+            <select id="englishStudentSelect" aria-label="选择学生"></select>
+          </label>
+          <label class="learning-field">
+            <span>年级学期</span>
+            <select id="englishGradeSelect" aria-label="选择英文年级学期"></select>
+          </label>
+        </div>
+
+        <div class="learning-unit-grid" id="englishUnitGrid"></div>
+
+      <section class="english-card-panel is-hidden" id="englishCardPanel" aria-label="英文学习卡片">
+          <div class="english-card-toolbar">
+            <div>
+              <h3 id="englishCardPanelTitle">Unit Card</h3>
+              <p id="englishCardPanelMeta">点击单元后显示对应学习卡片</p>
+            </div>
+            <button class="print-card-button" id="printEnglishCardButton" type="button">打印卡片</button>
+          </div>
+
+          <div class="english-card-stage" id="englishCardStage">
+            <article class="mini-lesson-card side-a" aria-labelledby="inlineFrontTitle">
+              <div class="mini-card-title-row">
+                <span aria-hidden="true">✦</span>
+                <h3 id="inlineFrontTitle"></h3>
+                <span aria-hidden="true">▰</span>
+              </div>
+
+              <div class="mini-meta-bar">
+                <span><strong>Grade:</strong> <em id="inlineGradeText"></em></span>
+                <span><strong>Lesson:</strong> <em id="inlineLessonText"></em></span>
+              </div>
+
+              <section class="mini-card-section mini-words-section">
+                <h4><span>1.</span> Key Words <b>核心单词</b></h4>
+                <div class="mini-word-grid" id="inlineWordGrid"></div>
+              </section>
+
+              <section class="mini-card-section">
+                <h4><span>2.</span> Key Sentences <b>核心句型</b></h4>
+                <div class="mini-bubble-list" id="inlineSentenceList"></div>
+              </section>
+
+              <section class="mini-card-section">
+                <h4><span>3.</span> Let's Talk <b>课文对话</b></h4>
+                <div class="mini-dialogue-list" id="inlineTalkList"></div>
+              </section>
+
+              <section class="mini-card-section mini-practice-section">
+                <h4><span>4.</span> Practice <b>练习</b></h4>
+                <p>Look and choose.</p>
+                <div class="mini-practice-grid" id="inlinePracticeGrid"></div>
+              </section>
+
+              <section class="mini-card-section mini-homework-section">
+                <h4><span>5.</span> Homework <b>作业</b></h4>
+                <p id="inlineHomeworkText"></p>
+              </section>
+            </article>
+
+            <article class="mini-lesson-card side-b">
+              <section class="mini-card-section">
+                <h4><span>5.</span> Dialogue <b>对话练习</b></h4>
+                <div class="mini-dialogue-list" id="inlineDialogueList"></div>
+              </section>
+
+              <section class="mini-card-section">
+                <h4><span>6.</span> Let's Read <b>一起阅读</b></h4>
+                <h5 id="inlineReadingTitle"></h5>
+                <ul class="mini-read-lines" id="inlineReadingLines"></ul>
+              </section>
+
+              <section class="mini-card-section">
+                <h4><span>7.</span> Grammar Focus <b>语法小贴士</b></h4>
+                <ul class="mini-grammar-list" id="inlineGrammarList"></ul>
+              </section>
+
+              <section class="mini-card-section mini-practice-section">
+                <h4><span>8.</span> Exercise <b>练一练</b></h4>
+                <p>Look and write.</p>
+                <div class="mini-practice-grid" id="inlineExerciseGrid"></div>
+              </section>
+
+              <section class="mini-card-section">
+                <h4><span>9.</span> Summary <b>本课小结</b></h4>
+                <ul class="mini-summary-list" id="inlineSummaryChecks"></ul>
+                <div class="mini-stars" id="inlineStarRating"></div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </section>
+
+    </main>
+  </div>
+
+  <div class="magic-school-modal" id="magicSchoolModal" aria-hidden="true">
+    <button class="magic-backdrop" type="button" data-magic-close aria-label="关闭院校详情"></button>
+    <article class="magic-school-card" id="magicSchoolCard" role="dialog" aria-modal="true" aria-labelledby="magicSchoolTitle"></article>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./script.js"></script>
+</body>
+</html>

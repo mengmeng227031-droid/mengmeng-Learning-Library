@@ -13,10 +13,10 @@
 
 [[redirects]]
   from = "/"
-  to = "/login.html"
+  to = "/index.html"
   status = 200
 
 [[redirects]]
   from = "/app"
-  to = "/index.html"
+  to = "/learning.html"
   status = 200
