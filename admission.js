@@ -53,6 +53,11 @@ let closedProvince = "";
 let isDraggingMap = false;
 let dragStart = { x: 0, y: 0 };
 const mapTransform = { scale: 1, x: 0, y: 0 };
+let schoolPressTimer = null;
+let pressedSchoolButton = null;
+let pressStartPoint = null;
+const schoolLongPressDelay = 2000;
+const schoolPressMoveTolerance = 12;
 
 async function initAdmissionPage() {
   await renderProvinceLayer();
@@ -76,9 +81,15 @@ function bindEvents() {
     if (event.target.closest("[data-detail-close]")) closeDetailPanel();
     const schoolButton = event.target.closest("[data-school-id]");
     if (schoolButton) {
-      const school = getSchoolById(schoolButton.dataset.schoolId);
-      if (school) openSchoolDetail(school);
+      startSchoolLongPress(schoolButton, event);
     }
+  });
+  hoverDetail.addEventListener("pointermove", handleSchoolPressMove);
+  hoverDetail.addEventListener("pointerup", cancelSchoolLongPress);
+  hoverDetail.addEventListener("pointercancel", cancelSchoolLongPress);
+  hoverDetail.addEventListener("pointerleave", cancelSchoolLongPress);
+  hoverDetail.addEventListener("click", (event) => {
+    if (event.target.closest("[data-school-id]")) event.preventDefault();
   });
 
   rewardThumb.addEventListener("click", openRewardSheet);
@@ -130,6 +141,39 @@ function openSchoolDetail(school) {
 
 function closeSchoolDetail() {
   schoolDetailSheet.setAttribute("aria-hidden", "true");
+}
+
+function startSchoolLongPress(button, event) {
+  cancelSchoolLongPress();
+  pressedSchoolButton = button;
+  pressStartPoint = { x: event.clientX, y: event.clientY };
+  button.classList.add("is-pressing");
+  button.setPointerCapture?.(event.pointerId);
+  schoolPressTimer = window.setTimeout(() => {
+    const school = getSchoolById(button.dataset.schoolId);
+    cancelSchoolLongPress();
+    if (school) openSchoolDetail(school);
+  }, schoolLongPressDelay);
+}
+
+function handleSchoolPressMove(event) {
+  if (!pressedSchoolButton || !pressStartPoint) return;
+  const distance = Math.hypot(event.clientX - pressStartPoint.x, event.clientY - pressStartPoint.y);
+  if (distance > schoolPressMoveTolerance) {
+    cancelSchoolLongPress();
+  }
+}
+
+function cancelSchoolLongPress() {
+  if (schoolPressTimer) {
+    window.clearTimeout(schoolPressTimer);
+    schoolPressTimer = null;
+  }
+  if (pressedSchoolButton) {
+    pressedSchoolButton.classList.remove("is-pressing");
+  }
+  pressedSchoolButton = null;
+  pressStartPoint = null;
 }
 
 async function renderProvinceLayer() {
@@ -407,6 +451,7 @@ function renderSchoolCard(school, index) {
         <strong>${averageScore ? `${averageScore} 分` : "暂无"}</strong>
       </div>
       <div class="school-tags">${getSchoolTags(school).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>
+      <span class="long-press-hint">按住 2 秒查看详情</span>
     </button>
   `;
 }
