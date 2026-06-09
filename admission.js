@@ -74,13 +74,12 @@ function bindEvents() {
   mapBoard.addEventListener("wheel", handleMapWheel, { passive: false });
   document.querySelector(".map-tools").addEventListener("click", handleMapToolClick);
   hoverDetail.addEventListener("pointermove", (event) => event.stopPropagation());
+  hoverDetail.addEventListener("wheel", (event) => event.stopPropagation(), { passive: true });
   hoverDetail.addEventListener("pointerdown", (event) => {
     event.stopPropagation();
     if (event.target.closest("[data-detail-close]")) {
       closeDetailPanel();
-      return;
     }
-    if (activeProvince) lockProvince(activeProvince, { render: false });
   });
   hoverDetail.addEventListener("click", (event) => {
     const filterButton = event.target.closest("[data-school-filter]");
@@ -91,10 +90,7 @@ function bindEvents() {
     }
 
     const detailButton = event.target.closest("[data-school-detail]");
-    if (!detailButton) {
-      if (activeProvince) renderDetail(activeProvince);
-      return;
-    }
+    if (!detailButton) return;
     const school = getSchoolById(detailButton.dataset.schoolDetail);
     if (school) openSchoolDetail(school);
   });
@@ -320,6 +316,10 @@ function handleProvinceClick(event) {
   const region = event.target.closest(".province-region");
   if (!region) return;
   const name = region.dataset.province;
+  if (lockedProvince === name) {
+    unlockProvince();
+    return;
+  }
   setActiveProvince(name, { force: true });
   lockProvince(name);
 }
@@ -344,6 +344,12 @@ function lockProvince(name, options = {}) {
   if (!name || lockedProvince === name) return;
   lockedProvince = name;
   if (options.render !== false) renderDetail(name);
+}
+
+function unlockProvince() {
+  const name = lockedProvince;
+  lockedProvince = "";
+  if (name && activeProvince === name) renderDetail(name);
 }
 
 function markActiveRegion(name) {
