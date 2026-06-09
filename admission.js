@@ -86,7 +86,12 @@ function bindEvents() {
   rewardSheet.addEventListener("click", (event) => {
     if (event.target.closest("[data-reward-close]")) closeRewardSheet();
   });
+  ["pointerdown", "pointermove", "pointerup", "wheel"].forEach((eventName) => {
+    schoolDetailSheet.addEventListener(eventName, stopTopLayerEvent, { passive: false });
+  });
   schoolDetailSheet.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     if (event.target.closest("[data-school-detail-close]")) closeSchoolDetail();
   });
 
@@ -131,6 +136,15 @@ function openSchoolDetail(school) {
 
 function closeSchoolDetail() {
   schoolDetailSheet.setAttribute("aria-hidden", "true");
+}
+
+function isTopLayerOpen() {
+  return rewardSheet.getAttribute("aria-hidden") === "false"
+    || schoolDetailSheet.getAttribute("aria-hidden") === "false";
+}
+
+function stopTopLayerEvent(event) {
+  event.stopPropagation();
 }
 
 async function renderProvinceLayer() {
@@ -275,6 +289,7 @@ function buildRegionPath(region, index) {
 }
 
 function handleProvincePointer(event) {
+  if (isTopLayerOpen()) return;
   const region = event.target.closest(".province-region");
   if (!region) return;
   setActiveProvince(region.dataset.province);
@@ -303,6 +318,7 @@ function markActiveRegion(name) {
 }
 
 function handleMapPointerMove(event) {
+  if (isTopLayerOpen()) return;
   if (isDraggingMap) {
     mapTransform.x += event.clientX - dragStart.x;
     mapTransform.y += event.clientY - dragStart.y;
@@ -312,6 +328,7 @@ function handleMapPointerMove(event) {
 }
 
 function startMapDrag(event) {
+  if (isTopLayerOpen()) return;
   if (event.target.closest(".hover-detail") || event.target.closest(".map-tools") || event.target.closest(".library-link") || event.target.closest(".support-author")) return;
   isDraggingMap = true;
   dragStart = { x: event.clientX, y: event.clientY };
@@ -325,12 +342,14 @@ function endMapDrag() {
 }
 
 function handleMapWheel(event) {
+  if (isTopLayerOpen()) return;
   event.preventDefault();
   const nextScale = clamp(mapTransform.scale + (event.deltaY < 0 ? 0.14 : -0.14), 1, 2.8);
   zoomMap(nextScale, event.clientX, event.clientY);
 }
 
 function handleMapToolClick(event) {
+  if (isTopLayerOpen()) return;
   const button = event.target.closest("[data-map-action]");
   if (!button) return;
   const action = button.dataset.mapAction;
