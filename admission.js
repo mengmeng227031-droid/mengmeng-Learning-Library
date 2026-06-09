@@ -54,6 +54,8 @@ let lockedProvince = "";
 let activeSchoolFilter = "";
 let isDraggingMap = false;
 let dragStart = { x: 0, y: 0 };
+let mapPointerStart = { x: 0, y: 0 };
+let mapClickMoved = false;
 const mapTransform = { scale: 1, x: 0, y: 0 };
 
 async function initAdmissionPage() {
@@ -65,12 +67,12 @@ async function initAdmissionPage() {
 function bindEvents() {
   provinceLayer.addEventListener("pointerover", handleProvincePointer);
   provinceLayer.addEventListener("focusin", handleProvincePointer);
-  provinceLayer.addEventListener("click", handleProvinceClick);
   mapBoard.addEventListener("pointermove", handleMapPointerMove);
   mapBoard.addEventListener("pointerdown", startMapDrag);
   mapBoard.addEventListener("pointerup", endMapDrag);
   mapBoard.addEventListener("pointercancel", endMapDrag);
   mapBoard.addEventListener("mouseleave", endMapDrag);
+  mapBoard.addEventListener("click", handleMapClick);
   mapBoard.addEventListener("wheel", handleMapWheel, { passive: false });
   document.querySelector(".map-tools").addEventListener("click", handleMapToolClick);
   hoverDetail.addEventListener("pointermove", (event) => event.stopPropagation());
@@ -311,10 +313,17 @@ function handleProvincePointer(event) {
   setActiveProvince(region.dataset.province);
 }
 
-function handleProvinceClick(event) {
+function handleMapClick(event) {
   if (isTopLayerOpen()) return;
-  const region = event.target.closest(".province-region");
+  if (mapClickMoved) {
+    mapClickMoved = false;
+    return;
+  }
+  if (event.target.closest(".hover-detail") || event.target.closest(".map-tools") || event.target.closest(".library-link") || event.target.closest(".support-author")) return;
+  const region = getProvinceRegionFromPoint(event);
   if (!region) return;
+  event.preventDefault();
+  event.stopPropagation();
   const name = region.dataset.province;
   if (lockedProvince === name) {
     unlockProvince();
@@ -322,6 +331,13 @@ function handleProvinceClick(event) {
   }
   setActiveProvince(name, { force: true });
   lockProvince(name);
+}
+
+function getProvinceRegionFromPoint(event) {
+  const targetRegion = event.target.closest?.(".province-region");
+  if (targetRegion) return targetRegion;
+  const hitElement = document.elementFromPoint(event.clientX, event.clientY);
+  return hitElement?.closest?.(".province-region") || null;
 }
 
 function setActiveProvince(name, options = {}) {
@@ -361,6 +377,9 @@ function markActiveRegion(name) {
 function handleMapPointerMove(event) {
   if (isTopLayerOpen()) return;
   if (isDraggingMap) {
+    if (Math.hypot(event.clientX - mapPointerStart.x, event.clientY - mapPointerStart.y) > 5) {
+      mapClickMoved = true;
+    }
     mapTransform.x += event.clientX - dragStart.x;
     mapTransform.y += event.clientY - dragStart.y;
     dragStart = { x: event.clientX, y: event.clientY };
@@ -373,13 +392,18 @@ function startMapDrag(event) {
   if (event.target.closest(".hover-detail") || event.target.closest(".map-tools") || event.target.closest(".library-link") || event.target.closest(".support-author")) return;
   isDraggingMap = true;
   dragStart = { x: event.clientX, y: event.clientY };
+  mapPointerStart = { x: event.clientX, y: event.clientY };
+  mapClickMoved = false;
   mapBoard.classList.add("is-dragging");
   mapBoard.setPointerCapture?.(event.pointerId);
 }
 
-function endMapDrag() {
+function endMapDrag(event) {
   isDraggingMap = false;
   mapBoard.classList.remove("is-dragging");
+  if (event?.pointerId !== undefined && mapBoard.hasPointerCapture?.(event.pointerId)) {
+    mapBoard.releasePointerCapture(event.pointerId);
+  }
 }
 
 function handleMapWheel(event) {
