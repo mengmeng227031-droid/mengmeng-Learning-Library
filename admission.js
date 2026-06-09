@@ -50,6 +50,8 @@ const provinceRegions = [
 
 let activeProvince = "";
 let closedProvince = "";
+let lockedProvince = "";
+let activeSchoolFilter = "";
 let isDraggingMap = false;
 let dragStart = { x: 0, y: 0 };
 const mapTransform = { scale: 1, x: 0, y: 0 };
@@ -63,6 +65,7 @@ async function initAdmissionPage() {
 function bindEvents() {
   provinceLayer.addEventListener("pointerover", handleProvincePointer);
   provinceLayer.addEventListener("focusin", handleProvincePointer);
+  provinceLayer.addEventListener("click", handleProvinceClick);
   mapBoard.addEventListener("pointermove", handleMapPointerMove);
   mapBoard.addEventListener("pointerdown", startMapDrag);
   mapBoard.addEventListener("pointerup", endMapDrag);
@@ -73,11 +76,25 @@ function bindEvents() {
   hoverDetail.addEventListener("pointermove", (event) => event.stopPropagation());
   hoverDetail.addEventListener("pointerdown", (event) => {
     event.stopPropagation();
-    if (event.target.closest("[data-detail-close]")) closeDetailPanel();
+    if (event.target.closest("[data-detail-close]")) {
+      closeDetailPanel();
+      return;
+    }
+    if (activeProvince) lockProvince(activeProvince, { render: false });
   });
   hoverDetail.addEventListener("click", (event) => {
+    const filterButton = event.target.closest("[data-school-filter]");
+    if (filterButton) {
+      activeSchoolFilter = activeSchoolFilter === filterButton.dataset.schoolFilter ? "" : filterButton.dataset.schoolFilter;
+      renderDetail(activeProvince);
+      return;
+    }
+
     const detailButton = event.target.closest("[data-school-detail]");
-    if (!detailButton) return;
+    if (!detailButton) {
+      if (activeProvince) renderDetail(activeProvince);
+      return;
+    }
     const school = getSchoolById(detailButton.dataset.schoolDetail);
     if (school) openSchoolDetail(school);
   });
@@ -115,6 +132,8 @@ function hideDetailPanel() {
 
 function closeDetailPanel() {
   closedProvince = activeProvince;
+  lockedProvince = "";
+  activeSchoolFilter = "";
   markActiveRegion("");
   activeProvince = "";
   hideDetailPanel();
@@ -290,13 +309,23 @@ function buildRegionPath(region, index) {
 
 function handleProvincePointer(event) {
   if (isTopLayerOpen()) return;
+  if (lockedProvince) return;
   const region = event.target.closest(".province-region");
   if (!region) return;
   setActiveProvince(region.dataset.province);
 }
 
-function setActiveProvince(name) {
-  if (name === closedProvince) {
+function handleProvinceClick(event) {
+  if (isTopLayerOpen()) return;
+  const region = event.target.closest(".province-region");
+  if (!region) return;
+  const name = region.dataset.province;
+  setActiveProvince(name, { force: true });
+  lockProvince(name);
+}
+
+function setActiveProvince(name, options = {}) {
+  if (!options.force && name === closedProvince) {
     markActiveRegion("");
     hideDetailPanel();
     return;
@@ -309,6 +338,12 @@ function setActiveProvince(name) {
     activeProvince = name;
     renderDetail(name);
   }
+}
+
+function lockProvince(name, options = {}) {
+  if (!name || lockedProvince === name) return;
+  lockedProvince = name;
+  if (options.render !== false) renderDetail(name);
 }
 
 function markActiveRegion(name) {
@@ -387,21 +422,30 @@ function clamp(value, min, max) {
 function renderDetail(name) {
   const schools = getProvinceSchools(name);
   const province = getProvince(name);
-  const topSchools = schools.slice(0, 4);
+  const filteredSchools = filterSchools(schools, activeSchoolFilter);
+  const lockedText = lockedProvince === name ? "已锁定" : "可切换";
+  const countText = activeSchoolFilter ? `${formatNumber(filteredSchools.length)} / ${formatNumber(schools.length)} 所` : `${formatNumber(schools.length)} 所`;
   hoverDetail.innerHTML = `
     <div class="detail-head">
       <div>
         <h2>${escapeHtml(name)}</h2>
-        <p>当前鼠标所在区域的院校参考信息</p>
+        <p>${lockedProvince === name ? "当前省份已锁定，关闭后可继续切换地图" : "移动鼠标预览省份，左键点击可锁定详情栏"}</p>
       </div>
       <div class="detail-actions">
-        <span class="detail-badge">${formatNumber(province?.count || schools.length)} 所</span>
+        <span class="detail-badge">${countText}</span>
+        <span class="detail-lock-badge">${lockedText}</span>
         <button class="detail-close" type="button" data-detail-close aria-label="关闭详情">×</button>
       </div>
     </div>
 
+    <div class="detail-filters" aria-label="院校筛选">
+      ${renderSchoolFilterButton("985", "985", schools)}
+      ${renderSchoolFilterButton("211", "211", schools)}
+      ${renderSchoolFilterButton("double", "双一流", schools)}
+    </div>
+
     <div class="school-list">
-      ${topSchools.map((school, index) => renderSchoolCard(school, index)).join("")}
+      ${filteredSchools.length ? filteredSchools.map((school, index) => renderSchoolCard(school, index)).join("") : `<div class="school-empty">当前筛选下暂无学校，取消筛选可查看 ${formatNumber(province?.count || schools.length)} 所学校。</div>`}
     </div>
 
     <div class="detail-stats">
@@ -411,6 +455,23 @@ function renderDetail(name) {
       <div><strong>${formatNumber(schools.length)}</strong><span>共计</span></div>
     </div>
   `;
+}
+
+function renderSchoolFilterButton(filter, label, schools) {
+  const count = filterSchools(schools, filter).length;
+  return `
+    <button class="detail-filter${activeSchoolFilter === filter ? " is-active" : ""}" type="button" data-school-filter="${filter}">
+      <span>${label}</span>
+      <strong>${formatNumber(count)}</strong>
+    </button>
+  `;
+}
+
+function filterSchools(schools, filter) {
+  if (filter === "985") return schools.filter((school) => school.is985);
+  if (filter === "211") return schools.filter((school) => school.is211);
+  if (filter === "double") return schools.filter((school) => school.isDoubleFirst);
+  return schools;
 }
 
 function renderSchoolCard(school, index) {
@@ -492,7 +553,7 @@ function renderSchoolDetail(school) {
 function getProvinceSchools(name) {
   return (admissionData.schools || [])
     .filter((school) => school.province === name)
-    .sort((a, b) => Number(b.is985) - Number(a.is985) || Number(b.is211) - Number(a.is211) || Number(b.isDoubleFirst) - Number(a.isDoubleFirst) || String(a.name).localeCompare(String(b.name), "zh-CN"));
+    .sort((a, b) => Number(b.is985) - Number(a.is985) || Number(b.is211) - Number(a.is211) || Number(b.isDoubleFirst) - Number(a.isDoubleFirst) || Number(a.softRank || 99999) - Number(b.softRank || 99999) || String(a.name).localeCompare(String(b.name), "zh-CN"));
 }
 
 function getProvince(name) {
@@ -517,6 +578,9 @@ function getSchoolTags(school) {
 }
 
 function getSchoolAverageScore(school) {
+  const averageScore = Number(school.averageScore);
+  if (Number.isFinite(averageScore) && averageScore > 0) return Math.round(averageScore);
+
   const majorScores = (school.majors || [])
     .map((major) => Number(major.score))
     .filter((score) => Number.isFinite(score) && score > 0);

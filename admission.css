@@ -584,6 +584,17 @@ a {
   background: #eef5ff;
 }
 
+.detail-lock-badge {
+  display: inline-flex;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  color: #187a4d;
+  font-size: 12px;
+  font-weight: 900;
+  background: #eaf9f1;
+}
+
 .detail-close {
   display: grid;
   width: 32px;
@@ -603,9 +614,61 @@ a {
   background: #e5f0ff;
 }
 
+.detail-filters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+.detail-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  height: 38px;
+  border: 1px solid rgba(47, 116, 232, 0.12);
+  border-radius: 12px;
+  padding: 0 10px;
+  color: #50617c;
+  font-size: 13px;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.88);
+  cursor: pointer;
+}
+
+.detail-filter strong {
+  color: #2f67dc;
+  font-size: 13px;
+}
+
+.detail-filter:hover,
+.detail-filter.is-active {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, #2f74e8, #37d2c6);
+  box-shadow: 0 10px 18px rgba(47, 116, 232, 0.16);
+}
+
+.detail-filter:hover strong,
+.detail-filter.is-active strong {
+  color: #fff;
+}
+
 .school-list {
   display: grid;
   gap: 12px;
+}
+
+.school-empty {
+  border: 1px dashed rgba(47, 116, 232, 0.22);
+  border-radius: 16px;
+  padding: 18px;
+  color: #697892;
+  font-size: 13px;
+  line-height: 1.7;
+  background: rgba(247, 250, 255, 0.86);
 }
 
 .school-card {
