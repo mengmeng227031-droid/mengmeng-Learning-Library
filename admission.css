@@ -609,13 +609,11 @@ a {
 .school-card {
   width: 100%;
   position: relative;
-  overflow: hidden;
   border: 1px solid rgba(47, 116, 232, 0.12);
   border-radius: 16px;
-  padding: 14px;
+  padding: 14px 14px 52px;
   text-align: left;
   background: rgba(255, 255, 255, 0.86);
-  cursor: pointer;
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
   user-select: none;
   touch-action: pan-y;
@@ -625,33 +623,6 @@ a {
   border-color: rgba(47, 116, 232, 0.28);
   box-shadow: 0 14px 28px rgba(38, 67, 111, 0.10);
   transform: translateY(-2px);
-}
-
-.school-card::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, #25c475, #37d2c6);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-
-.school-card.is-pressing {
-  border-color: rgba(37, 196, 117, 0.55);
-  box-shadow: 0 16px 32px rgba(37, 196, 117, 0.14);
-}
-
-.school-card.is-pressing::after {
-  animation: longPressProgress 2s linear forwards;
-}
-
-@keyframes longPressProgress {
-  to {
-    transform: scaleX(1);
-  }
 }
 
 .school-row {
@@ -718,12 +689,28 @@ a {
   background: #edf4ff;
 }
 
-.long-press-hint {
-  display: block;
-  margin-top: 9px;
-  color: #7a879c;
+.school-detail-trigger {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 58px;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 900;
+  background: linear-gradient(135deg, #2f74e8, #37d2c6);
+  box-shadow: 0 8px 16px rgba(47, 116, 232, 0.18);
+  cursor: pointer;
+}
+
+.school-detail-trigger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(47, 116, 232, 0.24);
 }
 
 .detail-stats {
