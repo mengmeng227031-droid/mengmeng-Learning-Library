@@ -105,9 +105,12 @@ function bindEvents() {
     schoolDetailSheet.addEventListener(eventName, stopTopLayerEvent, { passive: false });
   });
   schoolDetailSheet.addEventListener("click", (event) => {
-    event.preventDefault();
     event.stopPropagation();
-    if (event.target.closest("[data-school-detail-close]")) closeSchoolDetail();
+    if (event.target.closest("a")) return;
+    if (event.target.closest("[data-school-detail-close]")) {
+      event.preventDefault();
+      closeSchoolDetail();
+    }
   });
 
   document.addEventListener("keydown", (event) => {
