@@ -17,13 +17,21 @@ export default async (req) => {
 
   const sql = getSql();
   const phoneHash = phone.length >= 7 ? hashPhone(phone) : null;
-  const rows = await sql`
-    select id, username, password_hash, display_name, role, status, phone_last4
-    from users
-    where lower(username) = ${account}
-      or (${phoneHash}::text is not null and phone_hash = ${phoneHash})
-    limit 1
-  `;
+  let rows;
+  try {
+    rows = await sql`
+      select id, username, password_hash, display_name, role, status, phone_last4
+      from users
+      where lower(username) = ${account}
+        or (${phoneHash}::text is not null and phone_hash = ${phoneHash})
+      limit 1
+    `;
+  } catch (error) {
+    if (error?.code === "42P01") {
+      return json({ ok: false, error: "登录服务还未完成初始化，请联系老师。" }, 503);
+    }
+    throw error;
+  }
 
   const user = rows[0];
   if (!user || user.status !== "active" || !verifyPassword(password, user.password_hash)) {

@@ -629,6 +629,7 @@ const todayGrid = document.querySelector("#todayGrid");
 const quickGrid = document.querySelector("#quickGrid");
 const recentGrid = document.querySelector("#recentGrid");
 const searchInput = document.querySelector("#searchInput");
+const loginEntryButton = document.querySelector("#loginEntryButton");
 const toast = document.querySelector("#toast");
 const admissionHome = document.querySelector("#admissionHome");
 const admissionProvinceTitle = document.querySelector("#admissionProvinceTitle");
@@ -664,6 +665,7 @@ const printEnglishCardButton = document.querySelector("#printEnglishCardButton")
 
 let activeNavId = "home";
 let toastTimer = 0;
+let isLoggedIn = false;
 let libraryTree = libraryFallbackTree;
 let libraryCurrentNode = null;
 let libraryActiveTab = "全部";
@@ -762,6 +764,7 @@ initApp();
 
 async function initApp() {
   await loadCloudUser();
+  updateLoginEntry();
   renderNav();
   renderCourses(courses);
   renderTodayTasks();
@@ -779,14 +782,15 @@ async function initApp() {
 async function loadCloudUser() {
   try {
     const response = await fetch("/api/me", { credentials: "include" });
-    if (response.status === 401 && location.protocol.startsWith("http")) {
-      window.location.href = "./login.html";
+    if (response.status === 401) {
+      isLoggedIn = false;
       return;
     }
     if (!response.ok) return;
 
     const data = await response.json();
     if (!data.ok || !data.user) return;
+    isLoggedIn = true;
 
     const progress = {};
     (data.progress || []).forEach((item) => {
@@ -821,6 +825,24 @@ async function loadCloudUser() {
   } catch (error) {
     // 本地直接打开静态 HTML 时保留演示数据。
   }
+}
+
+function updateLoginEntry() {
+  if (!loginEntryButton) return;
+  loginEntryButton.textContent = isLoggedIn ? "已登录" : "登录";
+  loginEntryButton.classList.toggle("is-logged-in", isLoggedIn);
+  loginEntryButton.setAttribute("aria-label", isLoggedIn ? "当前已登录" : "登录后解锁下载和英文学习");
+}
+
+function openLoginPage() {
+  const returnTo = encodeURIComponent(`${location.pathname}${location.search}${location.hash}`);
+  window.location.href = `./login.html?returnTo=${returnTo}`;
+}
+
+function requireLogin(featureName) {
+  if (isLoggedIn) return true;
+  showToast(`${featureName}需要登录后使用，请点击右上角登录。`);
+  return false;
 }
 
 function renderNav() {
@@ -1744,6 +1766,7 @@ function bindPageActions() {
     const target = navItems.find((item) => item.id === button.dataset.navId);
     if (!target) return;
     if (target.id === "english") {
+      if (!requireLogin("英文学习")) return;
       activeNavId = target.id;
       renderNav();
       showEnglishLearningPage();
@@ -1818,6 +1841,7 @@ function bindPageActions() {
     if (!button) return;
     const task = todayTasks.find((item) => item.id === button.dataset.taskId);
     if (task.id === "task-english") {
+      if (!requireLogin("英文学习")) return;
       activeNavId = "english";
       renderNav();
       showEnglishLearningPage();
@@ -1863,6 +1887,14 @@ function bindPageActions() {
 
   document.querySelector("#noticeButton").addEventListener("click", () => {
     showToast("你有3条学习提醒：完成英文学习卡、整理资料库、继续好句积累。");
+  });
+
+  loginEntryButton?.addEventListener("click", () => {
+    if (isLoggedIn) {
+      showToast("当前已登录，下载和英文学习功能已开放。");
+      return;
+    }
+    openLoginPage();
   });
 
   document.querySelector("#showAllButton").addEventListener("click", () => {
@@ -1930,6 +1962,7 @@ function bindPageActions() {
     }
     const file = event.target.closest("[data-file-url]");
     if (file) {
+      if (!requireLogin("资料下载")) return;
       window.open(file.dataset.fileUrl, "_blank");
     }
   });
@@ -1938,6 +1971,10 @@ function bindPageActions() {
 
   libraryUploadInput.addEventListener("change", async () => {
     if (!libraryCurrentNode || !libraryUploadInput.files.length) return;
+    if (!requireLogin("资料上传")) {
+      libraryUploadInput.value = "";
+      return;
+    }
     const path = getUploadLibraryPath();
     const data = new FormData();
     data.append("path", path);
@@ -2014,6 +2051,7 @@ function showGaokaoPage() {
 }
 
 function showEnglishLearningPage() {
+  if (!requireLogin("英文学习")) return;
   homeView.classList.add("is-hidden");
   libraryView.classList.add("is-hidden");
   sentenceView.classList.add("is-hidden");
@@ -2372,6 +2410,7 @@ function routeInitialHash() {
     return;
   }
   if (window.location.hash === "#english") {
+    if (!requireLogin("英文学习")) return;
     activeNavId = "english";
     renderNav();
     showEnglishLearningPage();
@@ -2520,6 +2559,7 @@ function renderFileCard(file) {
     <button class="file-card" type="button" data-file-url="${file.url}">
       <span class="file-icon file-${ext}" aria-hidden="true">${getFileIcon(ext)}</span>
       <strong>${file.name}</strong>
+      <small>${isLoggedIn ? "点击下载" : "登录后下载"}</small>
     </button>
   `;
 }

@@ -10,6 +10,14 @@ const policyButtons = document.querySelectorAll("[data-policy]");
 const closePolicyButtons = document.querySelectorAll("[data-close-policy]");
 const loginTabs = document.querySelectorAll(".login-tab");
 
+function getSafeReturnTo() {
+  const returnTo = new URLSearchParams(window.location.search).get("returnTo");
+  if (returnTo && !/^https?:/i.test(returnTo) && !returnTo.startsWith("//")) {
+    return returnTo;
+  }
+  return "./learning.html";
+}
+
 const policies = {
   terms: {
     title: "蒙蒙学习库用户协议",
@@ -127,7 +135,7 @@ phoneLoginForm.addEventListener("submit", async (event) => {
     }
 
     setMessage("登录成功，正在进入学习库...", "success");
-    window.location.href = "./index.html";
+    window.location.href = getSafeReturnTo();
   } catch (error) {
     setMessage("当前无法连接登录服务，请确认云端 API 已部署。");
   }

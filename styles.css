@@ -1059,6 +1059,25 @@ button {
   font-weight: 900;
 }
 
+.login-entry-button {
+  min-width: 82px;
+  height: 52px;
+  padding: 0 18px;
+  border-radius: 999px;
+  color: #fff;
+  background: linear-gradient(135deg, #4D8BFF, #7B61FF);
+  box-shadow: 0 12px 24px rgba(77, 139, 255, 0.24);
+  font-size: 15px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.login-entry-button.is-logged-in {
+  color: #2f6fe8;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(77, 139, 255, 0.28);
+}
+
 .hero-stage {
   position: absolute;
   inset: 0;
@@ -3283,6 +3302,12 @@ img.mini-word-art {
   font-weight: 800;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.file-card small {
+  color: #8d96aa;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .file-icon {
