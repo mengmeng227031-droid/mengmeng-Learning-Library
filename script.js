@@ -167,9 +167,21 @@ const sentenceMaterials = [
   }
 ];
 
+const studentAccountProfiles = {
+  gaolintong: { id: "student-gaolintong", username: "gaolintong", name: "高琳童" },
+  wangziyou: { id: "student-wangziyou", username: "wangziyou", name: "王字优" },
+  kangjiarui: { id: "student-kangjiarui", username: "kangjiarui", name: "康家瑞" },
+  songyuan: { id: "student-songyuan", username: "songyuan", name: "宋源" },
+  guomannanxi: { id: "student-guomannanxi", username: "guomannanxi", name: "郭蔓楠熙" },
+  jiangdongchen: { id: "student-jiangdongchen", username: "jiangdongchen", name: "蒋东宸" },
+  xumengyao: { id: "student-xumengyao", username: "xumengyao", name: "徐梦瑶" },
+  congyunxi: { id: "student-congyunxi", username: "congyunxi", name: "丛允玺" }
+};
+
 let currentUser = {
-  id: "student-1770675",
-  name: "177****0675",
+  id: "guest",
+  username: "",
+  name: "游客",
   role: "student",
   grade: "grade3",
   semester: "上册",
@@ -183,8 +195,9 @@ let currentUser = {
   },
   students: [
     {
-      id: "student-1770675",
-      name: "177****0675",
+      id: "guest",
+      username: "",
+      name: "游客",
       grade: "grade3",
       semester: "上册",
       progress: {
@@ -630,6 +643,13 @@ const quickGrid = document.querySelector("#quickGrid");
 const recentGrid = document.querySelector("#recentGrid");
 const searchInput = document.querySelector("#searchInput");
 const loginEntryButton = document.querySelector("#loginEntryButton");
+const loginDropdown = document.querySelector("#loginDropdown");
+const loginMenuName = document.querySelector("#loginMenuName");
+const loginMenuLabel = document.querySelector("#loginMenuLabel");
+const logoutButton = document.querySelector("#logoutButton");
+const profileName = document.querySelector("#profileName");
+const profileLabel = document.querySelector("#profileLabel");
+const helloTitle = document.querySelector("#helloTitle");
 const toast = document.querySelector("#toast");
 const admissionHome = document.querySelector("#admissionHome");
 const admissionProvinceTitle = document.querySelector("#admissionProvinceTitle");
@@ -765,6 +785,7 @@ initApp();
 async function initApp() {
   await loadCloudUser();
   updateLoginEntry();
+  renderCurrentUserIdentity();
   renderNav();
   renderCourses(courses);
   renderTodayTasks();
@@ -799,10 +820,15 @@ async function loadCloudUser() {
       progress[`${item.course_id}:${unit}`] = item.progress_percent || 0;
     });
 
+    const displayName = getStudentDisplayName(data.user);
+    const username = data.user.username || "";
+    const userId = data.user.id || studentAccountProfiles[username]?.id || currentUser.id;
+
     currentUser = {
       ...currentUser,
-      id: data.user.id,
-      name: data.user.displayName || data.user.username,
+      id: userId,
+      username,
+      name: displayName,
       role: data.user.role || "student",
       progress: {
         ...currentUser.progress,
@@ -811,8 +837,9 @@ async function loadCloudUser() {
       students: [
         {
           ...currentUser,
-          id: data.user.id,
-          name: data.user.displayName || data.user.username,
+          id: userId,
+          username,
+          name: displayName,
           progress: {
             ...currentUser.progress,
             ...progress
@@ -831,12 +858,51 @@ function updateLoginEntry() {
   if (!loginEntryButton) return;
   loginEntryButton.textContent = isLoggedIn ? "已登录" : "登录";
   loginEntryButton.classList.toggle("is-logged-in", isLoggedIn);
-  loginEntryButton.setAttribute("aria-label", isLoggedIn ? "当前已登录" : "登录后解锁下载和英文学习");
+  loginEntryButton.setAttribute("aria-label", isLoggedIn ? "打开登录菜单" : "登录后解锁下载和英文学习");
+  loginEntryButton.setAttribute("aria-expanded", "false");
+  closeLoginDropdown();
+  if (loginMenuName) loginMenuName.textContent = currentUser.name || "学生";
+  if (loginMenuLabel) loginMenuLabel.textContent = currentUser.username || "学生账号";
+}
+
+function getStudentDisplayName(user) {
+  const username = String(user?.username || "").trim().toLowerCase();
+  return user?.displayName || studentAccountProfiles[username]?.name || user?.username || currentUser.name;
+}
+
+function renderCurrentUserIdentity() {
+  const name = currentUser.name || "学生";
+  if (profileName) profileName.textContent = name;
+  if (profileLabel) profileLabel.textContent = isLoggedIn ? "学生账号" : "演示账号";
+  if (helloTitle) helloTitle.innerHTML = `Hi，${escapeHtml(name)} <span aria-hidden="true">👋</span>`;
+  if (loginMenuName) loginMenuName.textContent = name;
+  if (loginMenuLabel) loginMenuLabel.textContent = currentUser.username || (isLoggedIn ? "学生账号" : "演示账号");
 }
 
 function openLoginPage() {
   const returnTo = encodeURIComponent(`${location.pathname}${location.search}${location.hash}`);
   window.location.href = `./login.html?returnTo=${returnTo}`;
+}
+
+function toggleLoginDropdown() {
+  if (!loginDropdown || !loginEntryButton) return;
+  const shouldOpen = loginDropdown.classList.contains("is-hidden");
+  loginDropdown.classList.toggle("is-hidden", !shouldOpen);
+  loginEntryButton.setAttribute("aria-expanded", String(shouldOpen));
+}
+
+function closeLoginDropdown() {
+  loginDropdown?.classList.add("is-hidden");
+  loginEntryButton?.setAttribute("aria-expanded", "false");
+}
+
+async function logoutCurrentUser() {
+  try {
+    await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
+  } catch (error) {
+    // 刷新页面会回到游客状态，本地静态预览无需额外处理。
+  }
+  window.location.reload();
 }
 
 function requireLogin(featureName) {
@@ -1891,10 +1957,16 @@ function bindPageActions() {
 
   loginEntryButton?.addEventListener("click", () => {
     if (isLoggedIn) {
-      showToast("当前已登录，下载和英文学习功能已开放。");
+      toggleLoginDropdown();
       return;
     }
     openLoginPage();
+  });
+
+  logoutButton?.addEventListener("click", logoutCurrentUser);
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest("#loginMenu")) closeLoginDropdown();
   });
 
   document.querySelector("#showAllButton").addEventListener("click", () => {

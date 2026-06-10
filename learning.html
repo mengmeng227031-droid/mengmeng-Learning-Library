@@ -18,8 +18,8 @@
       <div class="profile-card">
         <span class="profile-avatar" aria-hidden="true">萌</span>
         <div>
-          <strong>177****0675</strong>
-          <span>VIP会员</span>
+          <strong id="profileName">游客</strong>
+          <span id="profileLabel">未登录</span>
         </div>
       </div>
     </aside>
@@ -27,7 +27,7 @@
     <main class="main-panel">
       <header class="topbar">
         <div class="hello">
-          <h1>Hi，177****0675 <span aria-hidden="true">👋</span></h1>
+          <h1 id="helloTitle">Hi，游客 <span aria-hidden="true">👋</span></h1>
           <p>今天也要元气满满地学习哦！</p>
         </div>
 
@@ -40,7 +40,14 @@
             <span aria-hidden="true">🔔</span>
             <em>3</em>
           </button>
-          <button class="login-entry-button" id="loginEntryButton" type="button">登录</button>
+          <div class="login-menu" id="loginMenu">
+            <button class="login-entry-button" id="loginEntryButton" type="button" aria-haspopup="true" aria-expanded="false">登录</button>
+            <div class="login-dropdown is-hidden" id="loginDropdown" role="menu">
+              <strong id="loginMenuName">游客</strong>
+              <span id="loginMenuLabel">未登录</span>
+              <button id="logoutButton" type="button" role="menuitem">退出登录</button>
+            </div>
+          </div>
         </div>
       </header>
 

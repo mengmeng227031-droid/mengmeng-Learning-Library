@@ -1059,6 +1059,10 @@ button {
   font-weight: 900;
 }
 
+.login-menu {
+  position: relative;
+}
+
 .login-entry-button {
   min-width: 82px;
   height: 52px;
@@ -1076,6 +1080,47 @@ button {
   color: #2f6fe8;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(77, 139, 255, 0.28);
+}
+
+.login-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 20;
+  display: grid;
+  gap: 8px;
+  min-width: 156px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(228, 234, 247, 0.9);
+  box-shadow: 0 16px 32px rgba(49, 79, 137, 0.16);
+}
+
+.login-dropdown.is-hidden {
+  display: none;
+}
+
+.login-dropdown strong {
+  color: #333333;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.login-dropdown span {
+  color: #7b8495;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.login-dropdown button {
+  height: 38px;
+  margin-top: 4px;
+  border-radius: 12px;
+  color: #fff;
+  background: #ff6f91;
+  font-size: 14px;
+  font-weight: 900;
 }
 
 .hero-stage {
