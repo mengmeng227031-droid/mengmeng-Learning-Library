@@ -7,11 +7,17 @@ const admissionData = window.gaokaoSchoolData || {
 const mapBoard = document.querySelector("#mapBoard");
 const mapCanvas = document.querySelector("#mapCanvas");
 const provinceLayer = document.querySelector("#provinceLayer");
+const clusterLayer = document.querySelector("#clusterLayer");
+const clusterFocus = document.querySelector("#clusterFocus");
 const hoverDetail = document.querySelector("#hoverDetail");
 const rewardThumb = document.querySelector("#rewardThumb");
 const rewardSheet = document.querySelector("#rewardSheet");
 const schoolDetailSheet = document.querySelector("#schoolDetailSheet");
 const schoolDetailPanel = document.querySelector("#schoolDetailPanel");
+const clusterData = window.advancedManufacturingClusters || {
+  cities: [],
+  summary: {}
+};
 
 const provinceRegions = [
   { name: "北京", cx: 665, cy: 290, rx: 26, ry: 24 },
@@ -67,6 +73,10 @@ async function initAdmissionPage() {
 function bindEvents() {
   provinceLayer.addEventListener("pointerover", handleProvincePointer);
   provinceLayer.addEventListener("focusin", handleProvincePointer);
+  clusterLayer.addEventListener("pointerover", handleClusterPointer);
+  clusterLayer.addEventListener("focusin", handleClusterPointer);
+  clusterLayer.addEventListener("pointerout", handleClusterPointerOut);
+  clusterLayer.addEventListener("focusout", handleClusterPointerOut);
   mapBoard.addEventListener("pointermove", handleMapPointerMove);
   mapBoard.addEventListener("pointerdown", startMapDrag);
   mapBoard.addEventListener("pointerup", endMapDrag);
@@ -158,6 +168,19 @@ function closeSchoolDetail() {
   schoolDetailSheet.setAttribute("aria-hidden", "true");
 }
 
+function showClusterFocus(city) {
+  if (!city) {
+    hideClusterFocus();
+    return;
+  }
+  clusterFocus.innerHTML = renderClusterFocus(city);
+  clusterFocus.setAttribute("aria-hidden", "false");
+}
+
+function hideClusterFocus() {
+  clusterFocus.setAttribute("aria-hidden", "true");
+}
+
 function isTopLayerOpen() {
   return rewardSheet.getAttribute("aria-hidden") === "false"
     || schoolDetailSheet.getAttribute("aria-hidden") === "false";
@@ -190,6 +213,7 @@ function renderGeoJsonProvinceLayer(geojson) {
       </path>
     `;
   }).join("") + renderProvinceLabels(features, bounds, target);
+  renderClusterLayer(bounds, target);
 }
 
 function getGeoJsonBounds(features) {
@@ -286,6 +310,29 @@ function renderFallbackProvinceLayer() {
       <title>${escapeHtml(region.name)}</title>
     </path>
   `).join("");
+  renderClusterLayer({
+    minLon: 73.4,
+    minLat: 17.6,
+    maxLon: 135.2,
+    maxLat: 53.8,
+    minMercatorY: mercatorY(17.6),
+    maxMercatorY: mercatorY(53.8)
+  }, { left: 110, top: 58, width: 780, height: 560 });
+}
+
+function renderClusterLayer(bounds, target) {
+  const cities = clusterData.cities || [];
+  clusterLayer.innerHTML = cities.map((city, index) => {
+    const [x, y] = projectCoordinate([city.lon, city.lat], bounds, target);
+    const size = city.clusters.length >= 4 ? 8 : city.clusters.length >= 2 ? 6.8 : 5.8;
+    return `
+      <g class="cluster-marker tone-${index % 6}" data-cluster-city="${escapeHtml(city.city)}" transform="translate(${x} ${y})" tabindex="0">
+        <circle class="cluster-halo" r="${size + 8}"></circle>
+        <circle class="cluster-dot" r="${size}"></circle>
+        <text class="cluster-label" x="${size + 7}" y="4">${escapeHtml(city.city)}</text>
+      </g>
+    `;
+  }).join("");
 }
 
 function buildRegionPath(region, index) {
@@ -314,6 +361,26 @@ function handleProvincePointer(event) {
   const region = event.target.closest(".province-region");
   if (!region) return;
   setActiveProvince(region.dataset.province);
+}
+
+function handleClusterPointer(event) {
+  if (isTopLayerOpen()) return;
+  const marker = event.target.closest(".cluster-marker");
+  if (!marker) return;
+  event.stopPropagation();
+  const city = getClusterCity(marker.dataset.clusterCity);
+  clusterLayer.querySelectorAll(".cluster-marker").forEach((item) => {
+    item.classList.toggle("is-active", item === marker);
+  });
+  showClusterFocus(city);
+}
+
+function handleClusterPointerOut(event) {
+  const marker = event.target.closest(".cluster-marker");
+  if (!marker) return;
+  if (event.relatedTarget?.closest?.(".cluster-marker") === marker) return;
+  marker.classList.remove("is-active");
+  hideClusterFocus();
 }
 
 function handleMapClick(event) {
@@ -505,6 +572,38 @@ function filterSchools(schools, filter) {
   if (filter === "211") return schools.filter((school) => school.is211);
   if (filter === "double") return schools.filter((school) => school.isDoubleFirst);
   return schools;
+}
+
+function renderClusterFocus(city) {
+  const provinceCities = getProvinceClusterCities(city.province);
+  return `
+    <div class="cluster-focus-head">
+      <span>${escapeHtml(city.province)}</span>
+      <h2>${escapeHtml(city.city)}高新技术产业集成地</h2>
+      <p>${formatNumber(city.clusters.length)} 个集群 · ${formatNumber(provinceCities.length)} 个省内集群城市</p>
+    </div>
+    <div class="cluster-focus-list">
+      ${city.clusters.map((cluster) => `
+        <article class="cluster-card">
+          <h3>${escapeHtml(cluster.name)}</h3>
+          <p>${cluster.industries.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</p>
+        </article>
+      `).join("")}
+    </div>
+    <div class="cluster-city-strip">
+      ${provinceCities.map((item) => `<span class="${item.city === city.city ? "is-current" : ""}">${escapeHtml(item.city)}</span>`).join("")}
+    </div>
+  `;
+}
+
+function getClusterCity(name) {
+  return (clusterData.cities || []).find((city) => city.city === name);
+}
+
+function getProvinceClusterCities(province) {
+  return (clusterData.cities || [])
+    .filter((city) => city.province === province)
+    .sort((a, b) => b.clusters.length - a.clusters.length || a.city.localeCompare(b.city, "zh-CN"));
 }
 
 function renderSchoolCard(school, index) {

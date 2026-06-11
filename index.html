@@ -14,6 +14,7 @@
       <div class="map-canvas" id="mapCanvas">
         <svg class="province-map" viewBox="0 0 1000 680" aria-label="交互式中国高校资源地图">
           <g class="province-layer" id="provinceLayer"></g>
+          <g class="cluster-layer" id="clusterLayer"></g>
         </svg>
       </div>
       <div class="map-tools" aria-label="地图缩放工具">
@@ -21,6 +22,7 @@
         <button type="button" data-map-action="zoom-out" aria-label="缩小地图">−</button>
         <button type="button" data-map-action="reset" aria-label="重置地图">↺</button>
       </div>
+      <aside class="cluster-focus" id="clusterFocus" aria-live="polite" aria-hidden="true"></aside>
       <aside class="hover-detail" id="hoverDetail" aria-live="polite"></aside>
     </section>
 
@@ -51,6 +53,7 @@
   </div>
 
   <script src="./data/gaokao-schools.js"></script>
+  <script src="./data/advanced-manufacturing-clusters.js"></script>
   <script src="./admission.js"></script>
 </body>
 </html>
