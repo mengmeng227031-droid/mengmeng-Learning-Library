@@ -896,7 +896,13 @@ function closeLoginDropdown() {
   loginEntryButton?.setAttribute("aria-expanded", "false");
 }
 
-async function logoutCurrentUser() {
+async function logoutCurrentUser(event) {
+  event?.preventDefault();
+  event?.stopPropagation();
+  if (logoutButton) {
+    logoutButton.disabled = true;
+    logoutButton.textContent = "正在退出...";
+  }
   try {
     await fetch("/api/auth/logout", { method: "POST", credentials: "include" });
   } catch (error) {
@@ -1955,7 +1961,8 @@ function bindPageActions() {
     showToast("你有3条学习提醒：完成英文学习卡、整理资料库、继续好句积累。");
   });
 
-  loginEntryButton?.addEventListener("click", () => {
+  loginEntryButton?.addEventListener("click", (event) => {
+    event.stopPropagation();
     if (isLoggedIn) {
       toggleLoginDropdown();
       return;
@@ -1964,6 +1971,7 @@ function bindPageActions() {
   });
 
   logoutButton?.addEventListener("click", logoutCurrentUser);
+  loginDropdown?.addEventListener("click", (event) => event.stopPropagation());
 
   document.addEventListener("click", (event) => {
     if (!event.target.closest("#loginMenu")) closeLoginDropdown();

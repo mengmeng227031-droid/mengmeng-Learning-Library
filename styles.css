@@ -1061,6 +1061,7 @@ button {
 
 .login-menu {
   position: relative;
+  z-index: 30;
 }
 
 .login-entry-button {
@@ -1069,24 +1070,27 @@ button {
   padding: 0 18px;
   border-radius: 999px;
   color: #fff;
-  background: linear-gradient(135deg, #4D8BFF, #7B61FF);
-  box-shadow: 0 12px 24px rgba(77, 139, 255, 0.24);
+  background: linear-gradient(135deg, #4D8BFF, #37D2C6);
+  border: 1px solid rgba(77, 139, 255, 0.38);
+  box-shadow: 0 12px 24px rgba(77, 139, 255, 0.28);
+  cursor: pointer;
   font-size: 15px;
   font-weight: 900;
   white-space: nowrap;
 }
 
 .login-entry-button.is-logged-in {
-  color: #2f6fe8;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(77, 139, 255, 0.28);
+  color: #fff;
+  background: linear-gradient(135deg, #4D8BFF, #7B61FF);
+  border-color: rgba(77, 139, 255, 0.5);
+  box-shadow: 0 12px 26px rgba(77, 139, 255, 0.32);
 }
 
 .login-dropdown {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  z-index: 20;
+  z-index: 1000;
   display: grid;
   gap: 8px;
   min-width: 156px;
@@ -1095,6 +1099,7 @@ button {
   background: rgba(255, 255, 255, 0.98);
   border: 1px solid rgba(228, 234, 247, 0.9);
   box-shadow: 0 16px 32px rgba(49, 79, 137, 0.16);
+  pointer-events: auto;
 }
 
 .login-dropdown.is-hidden {
@@ -1119,8 +1124,13 @@ button {
   border-radius: 12px;
   color: #fff;
   background: #ff6f91;
+  cursor: pointer;
   font-size: 14px;
   font-weight: 900;
+}
+
+.login-dropdown button:hover {
+  background: #ff547f;
 }
 
 .hero-stage {
