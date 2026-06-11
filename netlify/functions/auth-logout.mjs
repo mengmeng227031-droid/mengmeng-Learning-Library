@@ -8,8 +8,12 @@ export default async (req) => {
 
   const token = parseCookies(req).mm_session;
   if (token) {
-    const sql = getSql();
-    await sql`delete from sessions where token_hash = ${sha256(token)}`;
+    try {
+      const sql = getSql();
+      await sql`delete from sessions where token_hash = ${sha256(token)}`;
+    } catch (error) {
+      // Even if the database is unavailable, clear the browser cookie.
+    }
   }
 
   return json({ ok: true }, 200, { "Set-Cookie": clearSessionCookie() });

@@ -970,7 +970,7 @@ button {
 
 .topbar {
   position: relative;
-  z-index: 2;
+  z-index: 2000;
   order: 0;
   display: flex;
   align-items: center;
@@ -1061,7 +1061,8 @@ button {
 
 .login-menu {
   position: relative;
-  z-index: 30;
+  z-index: 2100;
+  isolation: isolate;
 }
 
 .login-entry-button {
@@ -1090,16 +1091,20 @@ button {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
-  z-index: 1000;
+  z-index: 2200;
   display: grid;
   gap: 8px;
-  min-width: 156px;
-  padding: 14px;
+  min-width: 174px;
+  padding: 16px;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid rgba(228, 234, 247, 0.9);
-  box-shadow: 0 16px 32px rgba(49, 79, 137, 0.16);
+  color: #222222;
+  background: #ffffff;
+  border: 1px solid #dfe5ef;
+  box-shadow: 0 18px 36px rgba(24, 43, 77, 0.22);
+  opacity: 1;
   pointer-events: auto;
+  filter: none;
+  backdrop-filter: none;
 }
 
 .login-dropdown.is-hidden {
@@ -1107,30 +1112,39 @@ button {
 }
 
 .login-dropdown strong {
-  color: #333333;
-  font-size: 15px;
+  color: #222222;
+  font-size: 16px;
   font-weight: 900;
 }
 
 .login-dropdown span {
-  color: #7b8495;
-  font-size: 12px;
+  color: #5f6b7a;
+  font-size: 13px;
   font-weight: 800;
 }
 
 .login-dropdown button {
-  height: 38px;
-  margin-top: 4px;
+  height: 42px;
+  margin-top: 6px;
   border-radius: 12px;
   color: #fff;
-  background: #ff6f91;
+  background: #e83f5b;
+  box-shadow: 0 10px 18px rgba(232, 63, 91, 0.24);
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 900;
 }
 
 .login-dropdown button:hover {
-  background: #ff547f;
+  background: #d92f4d;
+}
+
+.login-dropdown button:disabled {
+  color: #fff;
+  background: #b7beca;
+  box-shadow: none;
+  cursor: wait;
+  opacity: 1;
 }
 
 .hero-stage {
