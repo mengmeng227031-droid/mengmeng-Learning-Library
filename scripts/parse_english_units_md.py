@@ -70,6 +70,7 @@ def parse_dialogues(block):
 
 
 def parse_unit(unit_number, unit_title, body):
+    unit_title_en = english_part(unit_title)
     words_block = section_between(body, r"^### 一、重点单词\s*$", [r"^### 二、核心句型\s*$"])
     sentence_block = section_between(body, r"^### 二、核心句型\s*$", [r"^### 三、对话\s*$"])
     dialogue_block = section_between(body, r"^### 三、对话\s*$", [r"^---\s*$", r"^## Unit\s+\d+"])
@@ -131,7 +132,8 @@ def parse_unit(unit_number, unit_title, body):
 
     return {
         "unit": unit_number,
-        "unitTitle": f"Unit {unit_number}  {unit_title}",
+        "unitTitle": f"Unit {unit_number}  {unit_title_en or f'Unit {unit_number}'}",
+        "pdfUrl": f"./outputs/english-pdf/grade3-up-unit{unit_number}.pdf",
         "gradeLabel": "三年级上",
         "lesson": str(unit_number),
         "keywords": keywords,
@@ -144,7 +146,7 @@ def parse_unit(unit_number, unit_title, body):
             "title": reading_title_from_unit_title(unit_title, unit_number),
             "lines": reading_lines,
             "scenePrompt": (
-                f"A cute educational mascot-style scene for Unit {unit_number} {unit_title}, "
+                f"A cute educational mascot-style scene for Unit {unit_number} {unit_title_en}, "
                 f"warm classroom workbook style, no text. {STYLE_PROMPT}"
             )
         },

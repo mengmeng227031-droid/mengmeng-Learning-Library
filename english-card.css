@@ -101,6 +101,12 @@ input {
   cursor: pointer;
 }
 
+.print-link:disabled {
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+
 .card-stage {
   display: grid;
   grid-template-columns: repeat(2, 560px);
@@ -629,8 +635,6 @@ img.exercise-art {
   }
 
   .card-topbar,
-  .card-title-row,
-  .meta-bar,
   .talk-section,
   .practice-section,
   .homework-section,

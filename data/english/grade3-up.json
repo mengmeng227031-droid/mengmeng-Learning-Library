@@ -8,7 +8,8 @@
   "units": [
     {
       "unit": 1,
-      "unitTitle": "Unit 1  Making friends 结交朋友",
+      "unitTitle": "Unit 1  Making friends",
+      "pdfUrl": "./outputs/english-pdf/grade3-up-unit1.pdf",
       "gradeLabel": "三年级上",
       "lesson": "1",
       "keywords": [
@@ -307,7 +308,8 @@
     },
     {
       "unit": 2,
-      "unitTitle": "Unit 2  Different families 不同的家庭",
+      "unitTitle": "Unit 2  Different families",
+      "pdfUrl": "./outputs/english-pdf/grade3-up-unit2.pdf",
       "gradeLabel": "三年级上",
       "lesson": "2",
       "keywords": [
@@ -614,7 +616,8 @@
     },
     {
       "unit": 3,
-      "unitTitle": "Unit 3  Amazing animals 神奇的动物",
+      "unitTitle": "Unit 3  Amazing animals",
+      "pdfUrl": "./outputs/english-pdf/grade3-up-unit3.pdf",
       "gradeLabel": "三年级上",
       "lesson": "3",
       "keywords": [
@@ -859,7 +862,8 @@
     },
     {
       "unit": 4,
-      "unitTitle": "Unit 4  Plants around us 我们身边的植物",
+      "unitTitle": "Unit 4  Plants around us",
+      "pdfUrl": "./outputs/english-pdf/grade3-up-unit4.pdf",
       "gradeLabel": "三年级上",
       "lesson": "4",
       "keywords": [
@@ -1082,7 +1086,8 @@
     },
     {
       "unit": 5,
-      "unitTitle": "Unit 5  The colourful world 多彩的世界（颜色）",
+      "unitTitle": "Unit 5  The colourful world",
+      "pdfUrl": "./outputs/english-pdf/grade3-up-unit5.pdf",
       "gradeLabel": "三年级上",
       "lesson": "5",
       "keywords": [
@@ -1363,7 +1368,8 @@
     },
     {
       "unit": 6,
-      "unitTitle": "Unit 6  Useful numbers 有用的数字（1-10）",
+      "unitTitle": "Unit 6  Useful numbers",
+      "pdfUrl": "./outputs/english-pdf/grade3-up-unit6.pdf",
       "gradeLabel": "三年级上",
       "lesson": "6",
       "keywords": [

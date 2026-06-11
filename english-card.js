@@ -61,12 +61,12 @@ const fallbackLesson = {
 };
 
 const unitTitleCatalog = {
-  1: { unitTitle: "Unit 1  Making friends 结交朋友", readingTitle: "Making Friends" },
-  2: { unitTitle: "Unit 2  Different families 不同的家庭", readingTitle: "Different Families" },
-  3: { unitTitle: "Unit 3  Amazing animals 神奇的动物", readingTitle: "Amazing Animals" },
-  4: { unitTitle: "Unit 4  Plants around us 我们身边的植物", readingTitle: "Plants Around Us" },
-  5: { unitTitle: "Unit 5  The colourful world 多彩的世界（颜色）", readingTitle: "The Colourful World" },
-  6: { unitTitle: "Unit 6  Useful numbers 有用的数字（1-10）", readingTitle: "Useful Numbers" }
+  1: { unitTitle: "Unit 1  Making friends", readingTitle: "Making Friends", pdfUrl: "./outputs/english-pdf/grade3-up-unit1.pdf" },
+  2: { unitTitle: "Unit 2  Different families", readingTitle: "Different Families", pdfUrl: "./outputs/english-pdf/grade3-up-unit2.pdf" },
+  3: { unitTitle: "Unit 3  Amazing animals", readingTitle: "Amazing Animals", pdfUrl: "./outputs/english-pdf/grade3-up-unit3.pdf" },
+  4: { unitTitle: "Unit 4  Plants around us", readingTitle: "Plants Around Us", pdfUrl: "./outputs/english-pdf/grade3-up-unit4.pdf" },
+  5: { unitTitle: "Unit 5  The colourful world", readingTitle: "The Colourful World", pdfUrl: "./outputs/english-pdf/grade3-up-unit5.pdf" },
+  6: { unitTitle: "Unit 6  Useful numbers", readingTitle: "Useful Numbers", pdfUrl: "./outputs/english-pdf/grade3-up-unit6.pdf" }
 };
 
 const artMap = {
@@ -91,8 +91,21 @@ document.getElementById("backButton").addEventListener("click", () => {
   window.location.href = "./index.html#english";
 });
 
-document.getElementById("printButton").addEventListener("click", () => {
-  window.print();
+const pdfButton = document.getElementById("printButton");
+let activePdfUrl = "";
+let activePdfName = "english-card.pdf";
+
+pdfButton.addEventListener("click", () => {
+  if (!activePdfUrl) {
+    window.alert("PDF 正在生成中，请稍后再试。");
+    return;
+  }
+  const link = document.createElement("a");
+  link.href = activePdfUrl;
+  link.download = activePdfName;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 });
 
 loadLesson().then(renderLesson);
@@ -119,6 +132,7 @@ async function loadLesson() {
 
 function renderLesson(data) {
   document.title = `${data.unitTitle} - 英文学习卡片 - 蒙蒙学习库`;
+  setPdfButton(data);
   setText("frontTitle", data.unitTitle);
   setText("gradeText", data.gradeLabel || data.grade);
   setText("lessonText", data.lesson);
@@ -142,16 +156,25 @@ function normalizeLesson(lesson, targetUnit) {
   const unit = Number(lesson?.unit) || targetUnit || 1;
   const unitTitle = getCompleteUnitTitle(lesson, unit);
   const readingTitle = getCompleteReadingTitle(lesson, unitTitle, unit);
+  const pdfUrl = lesson?.pdfUrl || unitTitleCatalog[unit]?.pdfUrl || "";
   return {
     ...lesson,
     unit,
     unitTitle,
+    pdfUrl,
     lesson: lesson?.lesson || String(unit),
     reading: {
       ...(lesson?.reading || {}),
       title: readingTitle
     }
   };
+}
+
+function setPdfButton(data) {
+  activePdfUrl = data.pdfUrl || "";
+  activePdfName = `mengmeng-english-unit${data.unit || getTargetUnit()}.pdf`;
+  pdfButton.textContent = activePdfUrl ? "保存 PDF" : "PDF 生成中";
+  pdfButton.disabled = !activePdfUrl;
 }
 
 function getCompleteUnitTitle(lesson, unit) {
