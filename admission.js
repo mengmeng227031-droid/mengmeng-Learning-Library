@@ -73,10 +73,6 @@ async function initAdmissionPage() {
 function bindEvents() {
   provinceLayer.addEventListener("pointerover", handleProvincePointer);
   provinceLayer.addEventListener("focusin", handleProvincePointer);
-  clusterLayer.addEventListener("pointerover", handleClusterPointer);
-  clusterLayer.addEventListener("focusin", handleClusterPointer);
-  clusterLayer.addEventListener("pointerout", handleClusterPointerOut);
-  clusterLayer.addEventListener("focusout", handleClusterPointerOut);
   mapBoard.addEventListener("pointermove", handleMapPointerMove);
   mapBoard.addEventListener("pointerdown", startMapDrag);
   mapBoard.addEventListener("pointerup", endMapDrag);
@@ -174,6 +170,16 @@ function showClusterFocus(city) {
     return;
   }
   clusterFocus.innerHTML = renderClusterFocus(city);
+  clusterFocus.setAttribute("aria-hidden", "false");
+}
+
+function showProvinceClusterFocus(province) {
+  const cities = getProvinceClusterCities(province);
+  if (!cities.length) {
+    hideClusterFocus();
+    return;
+  }
+  clusterFocus.innerHTML = renderProvinceClusterFocus(province, cities);
   clusterFocus.setAttribute("aria-hidden", "false");
 }
 
@@ -324,12 +330,11 @@ function renderClusterLayer(bounds, target) {
   const cities = clusterData.cities || [];
   clusterLayer.innerHTML = cities.map((city, index) => {
     const [x, y] = projectCoordinate([city.lon, city.lat], bounds, target);
-    const size = city.clusters.length >= 4 ? 8 : city.clusters.length >= 2 ? 6.8 : 5.8;
+    const labelWidth = Math.max(54, city.city.length * 18 + 18);
     return `
-      <g class="cluster-marker tone-${index % 6}" data-cluster-city="${escapeHtml(city.city)}" transform="translate(${x} ${y})" tabindex="0">
-        <circle class="cluster-halo" r="${size + 8}"></circle>
-        <circle class="cluster-dot" r="${size}"></circle>
-        <text class="cluster-label" x="${size + 7}" y="4">${escapeHtml(city.city)}</text>
+      <g class="cluster-marker tone-${index % 6}" data-cluster-city="${escapeHtml(city.city)}" data-cluster-province="${escapeHtml(city.province)}" transform="translate(${x} ${y})">
+        <rect class="cluster-hitbox" x="${-labelWidth / 2}" y="-15" width="${labelWidth}" height="30" rx="12"></rect>
+        <text class="cluster-label" x="0" y="4">${escapeHtml(city.city)}</text>
       </g>
     `;
   }).join("");
@@ -360,27 +365,9 @@ function handleProvincePointer(event) {
   if (lockedProvince) return;
   const region = event.target.closest(".province-region");
   if (!region) return;
-  setActiveProvince(region.dataset.province);
-}
-
-function handleClusterPointer(event) {
-  if (isTopLayerOpen()) return;
-  const marker = event.target.closest(".cluster-marker");
-  if (!marker) return;
-  event.stopPropagation();
-  const city = getClusterCity(marker.dataset.clusterCity);
-  clusterLayer.querySelectorAll(".cluster-marker").forEach((item) => {
-    item.classList.toggle("is-active", item === marker);
-  });
-  showClusterFocus(city);
-}
-
-function handleClusterPointerOut(event) {
-  const marker = event.target.closest(".cluster-marker");
-  if (!marker) return;
-  if (event.relatedTarget?.closest?.(".cluster-marker") === marker) return;
-  marker.classList.remove("is-active");
-  hideClusterFocus();
+  const province = region.dataset.province;
+  setActiveProvince(province);
+  showProvinceClusterFocus(province);
 }
 
 function handleMapClick(event) {
@@ -441,6 +428,9 @@ function unlockProvince() {
 function markActiveRegion(name) {
   provinceLayer.querySelectorAll(".province-region").forEach((region) => {
     region.classList.toggle("is-active", region.dataset.province === name);
+  });
+  clusterLayer.querySelectorAll(".cluster-marker").forEach((marker) => {
+    marker.classList.toggle("is-active", marker.dataset.clusterProvince === name);
   });
 }
 
@@ -592,6 +582,30 @@ function renderClusterFocus(city) {
     </div>
     <div class="cluster-city-strip">
       ${provinceCities.map((item) => `<span class="${item.city === city.city ? "is-current" : ""}">${escapeHtml(item.city)}</span>`).join("")}
+    </div>
+  `;
+}
+
+function renderProvinceClusterFocus(province, cities) {
+  const clusterCount = cities.reduce((sum, city) => sum + city.clusters.length, 0);
+  return `
+    <div class="cluster-focus-head">
+      <span>${escapeHtml(province)}</span>
+      <h2>${escapeHtml(province)}先进制造业集群</h2>
+      <p>${formatNumber(cities.length)} 个集群城市 · ${formatNumber(clusterCount)} 个集群方向</p>
+    </div>
+    <div class="cluster-focus-list">
+      ${cities.map((city) => `
+        <article class="cluster-card">
+          <h3>${escapeHtml(city.city)}</h3>
+          ${city.clusters.map((cluster) => `
+            <div class="cluster-line">
+              <strong>${escapeHtml(cluster.name)}</strong>
+              <p>${cluster.industries.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</p>
+            </div>
+          `).join("")}
+        </article>
+      `).join("")}
     </div>
   `;
 }

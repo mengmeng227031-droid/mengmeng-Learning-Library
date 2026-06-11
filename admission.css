@@ -485,62 +485,46 @@ a {
 }
 
 .cluster-layer {
-  pointer-events: all;
+  pointer-events: none;
 }
 
 .cluster-marker {
-  cursor: pointer;
+  pointer-events: none;
   outline: none;
 }
 
-.cluster-halo {
-  fill: rgba(255, 255, 255, 0.74);
-  stroke: rgba(47, 116, 232, 0.18);
-  stroke-width: 1;
+.cluster-hitbox {
+  fill: transparent;
 }
-
-.cluster-dot {
-  fill: #2f74e8;
-  stroke: #fff;
-  stroke-width: 2.2;
-  filter: drop-shadow(0 8px 12px rgba(47, 116, 232, 0.28));
-  transition: r 160ms ease, fill 160ms ease;
-}
-
-.cluster-marker.tone-1 .cluster-dot { fill: #37d2c6; }
-.cluster-marker.tone-2 .cluster-dot { fill: #ff8a42; }
-.cluster-marker.tone-3 .cluster-dot { fill: #7b61ff; }
-.cluster-marker.tone-4 .cluster-dot { fill: #ff6ec7; }
-.cluster-marker.tone-5 .cluster-dot { fill: #ffc83d; }
 
 .cluster-label {
-  fill: #17223a;
-  font-size: calc(11px * var(--label-scale, 1));
+  fill: #0f5f39;
+  font-size: calc(12px * var(--label-scale, 1));
   font-weight: 900;
   letter-spacing: 0;
   pointer-events: none;
   paint-order: stroke;
-  stroke: rgba(255, 255, 255, 0.86);
-  stroke-width: 4;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 5;
+  text-anchor: middle;
   transform-box: fill-box;
   transform: scale(var(--label-scale, 1));
-  transform-origin: left center;
+  transform-origin: center;
 }
 
-.cluster-marker:hover .cluster-dot,
-.cluster-marker:focus-visible .cluster-dot,
-.cluster-marker.is-active .cluster-dot {
-  fill: #25c475;
-  r: 9;
+.cluster-marker.is-active .cluster-label {
+  fill: #ffffff;
+  stroke: #12864d;
+  stroke-width: 7;
 }
 
 .cluster-focus {
   position: fixed;
-  top: 92px;
+  top: 188px;
   left: 28px;
   z-index: 18;
   width: min(420px, calc(100vw - 56px));
-  max-height: calc(100vh - 136px);
+  max-height: calc(100vh - 228px);
   overflow: auto;
   padding: 18px;
   border: 1px solid rgba(37, 196, 117, 0.18);
@@ -609,7 +593,25 @@ a {
   line-height: 1.35;
 }
 
-.cluster-card p {
+.cluster-line {
+  display: grid;
+  gap: 7px;
+  padding-top: 8px;
+}
+
+.cluster-line + .cluster-line {
+  margin-top: 8px;
+  border-top: 1px solid rgba(47, 116, 232, 0.10);
+}
+
+.cluster-line strong {
+  color: #187a4d;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.cluster-card p,
+.cluster-line p {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
