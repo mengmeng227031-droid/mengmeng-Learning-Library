@@ -250,14 +250,14 @@
         }
       ],
       "reading": {
-        "title": "Making",
+        "title": "Making Friends",
         "lines": [
           "I see a hello.",
           "I see a hi.",
           "I see an I.",
           "I see an am."
         ],
-        "scenePrompt": "A cute educational mascot-style scene for Unit 1 Making friends 结交朋友, warm classroom workbook style, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe"
+        "scenePrompt": "A cute educational mascot-style scene for Unit 1 Making friends, warm classroom workbook style, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe"
       },
       "grammar": [
         {
@@ -298,6 +298,11 @@
       "selfRating": {
         "maxStars": 5,
         "value": 0
+      },
+      "sectionImages": {
+        "dialogue": "./assets/english/section-art/unit1-dialogue.png",
+        "read": "./assets/english/section-art/unit1-read.png",
+        "grammar": "./assets/english/section-art/unit1-grammar.png"
       }
     },
     {
@@ -552,14 +557,14 @@
         }
       ],
       "reading": {
-        "title": "Different",
+        "title": "Different Families",
         "lines": [
           "I see a father.",
           "I see a dad.",
           "I see a mother.",
           "I see a mum."
         ],
-        "scenePrompt": "A cute educational mascot-style scene for Unit 2 Different families 不同的家庭, warm classroom workbook style, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe"
+        "scenePrompt": "A cute educational mascot-style scene for Unit 2 Different families, warm classroom workbook style, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe"
       },
       "grammar": [
         {
@@ -600,94 +605,99 @@
       "selfRating": {
         "maxStars": 5,
         "value": 0
+      },
+      "sectionImages": {
+        "dialogue": "./assets/english/section-art/unit2-dialogue.png",
+        "read": "./assets/english/section-art/unit2-read.png",
+        "grammar": "./assets/english/section-art/unit2-grammar.png"
       }
     },
     {
       "unit": 3,
-      "unitTitle": "Unit 3  Amazing animals ?????",
+      "unitTitle": "Unit 3  Amazing animals 神奇的动物",
       "gradeLabel": "三年级上",
       "lesson": "3",
       "keywords": [
         {
           "word": "pet",
-          "meaning": "??",
+          "meaning": "宠物",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing pet, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/pet.png"
         },
         {
           "word": "my favorite pet",
-          "meaning": "???????",
+          "meaning": "我最喜欢的宠物",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing my favorite pet, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/my-favorite-pet.png"
         },
         {
           "word": "bird",
-          "meaning": "?",
+          "meaning": "鸟",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing bird, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/bird.png"
         },
         {
           "word": "fish",
-          "meaning": "?",
+          "meaning": "鱼",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing fish, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/fish.png"
         },
         {
           "word": "cat",
-          "meaning": "?",
+          "meaning": "猫",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing cat, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/cat.png"
         },
         {
           "word": "dog",
-          "meaning": "?",
+          "meaning": "狗",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing dog, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/dog.png"
         },
         {
           "word": "rabbit",
-          "meaning": "??",
+          "meaning": "兔子",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing rabbit, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/rabbit.png"
         },
         {
           "word": "panda",
-          "meaning": "??",
+          "meaning": "熊猫",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing panda, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/panda.png"
         },
         {
           "word": "monkey",
-          "meaning": "??",
+          "meaning": "猴子",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing monkey, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/monkey.png"
         },
         {
           "word": "tiger",
-          "meaning": "??",
+          "meaning": "老虎",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing tiger, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/tiger.png"
         },
         {
           "word": "elephant",
-          "meaning": "??",
+          "meaning": "大象",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing elephant, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/elephant.png"
         },
         {
           "word": "lion",
-          "meaning": "??",
+          "meaning": "狮子",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing lion, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/lion.png"
@@ -804,15 +814,15 @@
       "grammar": [
         {
           "pattern": "What's this?",
-          "meaning": "?????"
+          "meaning": "这是什么？"
         },
         {
           "pattern": "It's a bird.",
-          "meaning": "??????"
+          "meaning": "它是一只鸟。"
         },
         {
           "pattern": "Look at the panda.",
-          "meaning": "??????"
+          "meaning": "看这只熊猫。"
         }
       ],
       "exercise": [
@@ -840,80 +850,85 @@
       "selfRating": {
         "maxStars": 5,
         "value": 0
+      },
+      "sectionImages": {
+        "dialogue": "./assets/english/section-art/unit3-dialogue.png",
+        "read": "./assets/english/section-art/unit3-read.png",
+        "grammar": "./assets/english/section-art/unit3-grammar.png"
       }
     },
     {
       "unit": 4,
-      "unitTitle": "Unit 4  Plants around us ???????",
+      "unitTitle": "Unit 4  Plants around us 我们身边的植物",
       "gradeLabel": "三年级上",
       "lesson": "4",
       "keywords": [
         {
           "word": "apple",
-          "meaning": "??",
+          "meaning": "苹果",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing apple, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/apple.png"
         },
         {
           "word": "banana",
-          "meaning": "??",
+          "meaning": "香蕉",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing banana, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/banana.png"
         },
         {
           "word": "orange",
-          "meaning": "??",
+          "meaning": "橙子",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing orange, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/orange.png"
         },
         {
           "word": "grape",
-          "meaning": "??",
+          "meaning": "葡萄",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing grape, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/grape.png"
         },
         {
           "word": "tree",
-          "meaning": "?",
+          "meaning": "树",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing tree, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/tree.png"
         },
         {
           "word": "flower",
-          "meaning": "?",
+          "meaning": "花",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing flower, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/flower.png"
         },
         {
           "word": "grass",
-          "meaning": "?",
+          "meaning": "草",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing grass, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/grass.png"
         },
         {
           "word": "sun",
-          "meaning": "??",
+          "meaning": "太阳",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing sun, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/sun.png"
         },
         {
           "word": "water",
-          "meaning": "?",
+          "meaning": "水",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing water, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/water.png"
         },
         {
           "word": "air",
-          "meaning": "??",
+          "meaning": "空气",
           "phonetic": "",
           "imagePrompt": "A cute educational mascot-style illustration representing air, single clear subject, white or transparent background, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe",
           "image": "./assets/english/tagged-word-art/air.png"
@@ -1022,15 +1037,15 @@
       "grammar": [
         {
           "pattern": "I see a ...",
-          "meaning": "???????"
+          "meaning": "我看见一个……"
         },
         {
           "pattern": "I see an apple.",
-          "meaning": "????????"
+          "meaning": "我看见一个苹果。"
         },
         {
           "pattern": "Water helps plants.",
-          "meaning": "????????"
+          "meaning": "水帮助植物生长。"
         }
       ],
       "exercise": [
@@ -1058,6 +1073,11 @@
       "selfRating": {
         "maxStars": 5,
         "value": 0
+      },
+      "sectionImages": {
+        "dialogue": "./assets/english/section-art/unit4-dialogue.png",
+        "read": "./assets/english/section-art/unit4-read.png",
+        "grammar": "./assets/english/section-art/unit4-grammar.png"
       }
     },
     {
@@ -1286,14 +1306,14 @@
         }
       ],
       "reading": {
-        "title": "The",
+        "title": "The Colourful World",
         "lines": [
           "I see a red.",
           "I see a yellow.",
           "I see a blue.",
           "I see a green."
         ],
-        "scenePrompt": "A cute educational mascot-style scene for Unit 5 The colourful world 多彩的世界（颜色）, warm classroom workbook style, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe"
+        "scenePrompt": "A cute educational mascot-style scene for Unit 5 The colourful world, warm classroom workbook style, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe"
       },
       "grammar": [
         {
@@ -1334,11 +1354,16 @@
       "selfRating": {
         "maxStars": 5,
         "value": 0
+      },
+      "sectionImages": {
+        "dialogue": "./assets/english/section-art/unit5-dialogue.png",
+        "read": "./assets/english/section-art/unit5-read.png",
+        "grammar": "./assets/english/section-art/unit5-grammar.png"
       }
     },
     {
       "unit": 6,
-      "unitTitle": "Unit 6  Useful numbers 有用的数字（1–10）",
+      "unitTitle": "Unit 6  Useful numbers 有用的数字（1-10）",
       "gradeLabel": "三年级上",
       "lesson": "6",
       "keywords": [
@@ -1576,14 +1601,14 @@
         }
       ],
       "reading": {
-        "title": "Useful",
+        "title": "Useful Numbers",
         "lines": [
           "I see an one.",
           "I see a two.",
           "I see a three.",
           "I see a four."
         ],
-        "scenePrompt": "A cute educational mascot-style scene for Unit 6 Useful numbers 有用的数字（1–10）, warm classroom workbook style, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe"
+        "scenePrompt": "A cute educational mascot-style scene for Unit 6 Useful numbers, warm classroom workbook style, no text. Cute educational mascot character, 3-head-tall proportions, large glossy anime eyes, soft pastel color palette, soft ambient lighting, rounded shapes, minimal clean background, high-end children brand illustration, soft 3D texture, kawaii Japanese preschool design, warm and joyful emotion, consistent mascot universe"
       },
       "grammar": [
         {
@@ -1624,6 +1649,11 @@
       "selfRating": {
         "maxStars": 5,
         "value": 0
+      },
+      "sectionImages": {
+        "dialogue": "./assets/english/section-art/unit6-dialogue.png",
+        "read": "./assets/english/section-art/unit6-read.png",
+        "grammar": "./assets/english/section-art/unit6-grammar.png"
       }
     }
   ],

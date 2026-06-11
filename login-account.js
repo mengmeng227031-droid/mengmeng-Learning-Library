@@ -4,6 +4,7 @@ const policyBody = document.querySelector("#policyBody");
 const formMessage = document.querySelector("#formMessage");
 const accountInput = document.querySelector("#phoneInput");
 const passwordInput = document.querySelector("#codeInput");
+const rememberInput = document.querySelector("#rememberInput");
 const agreementInput = document.querySelector("#agreementInput");
 const phoneLoginForm = document.querySelector("#phoneLoginForm");
 const policyButtons = document.querySelectorAll("[data-policy]");
@@ -125,7 +126,7 @@ phoneLoginForm.addEventListener("submit", async (event) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ account, password })
+      body: JSON.stringify({ account, password, remember: rememberInput?.checked === true })
     });
     const data = await response.json().catch(() => ({}));
 

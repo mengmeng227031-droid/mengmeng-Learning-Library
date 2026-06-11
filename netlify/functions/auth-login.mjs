@@ -10,6 +10,7 @@ export default async (req) => {
   const account = normalizeAccount(payload.account || payload.username || payload.phone);
   const phone = normalizePhone(payload.phone || payload.account || "");
   const password = String(payload.password || "");
+  const remember = payload.remember === true;
 
   if (!account || !password) {
     return badRequest("请输入账号和密码。");
@@ -51,7 +52,7 @@ export default async (req) => {
       }
     },
     200,
-    { "Set-Cookie": sessionCookie(token) }
+    { "Set-Cookie": sessionCookie(token, remember) }
   );
 };
 

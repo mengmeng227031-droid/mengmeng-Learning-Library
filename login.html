@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>蒙蒙学习库 - 账号登录</title>
-  <link rel="stylesheet" href="./login.css">
+  <link rel="stylesheet" href="./login.css?v=20260611-auto-login">
 </head>
 <body>
   <main class="login-page" aria-label="蒙蒙学习库登录页">
@@ -46,6 +46,12 @@
 
         <button class="login-button" type="submit">登录</button>
 
+        <div class="remember-row">
+          <input id="rememberInput" type="checkbox">
+          <label for="rememberInput">自动登录</label>
+          <span>仅在自己的设备上勾选</span>
+        </div>
+
         <div class="agreement-row">
           <input id="agreementInput" type="checkbox" checked>
           <label for="agreementInput">我已阅读并同意</label>
@@ -73,6 +79,6 @@
     </section>
   </div>
 
-  <script src="./login-account.js"></script>
+  <script src="./login-account.js?v=20260611-auto-login"></script>
 </body>
 </html>

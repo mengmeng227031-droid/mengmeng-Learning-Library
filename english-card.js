@@ -1,7 +1,8 @@
 const fallbackLesson = {
-  unitTitle: "Unit 3  My Family",
-  grade: "K2",
-  lesson: "1",
+  unitTitle: "Unit 3  Amazing animals",
+  grade: "三年级上",
+  gradeLabel: "三年级上",
+  lesson: "3",
   keywords: [
     { word: "sister", imagePrompt: "friendly young girl family member portrait" },
     { word: "have", imagePrompt: "a child holding a toy to show have" },
@@ -59,6 +60,15 @@ const fallbackLesson = {
   selfRating: { maxStars: 5, value: 0 }
 };
 
+const unitTitleCatalog = {
+  1: { unitTitle: "Unit 1  Making friends 结交朋友", readingTitle: "Making Friends" },
+  2: { unitTitle: "Unit 2  Different families 不同的家庭", readingTitle: "Different Families" },
+  3: { unitTitle: "Unit 3  Amazing animals 神奇的动物", readingTitle: "Amazing Animals" },
+  4: { unitTitle: "Unit 4  Plants around us 我们身边的植物", readingTitle: "Plants Around Us" },
+  5: { unitTitle: "Unit 5  The colourful world 多彩的世界（颜色）", readingTitle: "The Colourful World" },
+  6: { unitTitle: "Unit 6  Useful numbers 有用的数字（1-10）", readingTitle: "Useful Numbers" }
+};
+
 const artMap = {
   sister: "👧",
   have: "🤲",
@@ -92,7 +102,7 @@ async function loadLesson() {
   const inlineBook = window.ENGLISH_LESSON_BOOK;
   if (inlineBook?.units) {
     const lesson = inlineBook.units.find((item) => Number(item.unit) === targetUnit);
-    if (lesson) return lesson;
+    if (lesson) return normalizeLesson(lesson, targetUnit);
   }
   try {
     const response = await fetch("./data/english/grade3-up.json");
@@ -101,9 +111,9 @@ async function loadLesson() {
     }
     const book = await response.json();
     const lesson = book.units.find((item) => Number(item.unit) === targetUnit);
-    return lesson || fallbackLesson;
+    return normalizeLesson(lesson || fallbackLesson, targetUnit);
   } catch (error) {
-    return fallbackLesson;
+    return normalizeLesson(fallbackLesson, targetUnit);
   }
 }
 
@@ -122,9 +132,71 @@ function renderLesson(data) {
   renderDialogue("dialogueList", data.dialogue || []);
   renderReading(data.reading?.lines || []);
   renderGrammar(data.grammar || []);
+  renderSectionVisuals(data.sectionImages || {});
   renderExercise(data.exercise || []);
   renderSummary(data.summaryChecks || []);
   renderStars(data.selfRating?.maxStars || 5, data.selfRating?.value || 0);
+}
+
+function normalizeLesson(lesson, targetUnit) {
+  const unit = Number(lesson?.unit) || targetUnit || 1;
+  const unitTitle = getCompleteUnitTitle(lesson, unit);
+  const readingTitle = getCompleteReadingTitle(lesson, unitTitle, unit);
+  return {
+    ...lesson,
+    unit,
+    unitTitle,
+    lesson: lesson?.lesson || String(unit),
+    reading: {
+      ...(lesson?.reading || {}),
+      title: readingTitle
+    }
+  };
+}
+
+function getCompleteUnitTitle(lesson, unit) {
+  const catalogTitle = unitTitleCatalog[unit]?.unitTitle;
+  const title = removeGarbledText(lesson?.unitTitle);
+  const titleUnit = title.match(/^Unit\s+(\d+)/i);
+  if (title && (!titleUnit || Number(titleUnit[1]) === Number(unit))) return title;
+  if (catalogTitle) return catalogTitle;
+  const titleSource = lesson?.title || lesson?.reading?.title || "";
+  const englishTitle = getEnglishTitle(titleSource);
+  return englishTitle ? `Unit ${unit}  ${englishTitle}` : `Unit ${unit}`;
+}
+
+function getCompleteReadingTitle(lesson, unitTitle, unit) {
+  const catalogTitle = unitTitleCatalog[unit]?.readingTitle;
+  const title = removeGarbledText(lesson?.reading?.title || lesson?.title || "");
+  const titleFromUnit = getEnglishTitle(unitTitle.replace(new RegExp(`^Unit\\s+${unit}\\s*`, "i"), ""));
+  if (catalogTitle && Number(lesson?.unit) !== Number(unit)) return catalogTitle;
+  if (!title) return titleCase(titleFromUnit || catalogTitle || `Unit ${unit}`);
+  if (titleFromUnit && title.split(/\s+/).length <= 1 && titleFromUnit.split(/\s+/).length > 1) {
+    return titleCase(titleFromUnit);
+  }
+  return title;
+}
+
+function getEnglishTitle(value) {
+  return String(value || "")
+    .replace(/^Unit\s+\d+\s*/i, "")
+    .split(/[\u4e00-\u9fff]/)[0]
+    .replace(/[?？]+/g, "")
+    .trim();
+}
+
+function titleCase(value) {
+  return String(value || "").replace(/\b[A-Za-z][A-Za-z']*/g, (word) => {
+    const lower = word.toLowerCase();
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  });
+}
+
+function removeGarbledText(value) {
+  return String(value || "")
+    .replace(/\s*[?？]{2,}\s*/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function setText(id, value) {
@@ -178,6 +250,20 @@ function renderGrammar(items) {
   document.getElementById("grammarList").innerHTML = items
     .map((item) => `<li><strong>${escapeHtml(item.pattern)}</strong> ${escapeHtml(item.meaning)}</li>`)
     .join("");
+}
+
+function renderSectionVisuals(images) {
+  renderSectionVisual("dialogueVisual", images.dialogue);
+  renderSectionVisual("readVisual", images.read);
+  renderSectionVisual("grammarVisual", images.grammar);
+}
+
+function renderSectionVisual(targetId, image) {
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  target.innerHTML = image
+    ? `<img src="${escapeHtml(image)}" alt="" aria-hidden="true">`
+    : "";
 }
 
 function renderExercise(items) {

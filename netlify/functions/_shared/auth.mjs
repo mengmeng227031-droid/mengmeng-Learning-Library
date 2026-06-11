@@ -19,9 +19,10 @@ export function parseCookies(req) {
   );
 }
 
-export function sessionCookie(token) {
+export function sessionCookie(token, remember = false) {
   const maxAge = SESSION_DAYS * 24 * 60 * 60;
-  return `${COOKIE_NAME}=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=${maxAge}`;
+  const persistent = remember ? `; Max-Age=${maxAge}` : "";
+  return `${COOKIE_NAME}=${encodeURIComponent(token)}; Path=/; HttpOnly; Secure; SameSite=Lax${persistent}`;
 }
 
 export function clearSessionCookie() {

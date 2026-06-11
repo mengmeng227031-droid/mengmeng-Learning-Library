@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>英文单词看片 - 蒙蒙学习库</title>
+  <link rel="stylesheet" href="./english-word-slides.css">
+</head>
+<body>
+  <main class="word-slide-page" aria-label="英文单词看片">
+    <header class="word-slide-topbar">
+      <button class="back-button" id="backButton" type="button" aria-label="返回首页">‹ 返回</button>
+      <img src="./assets/brand/brand-logo.png" alt="蒙蒙学习库">
+      <div class="slide-meta">
+        <span id="deckLabel">英文初级</span>
+        <strong id="slideCounter">1 / 8</strong>
+      </div>
+    </header>
+
+    <section class="deck-shell">
+      <button class="slide-nav prev" id="prevButton" type="button" aria-label="上一张">‹</button>
+      <div class="slide-viewport" id="slideViewport" tabindex="0" aria-label="左右滑动学习单词卡片"></div>
+      <button class="slide-nav next" id="nextButton" type="button" aria-label="下一张">›</button>
+    </section>
+
+    <footer class="slide-footer">
+      <div class="slide-dots" id="slideDots" aria-label="卡片进度"></div>
+      <p id="lessonTip"></p>
+    </footer>
+  </main>
+
+  <script src="./english-word-slides.js"></script>
+</body>
+</html>

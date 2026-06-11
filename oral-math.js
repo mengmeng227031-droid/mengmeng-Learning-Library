@@ -2,8 +2,10 @@ const navItems = [
   { id: "home", label: "首页", icon: "⌂", href: "./index.html" },
   { id: "oral-math", label: "口算出题器", icon: "✎" },
   { id: "library", label: "资料库", icon: "★", href: "./index.html#library" },
-  { id: "sentence", label: "好句查询", icon: "⌕", placeholder: true },
-  { id: "english", label: "英文学习", icon: "Aa", href: "./english-card.html" },
+  { id: "sentence", label: "好句查询", icon: "⌕", href: "./index.html#sentence" },
+  { id: "english", label: "英文学习", icon: "Aa", href: "./index.html#english" },
+  { id: "gaokao", label: "高考志愿填报", icon: "志", href: "./admission.html" },
+  { id: "phonics", label: "自然拼读闪卡", icon: "Ph", href: "file:///D:/天津考试合集/pdfcreatlatex/phonics-ppt-deck/index.html" },
 ];
 
 const oralGrades = [
@@ -19,55 +21,51 @@ const oralProblemCounts = [20, 40, 60, 80, 100];
 
 const oralTopicsByGrade = {
   1: [
-    { id: "g1-add-20", title: "20以内加法", example: "8 + 7 = ?", kind: "add-20" },
-    { id: "g1-sub-20", title: "20以内减法", example: "16 - 9 = ?", kind: "sub-20" },
-    { id: "g1-add-sub-20", title: "20以内加减混合", example: "9 + 6 - 5 = ?", kind: "mixed-20" },
-    { id: "g1-add-100-ten", title: "整十数加减", example: "40 + 30 = ?", kind: "ten-100" },
-    { id: "g1-compare-100", title: "100以内比大小", example: "56 ○ 65", kind: "compare-100" },
-    { id: "g1-fill-20", title: "凑十填空", example: "7 + ( ) = 10", kind: "fill-10" },
+    { id: "g1-add-sub-10", title: "10以内加减", example: "3 + 5 = ?、9 - 4 = ?", target: "脱口而出，正确率≥95%", kind: "add-sub-10" },
+    { id: "g1-carry-add-20", title: "20以内进位加", example: "8 + 7 = ?", target: "每分钟8-10题，正确率≥90%", kind: "carry-add-20" },
+    { id: "g1-borrow-sub-20", title: "20以内退位减", example: "13 - 8 = ?", target: "每分钟8-10题，正确率≥90%", kind: "borrow-sub-20" },
+    { id: "g1-ten-add-sub", title: "整十数加减", example: "30 + 20 = ?", target: "会口算，结果控制在100以内", kind: "ten-add-sub" },
+    { id: "g1-two-digit-one", title: "两位数±一位数", example: "25 + 3 = ?、46 - 2 = ?", target: "不进位、不退位，会口算", kind: "two-digit-one-no-carry" },
   ],
   2: [
-    { id: "g2-mixed", title: "加减混合", example: "56 - 42 + 10 = ?", kind: "mixed-100" },
-    { id: "g2-add-chain", title: "连加", example: "23 + 30 + 32 = ?", kind: "chain-add-100" },
-    { id: "g2-sub-chain", title: "连减", example: "96 - 57 - 8 = ?", kind: "chain-sub-100" },
-    { id: "g2-add-sub-100", title: "100以内的加减法", example: "54 + 27 - 10 = ?", kind: "mixed-100" },
-    { id: "g2-multiply", title: "表内乘法", example: "4 × 3 - 7 = ?", kind: "table-multiply-mixed" },
-    { id: "g2-review", title: "二年级上册综合复习", example: "88 - 85 + 19 = ?", kind: "grade2-review" },
-    { id: "g2-division", title: "表内除法", example: "63 ÷ 9 = ?", kind: "table-division" },
-    { id: "g2-mixed-op", title: "混合运算", example: "24 + 15 ÷ 5 = ?", kind: "multiply-division-mixed" },
-    { id: "g2-bracket", title: "带括号的混合运算", example: "7 × (3 × 1) = ?", kind: "bracket-mixed" },
+    { id: "g2-add-sub-100", title: "100以内加减", example: "47 + 8 = ?、53 - 9 = ?", target: "每分钟10-15题，正确率≥90%", kind: "add-sub-100" },
+    { id: "g2-table-multiply", title: "表内乘法", example: "7 × 6 = ?、9 × 8 = ?", target: "脱口而出，正确率≥95%", kind: "table-multiply" },
+    { id: "g2-table-division", title: "表内除法", example: "56 ÷ 7 = ?、36 ÷ 4 = ?", target: "脱口而出，正确率≥95%", kind: "table-division" },
+    { id: "g2-multiply-add", title: "简单乘加", example: "5 × 3 + 2 = ?", target: "会口算，两步不带括号", kind: "multiply-add" },
+    { id: "g2-multiply-sub", title: "简单乘减", example: "6 × 4 - 5 = ?", target: "会口算，结果非负", kind: "multiply-sub" },
+    { id: "g2-review", title: "二年级综合", example: "47 + 8 = ?、7 × 6 = ?", target: "加减与口诀混合巩固", kind: "grade2-review" },
   ],
   3: [
-    { id: "g3-add-sub", title: "三位数加减", example: "356 + 248 = ?", kind: "add-sub-1000" },
-    { id: "g3-multi-one", title: "两位数乘一位数", example: "42 × 3 = ?", kind: "two-digit-times-one" },
-    { id: "g3-div-one", title: "整十整百除一位数", example: "240 ÷ 6 = ?", kind: "hundreds-div-one" },
-    { id: "g3-remainder", title: "有余数除法", example: "37 ÷ 5 = ?", kind: "division-remainder" },
-    { id: "g3-mixed", title: "乘除混合", example: "6 × 8 ÷ 4 = ?", kind: "multiply-division-mixed" },
-    { id: "g3-unit", title: "长度质量单位换算", example: "3千米 = ?米", kind: "unit-convert" },
+    { id: "g3-whole-add-sub", title: "万以内整百整千加减", example: "300 + 500 = ?、1200 - 400 = ?", target: "会口算，以整百整千为主", kind: "whole-add-sub-10000" },
+    { id: "g3-round-times-one", title: "一位数×整十整百", example: "20 × 4 = ?", target: "熟练口算", kind: "round-times-one" },
+    { id: "g3-two-digit-times-one", title: "两位数×一位数", example: "23 × 3 = ?", target: "不进位，熟练口算", kind: "two-digit-times-one-no-carry" },
+    { id: "g3-round-div-one", title: "整十整百÷一位数", example: "180 ÷ 3 = ?", target: "整除，熟练口算", kind: "round-div-one" },
+    { id: "g3-two-digit-div-one", title: "两位数÷一位数", example: "48 ÷ 2 = ?", target: "整除，熟练口算", kind: "two-digit-div-one" },
+    { id: "g3-fraction-same", title: "简单分数加减", example: "1/5 + 2/5 = ?", target: "分母≤10，同分母", kind: "fraction-same-10" },
   ],
   4: [
-    { id: "g4-big-number", title: "万以上数的认识", example: "2438，( )，4438，5438", kind: "number-sequence" },
-    { id: "g4-compare", title: "万以内的数比大小", example: "5519 ○ 5588", kind: "compare-10000" },
-    { id: "g4-mixed", title: "四则混合运算", example: "96 ÷ 8 + 27 = ?", kind: "four-mixed" },
-    { id: "g4-factor", title: "乘法分配律", example: "25 × 16 × 4 = ?", kind: "law-multiply" },
-    { id: "g4-decimal", title: "小数加减初步", example: "3.6 + 2.8 = ?", kind: "decimal-add-sub" },
-    { id: "g4-area", title: "面积口算", example: "长8米宽6米，面积=?", kind: "area-simple" },
+    { id: "g4-big-add-sub", title: "整万整亿数加减", example: "30000 + 50000 = ?", target: "亿以内，会口算", kind: "big-round-add-sub" },
+    { id: "g4-two-digit-times-ten", title: "两位数×整十/整百", example: "30 × 50 = ?", target: "熟练口算", kind: "two-digit-times-ten" },
+    { id: "g4-three-digit-times-one", title: "几百几十×一位数", example: "240 × 2 = ?", target: "熟练口算", kind: "three-digit-times-one" },
+    { id: "g4-two-digit-div-ten", title: "两位数÷整十", example: "80 ÷ 20 = ?", target: "整除，熟练口算", kind: "two-digit-div-ten" },
+    { id: "g4-three-digit-div-one", title: "几百几十÷一位数", example: "360 ÷ 3 = ?", target: "整除，熟练口算", kind: "three-digit-div-one" },
+    { id: "g4-decimal-add-sub", title: "小数简单加减", example: "0.5 + 0.3 = ?、1.2 - 0.7 = ?", target: "一位、两位小数，会口算", kind: "decimal-add-sub" },
   ],
   5: [
-    { id: "g5-decimal-mix", title: "小数四则口算", example: "4.8 ÷ 0.6 = ?", kind: "decimal-mixed" },
-    { id: "g5-fraction-add", title: "同分母分数加减", example: "3/8 + 2/8 = ?", kind: "fraction-same" },
-    { id: "g5-factor-multiple", title: "因数与倍数", example: "36的最大因数是?", kind: "factor-multiple" },
-    { id: "g5-equation", title: "简易方程", example: "x + 18 = 45", kind: "equation-simple" },
-    { id: "g5-compare", title: "小数比大小", example: "6.08 ○ 6.8", kind: "decimal-compare" },
-    { id: "g5-unit", title: "体积单位换算", example: "2立方米 = ?立方分米", kind: "volume-convert" },
+    { id: "g5-decimal-times", title: "小数乘法", example: "0.4 × 5 = ?、2.5 × 4 = ?", target: "整数×小数，简单熟练", kind: "decimal-times" },
+    { id: "g5-decimal-division", title: "小数除法", example: "3.6 ÷ 6 = ?、1 ÷ 0.5 = ?", target: "小数÷整数、简单小数除法", kind: "decimal-division" },
+    { id: "g5-fraction-add-sub", title: "异分母分数加减", example: "1/2 + 1/3 = ?", target: "分母≤20，会口算", kind: "fraction-different-add-sub" },
+    { id: "g5-fraction-times-div", title: "简单分数乘除", example: "2/3 × 3/4 = ?", target: "简单乘除，会口算", kind: "fraction-times-div" },
+    { id: "g5-percent-convert", title: "百分数互化", example: "25% = ? = 1/4", target: "百分数、小数、分数互化", kind: "percent-convert" },
+    { id: "g5-review", title: "五年级综合", example: "2.5 × 4 = ?、1/2 + 1/3 = ?", target: "小数、分数、百分数巩固", kind: "grade5-review" },
   ],
   6: [
-    { id: "g6-fraction-mix", title: "分数四则口算", example: "2/3 × 9 = ?", kind: "fraction-mixed" },
-    { id: "g6-percent", title: "百分数口算", example: "80的25% = ?", kind: "percent-simple" },
-    { id: "g6-ratio", title: "比和比例", example: "3:5 = ?/20", kind: "ratio-simple" },
-    { id: "g6-negative", title: "正负数加减", example: "-8 + 13 = ?", kind: "negative-add-sub" },
-    { id: "g6-surface", title: "圆柱圆锥口算", example: "底面积12高5，体积=?", kind: "solid-simple" },
-    { id: "g6-review", title: "六年级综合复习", example: "36 × 25% + 14 = ?", kind: "grade6-review" },
+    { id: "g6-fraction-decimal-percent", title: "分数小数百分数混合", example: "0.25 + 1/4 = ?、3/5 × 50% = ?", target: "简单混合口算，熟练", kind: "fraction-decimal-percent" },
+    { id: "g6-ratio-simplify", title: "比的化简", example: "12:18 = ?", target: "会口算", kind: "ratio-simplify" },
+    { id: "g6-ratio-value", title: "求比值", example: "0.8:0.2 = ?", target: "会口算", kind: "ratio-value" },
+    { id: "g6-two-step-integer", title: "整数两步混合", example: "36 ÷ 6 + 14 = ?", target: "两步四则，会口算", kind: "two-step-integer" },
+    { id: "g6-two-step-fraction", title: "分数两步混合", example: "2/3 × 6 + 4 = ?", target: "简单分数四则两步", kind: "two-step-fraction" },
+    { id: "g6-review", title: "六年级综合复习", example: "0.25 + 1/4 = ?、12:18 = ?", target: "分数、小数、百分数、比综合", kind: "grade6-review" },
   ],
 };
 
@@ -126,6 +124,7 @@ function renderOralTopicCard(topic) {
       <div>
         <h3>${topic.title}</h3>
         <p>例题：${topic.example}</p>
+        <small>${topic.target}</small>
       </div>
       <div class="oral-card-actions">
         <label>
@@ -220,225 +219,290 @@ function generateOralQuestions(topic, count) {
 
 function generateOralQuestion(kind) {
   switch (kind) {
-    case "add-20": {
-      const a = rand(1, 12);
-      const b = rand(1, 20 - a);
+    case "add-sub-10":
+      return generateAddSub10();
+    case "carry-add-20": {
+      const a = rand(2, 9);
+      const b = rand(11 - a, 9);
       return qa(`${a} + ${b} =`, a + b);
     }
-    case "sub-20": {
-      const a = rand(10, 20);
-      const b = rand(1, a);
+    case "borrow-sub-20": {
+      const a = rand(11, 18);
+      const b = rand((a % 10) + 1, 9);
       return qa(`${a} - ${b} =`, a - b);
     }
-    case "mixed-20": {
-      const a = rand(3, 12);
-      const b = rand(1, 20 - a);
-      const c = rand(1, a + b);
-      return qa(`${a} + ${b} - ${c} =`, a + b - c);
-    }
-    case "ten-100": {
-      const a = rand(1, 9) * 10;
-      const b = rand(1, 9) * 10;
-      const subtract = Math.random() > 0.5;
-      if (subtract) return qa(`${Math.max(a, b)} - ${Math.min(a, b)} =`, Math.abs(a - b));
-      return qa(`${a} + ${b} =`, a + b);
-    }
-    case "compare-100": {
-      const a = rand(1, 100);
-      const b = rand(1, 100);
-      return qa(`${a} ○ ${b}`, compareAnswer(a, b));
-    }
-    case "fill-10": {
-      const a = rand(1, 9);
-      return qa(`${a} + ( ) = 10`, 10 - a);
-    }
-    case "mixed-100": {
-      const a = rand(20, 90);
-      const b = rand(5, 45);
-      const c = rand(1, 30);
-      return qa(`${a} - ${b} + ${c} =`, a - b + c);
-    }
-    case "chain-add-100": {
-      const a = rand(10, 35);
-      const b = rand(10, 35);
-      const c = rand(5, 100 - a - b);
-      return qa(`${a} + ${b} + ${c} =`, a + b + c);
-    }
-    case "chain-sub-100": {
-      const a = rand(60, 100);
-      const b = rand(10, 45);
-      const c = rand(1, Math.max(1, a - b));
-      return qa(`${a} - ${b} - ${c} =`, a - b - c);
-    }
-    case "table-multiply-mixed": {
+    case "ten-add-sub":
+      return generateTenAddSub();
+    case "two-digit-one-no-carry":
+      return generateTwoDigitOneNoCarry();
+    case "add-sub-100":
+      return generateAddSub100();
+    case "table-multiply": {
       const a = rand(2, 9);
       const b = rand(2, 9);
-      const c = rand(1, Math.min(20, a * b));
-      return qa(`${a} × ${b} - ${c} =`, a * b - c);
+      return qa(`${a} × ${b} =`, a * b);
     }
     case "grade2-review":
-      return generateOralQuestion(pick(["mixed-100", "chain-add-100", "chain-sub-100", "table-division"]));
+      return generateOralQuestion(pick(["add-sub-100", "table-multiply", "table-division", "multiply-add", "multiply-sub"]));
     case "table-division": {
       const divisor = rand(2, 9);
       const quotient = rand(1, 9);
       return qa(`${divisor * quotient} ÷ ${divisor} =`, quotient);
     }
-    case "multiply-division-mixed": {
+    case "multiply-add": {
       const a = rand(2, 9);
       const b = rand(2, 9);
-      const c = pick([a, b]);
-      return qa(`${a} × ${b} ÷ ${c} =`, (a * b) / c);
+      const c = rand(1, 9);
+      return qa(`${a} × ${b} + ${c} =`, a * b + c);
     }
-    case "bracket-mixed": {
+    case "multiply-sub": {
       const a = rand(2, 9);
-      const b = rand(1, 5);
-      const c = rand(1, 4);
-      return qa(`${a} × (${b} + ${c}) =`, a * (b + c));
+      const b = rand(2, 9);
+      const c = rand(1, a * b);
+      return qa(`${a} × ${b} - ${c} =`, a * b - c);
     }
-    case "add-sub-1000": {
-      const a = rand(120, 780);
-      const b = rand(80, 420);
-      const subtract = Math.random() > 0.5;
-      if (subtract) return qa(`${Math.max(a, b)} - ${Math.min(a, b)} =`, Math.abs(a - b));
-      return qa(`${a} + ${b} =`, a + b);
-    }
-    case "two-digit-times-one": {
-      const a = rand(12, 98);
+    case "whole-add-sub-10000":
+      return generateWholeAddSub10000();
+    case "round-times-one": {
+      const a = pick([rand(2, 9) * 10, rand(1, 9) * 100]);
       const b = rand(2, 9);
       return qa(`${a} × ${b} =`, a * b);
     }
-    case "hundreds-div-one": {
+    case "two-digit-times-one-no-carry": {
+      const b = rand(2, 4);
+      const tens = rand(1, Math.floor(9 / b));
+      const ones = rand(1, Math.floor(9 / b));
+      const a = tens * 10 + ones;
+      return qa(`${a} × ${b} =`, a * b);
+    }
+    case "round-div-one": {
       const divisor = rand(2, 9);
-      const quotient = rand(20, 90);
+      const quotient = pick([rand(2, 9) * 10, rand(1, 9) * 100]);
       return qa(`${divisor * quotient} ÷ ${divisor} =`, quotient);
     }
-    case "division-remainder": {
+    case "two-digit-div-one": {
       const divisor = rand(2, 9);
-      const quotient = rand(2, 9);
-      const remainder = rand(1, divisor - 1);
-      return qa(`${divisor * quotient + remainder} ÷ ${divisor} =`, `${quotient}余${remainder}`);
+      const maxQuotient = Math.floor(99 / divisor);
+      const quotient = rand(2, maxQuotient);
+      return qa(`${divisor * quotient} ÷ ${divisor} =`, quotient);
     }
-    case "unit-convert": {
-      const items = [
-        () => {
-          const n = rand(2, 9);
-          return qa(`${n}千米 = ( )米`, n * 1000);
-        },
-        () => {
-          const n = rand(3, 20) * 100;
-          return qa(`${n}厘米 = ( )米`, n / 100);
-        },
-        () => {
-          const n = rand(2, 9);
-          return qa(`${n}吨 = ( )千克`, n * 1000);
-        },
-      ];
-      return pick(items)();
+    case "fraction-same-10":
+      return generateSameDenominatorFraction(10);
+    case "big-round-add-sub":
+      return generateBigRoundAddSub();
+    case "two-digit-times-ten": {
+      const a = rand(2, 9) * 10;
+      const b = pick([rand(2, 9) * 10, rand(1, 5) * 100]);
+      return qa(`${a} × ${b} =`, a * b);
     }
-    case "number-sequence": {
-      const start = rand(12, 80) * 100 + rand(1, 9);
-      const step = pick([100, 200, 500, 1000]);
-      return qa(`${start}，( )，${start + step * 2}，${start + step * 3}`, start + step);
+    case "three-digit-times-one": {
+      const a = rand(10, 90) * 10;
+      const b = rand(2, 4);
+      return qa(`${a} × ${b} =`, a * b);
     }
-    case "compare-10000": {
-      const a = rand(1000, 9999);
-      const b = rand(1000, 9999);
-      return qa(`${a} ○ ${b}`, compareAnswer(a, b));
+    case "two-digit-div-ten": {
+      const divisor = rand(1, 4) * 10;
+      const quotient = rand(2, Math.floor(99 / divisor));
+      return qa(`${divisor * quotient} ÷ ${divisor} =`, quotient);
     }
-    case "four-mixed": {
+    case "three-digit-div-one": {
+      const divisor = rand(2, 9);
+      const quotient = rand(2, 30) * 10;
+      return qa(`${divisor * quotient} ÷ ${divisor} =`, quotient);
+    }
+    case "decimal-add-sub":
+      return generateDecimalAddSub();
+    case "decimal-times": {
+      const a = pick([rand(1, 9) / 10, rand(11, 29) / 10, 2.5, 0.4]);
+      const b = pick([2, 4, 5, 8, 10]);
+      return qa(`${formatDecimal(a)} × ${b} =`, formatDecimal(a * b));
+    }
+    case "decimal-division":
+      return generateDecimalDivision();
+    case "fraction-different-add-sub":
+      return generateDifferentDenominatorFraction();
+    case "fraction-times-div":
+      return generateFractionTimesDiv();
+    case "percent-convert":
+      return generatePercentConvert();
+    case "grade5-review":
+      return generateOralQuestion(pick(["decimal-times", "decimal-division", "fraction-different-add-sub", "fraction-times-div", "percent-convert"]));
+    case "fraction-decimal-percent":
+      return generateFractionDecimalPercent();
+    case "ratio-simplify": {
+      const a = rand(2, 12);
+      const b = rand(2, 12);
+      const factor = rand(2, 9);
+      return qa(`${a * factor}:${b * factor} =`, `${a / gcd(a, b)}:${b / gcd(a, b)}`);
+    }
+    case "ratio-value": {
+      const answer = rand(2, 8);
+      const b = pick([0.2, 0.5, 2, 3, 4]);
+      const a = answer * b;
+      return qa(`${formatDecimal(a)}:${formatDecimal(b)} =`, answer);
+    }
+    case "two-step-integer": {
       const a = rand(2, 9);
       const b = rand(2, 9);
-      const c = rand(10, 60);
+      const c = rand(3, 30);
       return qa(`${a * b} ÷ ${a} + ${c} =`, b + c);
     }
-    case "law-multiply": {
-      const a = pick([25, 125, 5]);
-      const b = pick([4, 8, 20]);
-      const c = rand(2, 16);
-      return qa(`${a} × ${c} × ${b} =`, a * c * b);
-    }
-    case "decimal-add-sub": {
-      const a = rand(10, 90) / 10;
-      const b = rand(10, 90) / 10;
-      const subtract = Math.random() > 0.5;
-      if (subtract) return qa(`${formatDecimal(Math.max(a, b))} - ${formatDecimal(Math.min(a, b))} =`, formatDecimal(Math.abs(a - b)));
-      return qa(`${formatDecimal(a)} + ${formatDecimal(b)} =`, formatDecimal(a + b));
-    }
-    case "area-simple": {
-      const a = rand(3, 20);
-      const b = rand(3, 20);
-      return qa(`长${a}米，宽${b}米，面积 =`, `${a * b}平方米`);
-    }
-    case "decimal-mixed": {
-      const op = pick(["+", "-", "×", "÷"]);
-      if (op === "÷") {
-        const b = rand(2, 9) / 10;
-        const answer = rand(2, 12);
-        return qa(`${formatDecimal(b * answer)} ÷ ${formatDecimal(b)} =`, answer);
-      }
-      const a = rand(10, 90) / 10;
-      const b = rand(2, 20) / 10;
-      if (op === "×") return qa(`${formatDecimal(a)} × ${formatDecimal(b)} =`, formatDecimal(a * b));
-      if (op === "-") return qa(`${formatDecimal(Math.max(a, b))} - ${formatDecimal(Math.min(a, b))} =`, formatDecimal(Math.abs(a - b)));
-      return qa(`${formatDecimal(a)} + ${formatDecimal(b)} =`, formatDecimal(a + b));
-    }
-    case "fraction-same": {
-      const denominator = rand(4, 12);
-      const a = rand(1, denominator - 2);
-      const b = rand(1, denominator - a - 1);
-      return qa(`${a}/${denominator} + ${b}/${denominator} =`, simplifyFraction(a + b, denominator));
-    }
-    case "factor-multiple": {
-      const n = rand(6, 60);
-      return qa(`${n}的最大因数是`, n);
-    }
-    case "equation-simple": {
-      const answer = rand(3, 80);
-      const b = rand(5, 50);
-      return qa(`x + ${b} = ${answer + b}，x =`, answer);
-    }
-    case "decimal-compare": {
-      const a = rand(100, 999) / 100;
-      const b = rand(100, 999) / 100;
-      return qa(`${formatDecimal(a)} ○ ${formatDecimal(b)}`, compareAnswer(a, b));
-    }
-    case "volume-convert": {
-      const n = rand(1, 9);
-      return qa(`${n}立方米 = ( )立方分米`, n * 1000);
-    }
-    case "fraction-mixed": {
-      const denominator = rand(3, 12);
+    case "two-step-fraction": {
+      const denominator = rand(2, 9);
+      const multiplier = denominator;
       const numerator = rand(1, denominator - 1);
-      const multiplier = rand(2, 12);
-      return qa(`${numerator}/${denominator} × ${multiplier} =`, simplifyFraction(numerator * multiplier, denominator));
-    }
-    case "percent-simple": {
-      const percent = pick([10, 20, 25, 50, 75]);
-      const base = rand(2, 20) * 20;
-      return qa(`${base}的${percent}% =`, (base * percent) / 100);
-    }
-    case "ratio-simple": {
-      const a = rand(2, 9);
-      const b = rand(2, 9);
-      const k = rand(2, 8);
-      return qa(`${a}:${b} = ( ):${b * k}`, a * k);
-    }
-    case "negative-add-sub": {
-      const a = rand(-20, 20);
-      const b = rand(-20, 20);
-      const sign = b >= 0 ? "+" : "-";
-      return qa(`${a} ${sign} ${Math.abs(b)} =`, a + b);
-    }
-    case "solid-simple": {
-      const baseArea = rand(6, 30);
-      const height = rand(3, 12);
-      return qa(`圆柱底面积${baseArea}，高${height}，体积 =`, baseArea * height);
+      const c = rand(1, 9);
+      return qa(`${numerator}/${denominator} × ${multiplier} + ${c} =`, numerator + c);
     }
     case "grade6-review":
-      return generateOralQuestion(pick(["fraction-mixed", "percent-simple", "ratio-simple", "negative-add-sub"]));
+      return generateOralQuestion(pick(["fraction-decimal-percent", "ratio-simplify", "ratio-value", "two-step-integer", "two-step-fraction"]));
     default:
       return qa("1 + 1 =", 2);
   }
+}
+
+function generateAddSub10() {
+  const a = rand(1, 9);
+  const b = rand(1, 10 - a);
+  if (Math.random() > 0.5) return qa(`${a} + ${b} =`, a + b);
+  return qa(`${a + b} - ${b} =`, a);
+}
+
+function generateTenAddSub() {
+  const a = rand(1, 9) * 10;
+  const b = rand(1, 10 - a / 10) * 10;
+  if (Math.random() > 0.5) return qa(`${a} + ${b} =`, a + b);
+  return qa(`${a + b} - ${b} =`, a);
+}
+
+function generateTwoDigitOneNoCarry() {
+  const tens = rand(2, 9);
+  const ones = rand(1, 8);
+  const b = rand(1, 9 - ones);
+  const a = tens * 10 + ones;
+  if (Math.random() > 0.5) return qa(`${a} + ${b} =`, a + b);
+  const subtrahend = rand(1, ones);
+  return qa(`${a} - ${subtrahend} =`, a - subtrahend);
+}
+
+function generateAddSub100() {
+  if (Math.random() > 0.5) {
+    const tens = rand(2, 8);
+    const ones = rand(1, 9);
+    const a = tens * 10 + ones;
+    const b = rand(10 - ones, 9);
+    return qa(`${a} + ${b} =`, a + b);
+  }
+  const tens = rand(3, 9);
+  const ones = rand(0, 8);
+  const a = tens * 10 + ones;
+  const b = rand(ones + 1, 9);
+  return qa(`${a} - ${b} =`, a - b);
+}
+
+function generateWholeAddSub10000() {
+  const unit = pick([100, 1000]);
+  const a = rand(1, 8) * unit;
+  const b = rand(1, 10 - a / unit) * unit;
+  if (Math.random() > 0.5) return qa(`${a} + ${b} =`, a + b);
+  return qa(`${a + b} - ${b} =`, a);
+}
+
+function generateSameDenominatorFraction(maxDenominator) {
+  const denominator = rand(3, maxDenominator);
+  const a = rand(1, denominator - 1);
+  const b = rand(1, denominator - 1);
+  if (a + b < denominator && Math.random() > 0.45) {
+    return qa(`${a}/${denominator} + ${b}/${denominator} =`, simplifyFraction(a + b, denominator));
+  }
+  const top = Math.max(a, b);
+  const bottom = Math.min(a, b);
+  return qa(`${top}/${denominator} - ${bottom}/${denominator} =`, simplifyFraction(top - bottom, denominator));
+}
+
+function generateBigRoundAddSub() {
+  const unit = 10000;
+  const a = rand(1, 9000) * unit;
+  const b = rand(1, 10000 - a / unit) * unit;
+  if (Math.random() > 0.5) return qa(`${a} + ${b} =`, a + b);
+  return qa(`${a + b} - ${b} =`, a);
+}
+
+function generateDecimalAddSub() {
+  const scale = pick([10, 100]);
+  const a = rand(1, 90) / scale;
+  const b = rand(1, 90) / scale;
+  if (Math.random() > 0.5) return qa(`${formatDecimal(a)} + ${formatDecimal(b)} =`, formatDecimal(a + b));
+  return qa(`${formatDecimal(Math.max(a, b))} - ${formatDecimal(Math.min(a, b))} =`, formatDecimal(Math.abs(a - b)));
+}
+
+function generateDecimalDivision() {
+  if (Math.random() > 0.65) {
+    const divisor = pick([0.2, 0.5, 0.25]);
+    const answer = rand(1, 8);
+    return qa(`${formatDecimal(divisor * answer)} ÷ ${formatDecimal(divisor)} =`, answer);
+  }
+  const divisor = pick([2, 4, 5, 6, 8]);
+  const answer = rand(1, 12) / 10;
+  return qa(`${formatDecimal(answer * divisor)} ÷ ${divisor} =`, formatDecimal(answer));
+}
+
+function generateDifferentDenominatorFraction() {
+  const pairs = [[2, 3], [2, 5], [3, 4], [3, 5], [4, 5], [5, 6], [5, 8], [8, 10], [10, 20]];
+  const [d1, d2] = pick(pairs);
+  const a = rand(1, d1 - 1);
+  const b = rand(1, d2 - 1);
+  const common = lcm(d1, d2);
+  const left = a * (common / d1);
+  const right = b * (common / d2);
+  if (left > right && Math.random() > 0.5) {
+    return qa(`${a}/${d1} - ${b}/${d2} =`, simplifyFraction(left - right, common));
+  }
+  return qa(`${a}/${d1} + ${b}/${d2} =`, simplifyFraction(left + right, common));
+}
+
+function generateFractionTimesDiv() {
+  if (Math.random() > 0.45) {
+    const d1 = rand(2, 6);
+    const n1 = rand(1, d1 - 1);
+    const d2 = rand(2, 6);
+    const n2 = rand(1, d2 - 1);
+    return qa(`${n1}/${d1} × ${n2}/${d2} =`, simplifyFraction(n1 * n2, d1 * d2));
+  }
+  const denominator = rand(2, 9);
+  const numerator = rand(1, denominator - 1);
+  const divisor = rand(2, 5);
+  return qa(`${numerator}/${denominator} ÷ ${divisor} =`, simplifyFraction(numerator, denominator * divisor));
+}
+
+function generatePercentConvert() {
+  const item = pick([
+    ["25%", "0.25 = 1/4"],
+    ["50%", "0.5 = 1/2"],
+    ["75%", "0.75 = 3/4"],
+    ["20%", "0.2 = 1/5"],
+    ["10%", "0.1 = 1/10"],
+  ]);
+  return qa(`${item[0]} =`, item[1]);
+}
+
+function generateFractionDecimalPercent() {
+  if (Math.random() > 0.5) {
+    const item = pick([
+      ["0.25 + 1/4 =", "0.5"],
+      ["0.5 + 1/2 =", "1"],
+      ["0.2 + 1/5 =", "0.4"],
+      ["0.75 - 1/4 =", "0.5"],
+    ]);
+    return qa(item[0], item[1]);
+  }
+  const item = pick([
+    ["3/5 × 50% =", "0.3"],
+    ["1/2 × 40% =", "0.2"],
+    ["2/5 × 25% =", "0.1"],
+    ["3/4 × 20% =", "0.15"],
+  ]);
+  return qa(item[0], item[1]);
 }
 
 function qa(question, answer) {
@@ -478,6 +542,10 @@ function gcd(a, b) {
     b = next;
   }
   return a || 1;
+}
+
+function lcm(a, b) {
+  return (a * b) / gcd(a, b);
 }
 
 function showToast(message) {

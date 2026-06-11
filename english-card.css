@@ -42,10 +42,11 @@ input {
 
 .card-topbar {
   display: grid;
-  grid-template-columns: 120px 1fr 150px;
+  grid-template-columns: 120px 1fr auto;
   align-items: center;
   max-width: 1180px;
   margin: 0 auto 20px;
+  gap: 18px;
 }
 
 .card-topbar img {
@@ -88,6 +89,7 @@ input {
   justify-self: end;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
 }
 
 .print-link {
@@ -474,59 +476,7 @@ img.exercise-art {
 }
 
 .dialogue-scene {
-  grid-template-columns: minmax(0, 1fr) 196px;
-}
-
-.children-scene {
-  position: relative;
-  height: 174px;
-  border-radius: 18px;
-  background:
-    linear-gradient(#b97838 0 0) center 126px / 170px 28px no-repeat,
-    linear-gradient(#8e542a 0 0) 22px 154px / 18px 34px no-repeat,
-    linear-gradient(#8e542a 0 0) 152px 154px / 18px 34px no-repeat,
-    #fff6dc;
-}
-
-.children-scene span {
-  position: absolute;
-  top: 34px;
-  width: 62px;
-  height: 82px;
-  border-radius: 30px 30px 18px 18px;
-  background: var(--blue);
-}
-
-.children-scene span::before {
-  content: "";
-  position: absolute;
-  top: -26px;
-  left: 9px;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #ffd6a6;
-  box-shadow: inset 0 10px 0 rgba(92, 49, 30, 0.34);
-}
-
-.children-scene span:first-child {
-  left: 38px;
-}
-
-.children-scene span:nth-child(2) {
-  right: 32px;
-  background: var(--pink);
-}
-
-.children-scene i {
-  position: absolute;
-  left: 68px;
-  bottom: 28px;
-  width: 62px;
-  height: 42px;
-  border-radius: 10px;
-  background: #ffffff;
-  border: 2px solid #7db2ff;
+  grid-template-columns: minmax(0, 1fr) 224px;
 }
 
 .read-section,
@@ -535,7 +485,7 @@ img.exercise-art {
 }
 
 .read-layout {
-  grid-template-columns: minmax(0, 1fr) 210px;
+  grid-template-columns: minmax(0, 1fr) 224px;
 }
 
 .read-layout h3 {
@@ -561,79 +511,40 @@ img.exercise-art {
   font-weight: 900;
 }
 
-.family-scene {
-  position: relative;
-  height: 132px;
-  border-radius: 18px;
-  background:
-    linear-gradient(45deg, transparent 48%, #e95236 49% 65%, transparent 66%) center 16px / 92px 54px no-repeat,
-    linear-gradient(#ffd46a 0 0) center 58px / 116px 70px no-repeat,
-    linear-gradient(#4d8bff 0 0) 76px 80px / 20px 28px no-repeat,
-    linear-gradient(#37d2c6 0 0) 122px 80px / 20px 28px no-repeat,
-    #eefcff;
-}
-
-.family-head {
-  position: absolute;
-  bottom: 18px;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #ffd6a6;
-  box-shadow: inset 0 8px 0 rgba(92, 49, 30, 0.28);
-}
-
-.family-head:nth-child(1) {
-  left: 22px;
-}
-
-.family-head:nth-child(2) {
-  left: 86px;
-}
-
-.family-head:nth-child(3) {
-  right: 24px;
-}
-
-.family-scene i {
-  position: absolute;
-  right: 16px;
-  top: 12px;
-  width: 34px;
-  height: 20px;
-  border-radius: 8px;
-  background: #ffe1a0;
-  transform: rotate(-18deg);
-}
-
 .grammar-layout {
-  grid-template-columns: minmax(0, 1fr) 76px;
+  grid-template-columns: minmax(0, 1fr) 136px;
 }
 
 .grammar-layout li strong {
   color: #263450;
 }
 
-.bulb {
-  display: block;
-  width: 54px;
-  height: 54px;
-  justify-self: center;
-  border-radius: 50% 50% 42% 42%;
-  background: var(--yellow);
-  box-shadow:
-    0 0 0 8px rgba(255, 200, 61, 0.18),
-    0 12px 22px rgba(255, 200, 61, 0.2);
+.section-visual {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
 }
 
-.bulb::after {
-  content: "";
+.section-visual img {
   display: block;
-  width: 24px;
-  height: 14px;
-  margin: 48px auto 0;
-  border-radius: 5px;
-  background: #ff9f3d;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dialogue-visual {
+  height: 188px;
+}
+
+.read-visual {
+  height: 148px;
+}
+
+.grammar-visual {
+  height: 118px;
 }
 
 .exercise-section {
@@ -687,29 +598,169 @@ img.exercise-art {
 }
 
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    overflow: hidden;
+  }
+
   body {
     min-width: 0;
     background: #ffffff;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .card-page {
-    padding: 0;
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 8mm;
+    overflow: hidden;
+    border: 2px solid var(--yellow);
+    background: var(--paper);
   }
 
-  .card-topbar {
+  .card-topbar,
+  .card-title-row,
+  .meta-bar,
+  .talk-section,
+  .practice-section,
+  .homework-section,
+  .read-section,
+  .grammar-section,
+  .exercise-section,
+  .summary-section {
     display: none;
   }
 
   .card-stage {
-    grid-template-columns: 1fr;
-    gap: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .lesson-card {
-    width: 768px;
-    min-height: 1536px;
-    margin: 0 auto;
-    page-break-after: always;
+    display: contents;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
     box-shadow: none;
+    overflow: visible;
+    page-break-after: auto;
+  }
+
+  .lesson-card::before,
+  .lesson-card::after {
+    display: none;
+  }
+
+  .card-section {
+    margin: 0 0 5mm;
+    padding: 10mm 5mm 4mm;
+    border-width: 1.5px;
+    border-radius: 5mm;
+    background: rgba(255, 253, 244, 0.96);
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .card-section h2 {
+    top: 2.6mm;
+    left: 4mm;
+    font-size: 13pt;
+  }
+
+  .card-section h2 span {
+    min-width: 7mm;
+    min-height: 6mm;
+  }
+
+  .card-section h2 b {
+    font-size: 10pt;
+  }
+
+  .words-section,
+  .sentence-section,
+  .dialogue-section {
+    min-height: 0;
+  }
+
+  .word-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 2.5mm;
+  }
+
+  .word-card {
+    min-height: 24mm;
+    padding: 1.5mm;
+    border-radius: 3mm;
+    gap: 1mm;
+  }
+
+  .word-art {
+    width: 18mm;
+    height: 15mm;
+  }
+
+  .word-card strong {
+    max-width: 100%;
+    font-size: 9pt;
+    white-space: normal;
+  }
+
+  .sentence-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .pencil-art {
+    display: none;
+  }
+
+  .bubble-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5mm;
+  }
+
+  .bubble {
+    justify-content: center;
+    width: 100%;
+    min-height: 10mm;
+    padding: 0 2mm;
+    font-size: 11pt;
+    text-align: center;
+  }
+
+  .dialogue-section {
+    margin-bottom: 0;
+  }
+
+  .dialogue-scene {
+    grid-template-columns: minmax(0, 1fr) 70mm;
+    gap: 4mm;
+    align-items: center;
+  }
+
+  .dialogue-list {
+    gap: 1.8mm;
+    font-size: 10pt;
+    line-height: 1.22;
+  }
+
+  .dialogue-visual {
+    height: 58mm;
+  }
+
+  .section-visual {
+    border-radius: 4mm;
   }
 }

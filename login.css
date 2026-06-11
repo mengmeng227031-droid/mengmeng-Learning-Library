@@ -329,6 +329,34 @@ button {
   box-shadow: 0 20px 34px rgba(77, 139, 255, 0.28);
 }
 
+.remember-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: -2px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.remember-row input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--brand-blue);
+}
+
+.remember-row label {
+  color: #333333;
+  font-weight: 900;
+}
+
+.remember-row span {
+  color: var(--soft-text);
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .agreement-row {
   display: flex;
   align-items: center;
