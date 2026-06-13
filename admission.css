@@ -487,10 +487,10 @@ a {
 .cluster-focus {
   position: fixed;
   top: 188px;
+  bottom: 112px;
   left: 28px;
   z-index: 18;
   width: min(420px, calc(100vw - 56px));
-  max-height: calc(100vh - 228px);
   overflow: auto;
   padding: 18px;
   border: 1px solid rgba(37, 196, 117, 0.18);
@@ -1000,6 +1000,16 @@ a {
   .support-author p {
     font-size: 11px;
     line-height: 1.35;
+  }
+
+  .cluster-focus {
+    top: 72px;
+    right: 12px;
+    bottom: 96px;
+    left: 12px;
+    width: auto;
+    padding: 14px;
+    border-radius: 18px;
   }
 
   .map-board.is-detail-visible .hover-detail {

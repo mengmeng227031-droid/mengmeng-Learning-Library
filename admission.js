@@ -147,6 +147,7 @@ function closeDetailPanel() {
   markActiveRegion("");
   activeProvince = "";
   hideDetailPanel();
+  hideClusterFocus();
 }
 
 function openRewardSheet() {
@@ -179,6 +180,11 @@ function showProvinceClusterFocus(province) {
 
 function hideClusterFocus() {
   clusterFocus.setAttribute("aria-hidden", "true");
+}
+
+function renderProvincePanels(name) {
+  renderDetail(name);
+  showProvinceClusterFocus(name);
 }
 
 function isTopLayerOpen() {
@@ -351,7 +357,6 @@ function handleProvincePointer(event) {
   if (!region) return;
   const province = region.dataset.province;
   setActiveProvince(province);
-  showProvinceClusterFocus(province);
 }
 
 function handleMapClick(event) {
@@ -385,6 +390,7 @@ function setActiveProvince(name, options = {}) {
   if (!options.force && name === closedProvince) {
     markActiveRegion("");
     hideDetailPanel();
+    hideClusterFocus();
     return;
   }
 
@@ -393,20 +399,20 @@ function setActiveProvince(name, options = {}) {
   showDetailPanel();
   if (name !== activeProvince) {
     activeProvince = name;
-    renderDetail(name);
   }
+  renderProvincePanels(name);
 }
 
 function lockProvince(name, options = {}) {
-  if (!name || lockedProvince === name) return;
+  if (!name) return;
   lockedProvince = name;
-  if (options.render !== false) renderDetail(name);
+  if (options.render !== false) renderProvincePanels(name);
 }
 
 function unlockProvince() {
   const name = lockedProvince;
   lockedProvince = "";
-  if (name && activeProvince === name) renderDetail(name);
+  if (name && activeProvince === name) renderProvincePanels(name);
 }
 
 function markActiveRegion(name) {
