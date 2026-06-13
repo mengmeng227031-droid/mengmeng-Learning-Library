@@ -5,7 +5,7 @@ const navItems = [
   { id: "sentence", label: "好句查询", icon: "⌕" },
   { id: "english", label: "英文学习", icon: "Aa" },
   { id: "gaokao", label: "高考志愿填报", icon: "志", href: "./admission.html" },
-  { id: "phonics", label: "自然拼读闪卡", icon: "Ph", href: "file:///D:/天津考试合集/pdfcreatlatex/phonics-ppt-deck/index.html" },
+  { id: "phonics", label: "自然拼读闪卡", icon: "Ph", href: "./phonics-ppt-deck/index.html" },
 ];
 
 const libraryTabNames = ["全部", "知识点总结", "直播间分享", "期中测试卷", "走题训练", "期末测试卷", "单元测试卷", "语文", "模拟卷"];
@@ -527,7 +527,7 @@ const todayTasks = [
     icon: "Ph",
     color: "#37D2C6",
     bg: "#e9fbf8",
-    href: "file:///D:/天津考试合集/pdfcreatlatex/phonics-ppt-deck/index.html"
+    href: "./phonics-ppt-deck/index.html"
   },
   {
     id: "task-reading",
