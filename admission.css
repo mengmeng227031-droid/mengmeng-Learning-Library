@@ -484,40 +484,6 @@ a {
   transition: transform 120ms ease;
 }
 
-.cluster-layer {
-  pointer-events: none;
-}
-
-.cluster-marker {
-  pointer-events: none;
-  outline: none;
-}
-
-.cluster-hitbox {
-  fill: transparent;
-}
-
-.cluster-label {
-  fill: #0f5f39;
-  font-size: calc(12px * var(--label-scale, 1));
-  font-weight: 900;
-  letter-spacing: 0;
-  pointer-events: none;
-  paint-order: stroke;
-  stroke: rgba(255, 255, 255, 0.9);
-  stroke-width: 5;
-  text-anchor: middle;
-  transform-box: fill-box;
-  transform: scale(var(--label-scale, 1));
-  transform-origin: center;
-}
-
-.cluster-marker.is-active .cluster-label {
-  fill: #ffffff;
-  stroke: #12864d;
-  stroke-width: 7;
-}
-
 .cluster-focus {
   position: fixed;
   top: 188px;
@@ -537,12 +503,16 @@ a {
   transition: opacity 180ms ease, transform 220ms ease, visibility 180ms ease;
   pointer-events: none;
   backdrop-filter: blur(16px);
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  touch-action: pan-y;
 }
 
 .cluster-focus[aria-hidden="false"] {
   opacity: 1;
   visibility: visible;
   transform: translateX(0) scale(1);
+  pointer-events: auto;
 }
 
 .cluster-focus-head {
