@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>高考志愿填报 - 蒙蒙学习库</title>
+  <link rel="stylesheet" href="./gaokao-career.css">
+</head>
+<body>
+  <main class="career-app">
+    <header class="career-header">
+      <div>
+        <p class="career-kicker">职业生涯探索 · 高考志愿填报</p>
+        <h1>找到适合你的专业与职业方向</h1>
+        <p>先用 3 分钟完成抽样题，也可以展开完整 90 题。每题可直接输入，也可选择系统提供的答案。</p>
+      </div>
+      <div class="header-tools">
+        <div class="header-links">
+          <a class="map-link" href="./learning.html">返回学习库</a>
+          <a class="map-link" href="./admission.html">高校资源地图</a>
+        </div>
+        <div class="overall-progress" aria-label="测评总进度">
+          <span id="overallProgressText">快速测评 0/24</span>
+          <div class="progress-track"><i id="overallProgressBar"></i></div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="career-tabs" aria-label="测评步骤">
+      <button class="is-active" type="button" data-section="quick">1. 3分钟测评</button>
+      <button type="button" data-section="deep">2. 深度展开</button>
+      <button type="button" data-section="report">3. 测评报告</button>
+    </nav>
+
+    <section class="career-section" id="quickSection">
+      <div class="section-heading">
+        <div><h2>3 分钟简约测评</h2><p>系统从 90 题中均衡抽取约四分之一。每题先显示自填框，再提供 12 个候选答案。</p></div>
+        <strong id="quickCount">0/24</strong>
+      </div>
+      <div class="quick-questions" id="quickQuestions"></div>
+      <div class="section-actions">
+        <button class="secondary-button" type="button" data-next="deep">继续深度展开</button>
+        <button class="primary-button" type="button" id="quickReportButton">直接生成报告</button>
+      </div>
+    </section>
+
+    <section class="career-section is-hidden" id="deepSection">
+      <div class="section-heading">
+        <div><h2>深度展开</h2><p>填写基本信息，并完成三组各 30 问。答题形式与快速测评完全相同。</p></div>
+        <strong id="deepCount">0/90</strong>
+      </div>
+      <section class="profile-panel">
+        <div class="tag-group-head"><div><h3>基本信息</h3><p>用于生成更贴近你的志愿与职业分析。</p></div></div>
+        <form class="profile-form" id="profileForm"></form>
+      </section>
+      <div class="deep-groups" id="deepGroups"></div>
+      <div class="section-actions"><button class="primary-button" type="button" id="deepReportButton">生成完整报告</button></div>
+    </section>
+
+    <section class="career-section is-hidden" id="reportSection">
+      <div class="report-toolbar">
+        <div><h2>个人兴趣与职业发展分析报告</h2><p id="reportMeta"></p></div>
+        <button class="secondary-button" type="button" id="downloadLatexButton">下载 LaTeX 报告</button>
+      </div>
+      <div id="reportContent"></div>
+    </section>
+  </main>
+  <script src="./gaokao-career.js"></script>
+</body>
+</html>

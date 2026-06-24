@@ -36,11 +36,18 @@ a {
     #fbfaf7;
 }
 
-.library-link {
+.home-quick-links {
   position: fixed;
   top: 24px;
   right: 32px;
   z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.library-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -54,6 +61,13 @@ a {
   text-decoration: none;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: 0 12px 32px rgba(47, 116, 232, 0.14);
+}
+
+.career-link {
+  border-color: rgba(255, 110, 199, 0.32);
+  color: #d9369f;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 239, 250, 0.94));
+  box-shadow: 0 12px 32px rgba(255, 110, 199, 0.18);
 }
 
 .support-author {
@@ -940,9 +954,13 @@ a {
 }
 
 @media (max-width: 760px) {
-  .library-link {
+  .home-quick-links {
     top: 12px;
     right: 12px;
+    gap: 8px;
+  }
+
+  .library-link {
     min-width: 88px;
     height: 36px;
     font-size: 14px;

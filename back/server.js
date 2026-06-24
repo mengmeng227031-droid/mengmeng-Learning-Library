@@ -38,8 +38,6 @@ const MIME_TYPES = {
   ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 };
 
-ensureSeedFolders();
-
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host}`);
@@ -94,9 +92,12 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`Mengmengteach server running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  ensureSeedFolders();
+  server.listen(PORT, () => {
+    console.log(`Mengmengteach server running at http://localhost:${PORT}`);
+  });
+}
 
 function ensureSeedFolders() {
   const categories = ["知识点总结", "直播间分享", "期中测试卷", "走题训练", "期末测试卷", "单元测试卷", "语文", "模拟卷"];
@@ -283,8 +284,10 @@ async function handleGaokaoAnalyze(req) {
 function buildGaokaoSystemPrompt() {
   return [
     "你是张老师测评的高考志愿与职业生涯咨询分析师。",
-    "任务：根据学生填写的90个职业探索问题，找出三组答案的交集：价值观（重要的事）、才能（擅长的事）、热情（喜欢的事）。",
-    "分析原则：只依据学生答案和补充信息，不臆造家庭背景；优先提取反复出现的动词、对象、场景、价值词和能力证据；把交集转化为专业与职业方向。",
+    "任务分三步：第一步给每条回答打标签；第二步分析价值观、才能、热情三组之间的三方交集与两方交集；第三步只根据这些交集生成专业、行业和职业建议。",
+    "输入中的source为option时，必须保留predefinedTag，可补充同组标签；source为custom时，需要根据回答语义从对应组的tagTaxonomy中选择1-3个标签。不得跨组乱用标签。",
+    "分析原则：只依据学生答案和补充信息，不臆造家庭背景；提取反复出现的动词、对象、场景、价值词和能力证据；每个交集和推荐都要能追溯到回答证据。",
+    "三方交集指同一主题同时出现在价值观、才能、热情中；两方交集指只在其中两组稳定出现。专业和行业优先依据三方交集，其次才使用两方交集。",
     "必须输出严格JSON，不要Markdown，不要解释，不要代码块。",
     "不要出现任何非“张老师测评”的作者署名，报告品牌统一写“张老师测评”。",
     "推荐专业必须为中国高考可理解的专业名称；推荐职业要能关联到至少一个推荐专业。",
@@ -295,16 +298,23 @@ function buildGaokaoSystemPrompt() {
     '  "brand": "张老师测评",',
     '  "quote": "一句适合学生的鼓励语",',
     '  "student": {"name":"","age":"","gender":"","date":""},',
+    '  "taggedAnswers": [{"questionId":"values-0","groupId":"values","source":"custom","answer":"","tags":[{"name":"成长进步","confidence":0.92}],"rationale":"简短标签依据"}],',
+    '  "intersections": {',
+    '    "threeWay": [{"theme":"","tags":[],"evidence":{"values":[],"talents":[],"passions":[]},"interpretation":""}],',
+    '    "pairwise": [{"groups":["values","talents"],"theme":"","tags":[],"evidence":[],"interpretation":""}],',
+    '    "coreDirection": "一句话概括三组交集形成的核心方向"',
+    "  },",
     '  "radar": [{"name":"热情驱动力","score":8.6},{"name":"逻辑分析力","score":7.8},{"name":"创造力","score":8.1},{"name":"表达沟通力","score":8.3},{"name":"学习能力","score":8.8},{"name":"领导组织力","score":7.3},{"name":"共情与服务力","score":8.5},{"name":"执行力","score":7.9}],',
     '  "coreFindings": [{"title":"","description":""}],',
-    '  "majors": [{"name":"","reason":"","match":92,"url":""}],',
+    '  "majors": [{"name":"","reason":"说明对应的交集主题和证据","match":92,"url":""}],',
+    '  "industries": [{"name":"","reason":"说明对应的交集主题和发展场景","match":91,"relatedMajors":[]}],',
     '  "careers": [{"name":"","reason":"","match":93,"relatedMajor":"","url":""}],',
     '  "advantages": ["5条以内"],',
     '  "suggestions": ["5条以内"],',
     '  "parentSuggestions": ["5条以内"],',
     '  "summary": "一句总结"',
     "}",
-    "约束：majors必须恰好10个，careers必须恰好10个；match为0-100整数；radar必须8项且score为0-10数字；coreFindings 4-5项。"
+    "约束：taggedAnswers必须覆盖所有非空回答且questionId不重复；每条回答1-3个标签，confidence为0-1数字；threeWay最多5项，pairwise最多6项；majors、industries、careers必须各恰好10个；match为0-100整数；radar必须8项且score为0-10数字；coreFindings 4-5项。"
   ].join("\n");
 }
 
@@ -324,6 +334,8 @@ function normalizeGaokaoReport(report) {
     brand: "张老师测评",
     quote: report.quote || "找到想做的事，是为了成为更好的自己。",
     student: report.student || {},
+    taggedAnswers: normalizeTaggedAnswers(report.taggedAnswers),
+    intersections: normalizeIntersections(report.intersections),
     radar: normalizeList(report.radar, 8).map((item) => ({
       name: item.name || "能力维度",
       score: clampNumber(item.score, 0, 10, 7.5)
@@ -333,6 +345,7 @@ function normalizeGaokaoReport(report) {
       description: item.description || item.desc || ""
     })),
     majors: normalizeList(report.majors, 10).map((item) => normalizeRecommendation(item)),
+    industries: normalizeList(report.industries, 10).map((item) => normalizeIndustry(item)),
     careers: normalizeList(report.careers, 10).map((item) => normalizeRecommendation(item)),
     advantages: normalizeTextList(report.advantages, 5),
     suggestions: normalizeTextList(report.suggestions, 5),
@@ -340,6 +353,56 @@ function normalizeGaokaoReport(report) {
     summary: report.summary || "报告仅供参考，最终选择权在孩子自己手中。"
   };
   return { ok: true, report: normalized };
+}
+
+function normalizeTaggedAnswers(items) {
+  if (!Array.isArray(items)) return [];
+  const seen = new Set();
+  return items.filter((item) => {
+    const questionId = String(item?.questionId || "").trim();
+    if (!questionId || seen.has(questionId)) return false;
+    seen.add(questionId);
+    return true;
+  }).map((item) => ({
+    questionId: String(item.questionId),
+    groupId: String(item.groupId || ""),
+    source: item.source === "custom" ? "custom" : "option",
+    answer: String(item.answer || ""),
+    tags: Array.isArray(item.tags) ? item.tags.slice(0, 3).map((tag) => ({
+      name: String(tag?.name || tag || "").trim(),
+      confidence: clampNumber(tag?.confidence, 0, 1, 0.7)
+    })).filter((tag) => tag.name) : [],
+    rationale: String(item.rationale || "")
+  }));
+}
+
+function normalizeIntersections(value) {
+  const intersections = value && typeof value === "object" ? value : {};
+  return {
+    threeWay: Array.isArray(intersections.threeWay) ? intersections.threeWay.slice(0, 5).map((item) => ({
+      theme: String(item?.theme || ""),
+      tags: Array.isArray(item?.tags) ? item.tags.map(String).filter(Boolean).slice(0, 8) : [],
+      evidence: item?.evidence && typeof item.evidence === "object" ? item.evidence : {},
+      interpretation: String(item?.interpretation || "")
+    })) : [],
+    pairwise: Array.isArray(intersections.pairwise) ? intersections.pairwise.slice(0, 6).map((item) => ({
+      groups: Array.isArray(item?.groups) ? item.groups.map(String).slice(0, 2) : [],
+      theme: String(item?.theme || ""),
+      tags: Array.isArray(item?.tags) ? item.tags.map(String).filter(Boolean).slice(0, 8) : [],
+      evidence: Array.isArray(item?.evidence) ? item.evidence.map(String).filter(Boolean).slice(0, 6) : [],
+      interpretation: String(item?.interpretation || "")
+    })) : [],
+    coreDirection: String(intersections.coreDirection || "")
+  };
+}
+
+function normalizeIndustry(item) {
+  return {
+    name: String(item?.name || "待补充行业"),
+    reason: String(item?.reason || item?.description || "结合三组交集进行匹配。"),
+    match: clampNumber(item?.match, 0, 100, 80),
+    relatedMajors: Array.isArray(item?.relatedMajors) ? item.relatedMajors.map(String).filter(Boolean).slice(0, 5) : []
+  };
 }
 
 function normalizeRecommendation(item) {
@@ -434,3 +497,9 @@ function sendJson(res, data, status = 200) {
   res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" });
   res.end(JSON.stringify(data));
 }
+
+module.exports = {
+  buildGaokaoSystemPrompt,
+  normalizeGaokaoReport,
+  parseJsonFromText,
+};

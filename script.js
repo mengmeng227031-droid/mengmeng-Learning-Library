@@ -4,7 +4,7 @@ const navItems = [
   { id: "library", label: "资料库", icon: "★" },
   { id: "sentence", label: "好句查询", icon: "⌕" },
   { id: "english", label: "英文学习", icon: "Aa" },
-  { id: "gaokao", label: "高考志愿填报", icon: "志", href: "./admission.html" },
+  { id: "gaokao", label: "高考志愿填报", icon: "志", href: "./gaokao-career.html" },
   { id: "phonics", label: "自然拼读闪卡", icon: "Ph", href: "./phonics-ppt-deck/index.html" },
 ];
 
@@ -2497,7 +2497,7 @@ function routeInitialHash() {
     return;
   }
   if (window.location.hash === "#gaokao") {
-    window.location.href = "./admission.html";
+    window.location.href = "./gaokao-career.html";
     return;
   }
   if (window.location.hash === "#sentence") {

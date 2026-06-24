@@ -4,7 +4,7 @@ const navItems = [
   { id: "library", label: "资料库", icon: "★", href: "./index.html#library" },
   { id: "sentence", label: "好句查询", icon: "⌕", href: "./index.html#sentence" },
   { id: "english", label: "英文学习", icon: "Aa", href: "./index.html#english" },
-  { id: "gaokao", label: "高考志愿填报", icon: "志", href: "./admission.html" },
+  { id: "gaokao", label: "高考志愿填报", icon: "志", href: "./gaokao-career.html" },
   { id: "phonics", label: "自然拼读闪卡", icon: "Ph", href: "file:///D:/天津考试合集/pdfcreatlatex/phonics-ppt-deck/index.html" },
 ];
 
