@@ -128,10 +128,24 @@ phoneLoginForm.addEventListener("submit", async (event) => {
       credentials: "include",
       body: JSON.stringify({ account, password, remember: rememberInput?.checked === true })
     });
-    const data = await response.json().catch(() => ({}));
+    const responseText = await response.text();
+    let data = {};
+    try {
+      data = responseText ? JSON.parse(responseText) : {};
+    } catch (error) {
+      data = {};
+    }
 
     if (!response.ok || !data.ok) {
-      setMessage(data.error || "登录失败，请检查账号和密码。");
+      if (data.error) {
+        setMessage(data.error);
+        return;
+      }
+      if (response.status >= 500) {
+        setMessage("登录服务异常，不是账号密码错误，请联系老师检查云端数据库配置。");
+        return;
+      }
+      setMessage("登录失败，请检查账号和密码。");
       return;
     }
 

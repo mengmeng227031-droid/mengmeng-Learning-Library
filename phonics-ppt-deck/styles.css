@@ -238,19 +238,40 @@ h1 {
   font-weight: 900;
 }
 
-.word {
+.word-entry {
   min-width: 0;
   justify-self: end;
-  overflow: visible;
+  max-width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: clamp(10px, 1.3vw, 24px);
   white-space: nowrap;
   font-weight: 900;
   line-height: 0.95;
-  font-size: clamp(3rem, calc(58rem / var(--chars)), 6.1rem);
+  font-size: clamp(1.55rem, calc(46rem / var(--chars)), 5.3rem);
+}
+
+.word,
+.phonetic {
+  min-width: 0;
+  font-size: 1em;
 }
 
 .word mark {
   color: var(--red);
   background: transparent;
+}
+
+.phonetic mark {
+  color: var(--red);
+  background: transparent;
+}
+
+.phonetic {
+  flex: 0 1 auto;
+  color: var(--muted);
 }
 
 .pager {
@@ -424,11 +445,18 @@ h1 {
     font-weight: 900;
   }
 
-  .print-word {
+  .print-word-entry {
+    min-width: 0;
     justify-self: end;
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 0.16in;
     white-space: nowrap;
     color: var(--ink);
-    font-size: clamp(30pt, calc(480pt / var(--chars)), 56pt);
+    font-size: clamp(18pt, calc(360pt / var(--chars)), 52pt);
     font-weight: 900;
     line-height: 0.95;
   }
@@ -436,6 +464,20 @@ h1 {
   .print-word mark {
     color: var(--red);
     background: transparent;
+  }
+
+  .print-phonetic mark {
+    color: var(--red);
+    background: transparent;
+  }
+
+  .print-word,
+  .print-phonetic {
+    font-size: 1em;
+  }
+
+  .print-phonetic {
+    color: var(--muted);
   }
 }
 

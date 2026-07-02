@@ -102,7 +102,33 @@ const cards = [
   { stage: "3", section: "Tricky Vowels 特殊元音", phoneme: "y", sound: "vowel /ie/", highlight: "y", words: ["fly", "sky", "my"] },
 ];
 
-let currentStage = "all";
+const vowel20Cards = [
+  { stage: "20元音", section: "20 Vowels 短元音", phoneme: "ă", sound: "short /æ/", highlight: "a", words: ["cat", "map", "jam"] },
+  { stage: "20元音", section: "20 Vowels 短元音", phoneme: "ĕ", sound: "short /e/", highlight: "e", words: ["bed", "pen", "hen"] },
+  { stage: "20元音", section: "20 Vowels 短元音", phoneme: "ĭ", sound: "short /ɪ/", highlight: "i", words: ["pig", "sit", "pin"] },
+  { stage: "20元音", section: "20 Vowels 短元音", phoneme: "ŏ", sound: "short /ɒ/", highlight: "o", words: ["dog", "box", "hop"] },
+  { stage: "20元音", section: "20 Vowels 短元音", phoneme: "ŭ", sound: "short /ʌ/", highlight: "u", words: ["sun", "cup", "bus"] },
+  { stage: "20元音", section: "20 Vowels 长元音", phoneme: "a_e", sound: "long /eɪ/", highlight: "a_e", words: ["cake", "name", "tape"] },
+  { stage: "20元音", section: "20 Vowels 长元音", phoneme: "i_e", sound: "long /aɪ/", highlight: "i_e", words: ["kite", "bike", "pipe"] },
+  { stage: "20元音", section: "20 Vowels 长元音", phoneme: "o_e", sound: "long /oʊ/", highlight: "o_e", words: ["home", "rope", "cone"] },
+  { stage: "20元音", section: "20 Vowels 长元音", phoneme: "u_e", sound: "long /juː/", highlight: "u_e", words: ["cube", "cute", "mule"] },
+  { stage: "20元音", section: "20 Vowels 元音组合", phoneme: "ai", sound: "/eɪ/", highlight: "ai", words: ["rain", "snail", "train"] },
+  { stage: "20元音", section: "20 Vowels 元音组合", phoneme: "ay", sound: "/eɪ/", highlight: "ay", words: ["day", "play", "hay"] },
+  { stage: "20元音", section: "20 Vowels 元音组合", phoneme: "ee", sound: "/iː/", highlight: "ee", words: ["bee", "feet", "green"] },
+  { stage: "20元音", section: "20 Vowels 元音组合", phoneme: "ea", sound: "/iː/", highlight: "ea", words: ["leaf", "beach", "read"] },
+  { stage: "20元音", section: "20 Vowels 元音组合", phoneme: "oa", sound: "/oʊ/", highlight: "oa", words: ["boat", "coat", "soap"] },
+  { stage: "20元音", section: "20 Vowels 元音组合", phoneme: "ow", sound: "/oʊ/", highlight: "ow", words: ["snow", "window", "yellow"] },
+  { stage: "20元音", section: "20 Vowels 双元音", phoneme: "oi", sound: "/ɔɪ/", highlight: "oi", words: ["coin", "oil", "boil"] },
+  { stage: "20元音", section: "20 Vowels 双元音", phoneme: "oy", sound: "/ɔɪ/", highlight: "oy", words: ["boy", "toy", "joy"] },
+  { stage: "20元音", section: "20 Vowels 双元音", phoneme: "ou", sound: "/aʊ/", highlight: "ou", words: ["cloud", "house", "mouth"] },
+  { stage: "20元音", section: "20 Vowels R 控制元音", phoneme: "ar", sound: "/ɑːr/", highlight: "ar", words: ["car", "star", "park"] },
+  { stage: "20元音", section: "20 Vowels R 控制元音", phoneme: "er", sound: "/ɜːr/", highlight: "er", words: ["her", "fern", "letter"] },
+];
+
+cards.push(...vowel20Cards);
+
+const initialParams = new URLSearchParams(window.location.search);
+let currentStage = initialParams.get("stage") || "all";
 let currentIndex = Math.max(0, Math.min(cards.length - 1, Number(new URLSearchParams(window.location.search).get("slide") || 1) - 1));
 
 const stageButtons = document.querySelectorAll(".stage-button");
@@ -126,6 +152,360 @@ function escapeHtml(value) {
     '"': "&quot;",
     "'": "&#39;",
   })[char]);
+}
+
+const wordPhoneticMap = {
+  "alligator": "/ˈælɪɡeɪtər/",
+  "angel": "/ˈeɪndʒəl/",
+  "ant": "/ænt/",
+  "apple": "/ˈæpəl/",
+  "apron": "/ˈeɪprən/",
+  "august": "/ˈɔːɡəst/",
+  "ball": "/bɔːl/",
+  "banana": "/bəˈnænə/",
+  "beach": "/biːtʃ/",
+  "bed": "/bed/",
+  "bee": "/biː/",
+  "bell": "/bel/",
+  "bike": "/baɪk/",
+  "bird": "/bɜːrd/",
+  "black": "/blæk/",
+  "block": "/blɑːk/",
+  "blue": "/bluː/",
+  "boat": "/boʊt/",
+  "boil": "/bɔɪl/",
+  "boot": "/buːt/",
+  "box": "/bɑːks/",
+  "boy": "/bɔɪ/",
+  "bread": "/bred/",
+  "brown": "/braʊn/",
+  "brush": "/brʌʃ/",
+  "bus": "/bʌs/",
+  "cake": "/keɪk/",
+  "car": "/kɑːr/",
+  "card": "/kɑːrd/",
+  "cat": "/kæt/",
+  "caught": "/kɔːt/",
+  "chair": "/tʃer/",
+  "cheese": "/tʃiːz/",
+  "chew": "/tʃuː/",
+  "chick": "/tʃɪk/",
+  "church": "/tʃɜːrtʃ/",
+  "city": "/ˈsɪti/",
+  "clap": "/klæp/",
+  "cliff": "/klɪf/",
+  "clock": "/klɑːk/",
+  "cloud": "/klaʊd/",
+  "clue": "/kluː/",
+  "coat": "/koʊt/",
+  "coin": "/kɔɪn/",
+  "cone": "/koʊn/",
+  "corn": "/kɔːrn/",
+  "cow": "/kaʊ/",
+  "crab": "/kræb/",
+  "crayon": "/ˈkreɪɑːn/",
+  "crown": "/kraʊn/",
+  "cube": "/kjuːb/",
+  "cup": "/kʌp/",
+  "cute": "/kjuːt/",
+  "day": "/deɪ/",
+  "dog": "/dɔːɡ/",
+  "dolphin": "/ˈdɑːlfɪn/",
+  "donut": "/ˈdoʊnʌt/",
+  "draw": "/drɔː/",
+  "dress": "/dres/",
+  "drum": "/drʌm/",
+  "duck": "/dʌk/",
+  "egg": "/eɡ/",
+  "elephant": "/ˈelɪfənt/",
+  "elf": "/elf/",
+  "eraser": "/ɪˈreɪsər/",
+  "fan": "/fæn/",
+  "feet": "/fiːt/",
+  "fern": "/fɜːrn/",
+  "fish": "/fɪʃ/",
+  "flag": "/flæɡ/",
+  "flower": "/ˈflaʊər/",
+  "fly": "/flaɪ/",
+  "fork": "/fɔːrk/",
+  "fox": "/fɑːks/",
+  "frog": "/frɔːɡ/",
+  "fruit": "/fruːt/",
+  "gate": "/ɡeɪt/",
+  "gem": "/dʒem/",
+  "ghost": "/ɡoʊst/",
+  "giant": "/ˈdʒaɪənt/",
+  "gift": "/ɡɪft/",
+  "giraffe": "/dʒəˈræf/",
+  "glass": "/ɡlæs/",
+  "glasses": "/ˈɡlæsɪz/",
+  "glue": "/ɡluː/",
+  "go": "/ɡoʊ/",
+  "goat": "/ɡoʊt/",
+  "grapes": "/ɡreɪps/",
+  "grass": "/ɡræs/",
+  "green": "/ɡriːn/",
+  "gum": "/ɡʌm/",
+  "harp": "/hɑːrp/",
+  "hat": "/hæt/",
+  "hay": "/heɪ/",
+  "heart": "/hɑːrt/",
+  "hen": "/hen/",
+  "her": "/hɜːr/",
+  "hill": "/hɪl/",
+  "home": "/hoʊm/",
+  "hop": "/hɑːp/",
+  "horse": "/hɔːrs/",
+  "house": "/haʊs/",
+  "hurt": "/hɜːrt/",
+  "igloo": "/ˈɪɡluː/",
+  "ink": "/ɪŋk/",
+  "insect": "/ˈɪnsekt/",
+  "jam": "/dʒæm/",
+  "jellyfish": "/ˈdʒelifɪʃ/",
+  "jet": "/dʒet/",
+  "joy": "/dʒɔɪ/",
+  "juice": "/dʒuːs/",
+  "key": "/kiː/",
+  "king": "/kɪŋ/",
+  "kiss": "/kɪs/",
+  "kite": "/kaɪt/",
+  "lamp": "/læmp/",
+  "leaf": "/liːf/",
+  "letter": "/ˈletər/",
+  "lion": "/ˈlaɪən/",
+  "map": "/mæp/",
+  "money": "/ˈmʌni/",
+  "monkey": "/ˈmʌŋki/",
+  "moon": "/muːn/",
+  "mouth": "/maʊθ/",
+  "mule": "/mjuːl/",
+  "music": "/ˈmjuːzɪk/",
+  "my": "/maɪ/",
+  "name": "/neɪm/",
+  "nest": "/nest/",
+  "net": "/net/",
+  "new": "/nuː/",
+  "nose": "/noʊz/",
+  "octopus": "/ˈɑːktəpəs/",
+  "oil": "/ɔɪl/",
+  "ostrich": "/ˈɑːstrɪtʃ/",
+  "owl": "/aʊl/",
+  "ox": "/ɑːks/",
+  "pan": "/pæn/",
+  "park": "/pɑːrk/",
+  "pen": "/pen/",
+  "phone": "/foʊn/",
+  "photo": "/ˈfoʊtoʊ/",
+  "pie": "/paɪ/",
+  "pig": "/pɪɡ/",
+  "pin": "/pɪn/",
+  "pipe": "/paɪp/",
+  "pizza": "/ˈpiːtsə/",
+  "plane": "/pleɪn/",
+  "plant": "/plænt/",
+  "play": "/pleɪ/",
+  "plug": "/plʌɡ/",
+  "queen": "/kwiːn/",
+  "quick": "/kwɪk/",
+  "quilt": "/kwɪlt/",
+  "quiz": "/kwɪz/",
+  "rain": "/reɪn/",
+  "rainbow": "/ˈreɪnboʊ/",
+  "read": "/riːd/",
+  "red": "/red/",
+  "ring": "/rɪŋ/",
+  "rock": "/rɑːk/",
+  "rope": "/roʊp/",
+  "sauce": "/sɔːs/",
+  "saw": "/sɔː/",
+  "shark": "/ʃɑːrk/",
+  "sheep": "/ʃiːp/",
+  "shell": "/ʃel/",
+  "ship": "/ʃɪp/",
+  "shop": "/ʃɑːp/",
+  "sit": "/sɪt/",
+  "skirt": "/skɜːrt/",
+  "sky": "/skaɪ/",
+  "sleep": "/sliːp/",
+  "slide": "/slaɪd/",
+  "smile": "/smaɪl/",
+  "snail": "/sneɪl/",
+  "snake": "/sneɪk/",
+  "snow": "/snoʊ/",
+  "soap": "/soʊp/",
+  "sock": "/sɑːk/",
+  "spoon": "/spuːn/",
+  "star": "/stɑːr/",
+  "stir": "/stɜːr/",
+  "stone": "/stoʊn/",
+  "stop": "/stɑːp/",
+  "strawberry": "/ˈstrɔːberi/",
+  "suit": "/suːt/",
+  "sun": "/sʌn/",
+  "swim": "/swɪm/",
+  "tape": "/teɪp/",
+  "ten": "/ten/",
+  "then": "/ðen/",
+  "they": "/ðeɪ/",
+  "thin": "/θɪn/",
+  "this": "/ðɪs/",
+  "three": "/θriː/",
+  "thumb": "/θʌm/",
+  "tie": "/taɪ/",
+  "top": "/tɑːp/",
+  "toy": "/tɔɪ/",
+  "train": "/treɪn/",
+  "tree": "/triː/",
+  "truck": "/trʌk/",
+  "turn": "/tɜːrn/",
+  "turtle": "/ˈtɜːrtl/",
+  "umbrella": "/ʌmˈbrelə/",
+  "under": "/ˈʌndər/",
+  "unicorn": "/ˈjuːnɪkɔːrn/",
+  "unit": "/ˈjuːnɪt/",
+  "up": "/ʌp/",
+  "van": "/væn/",
+  "vest": "/vest/",
+  "volcano": "/vɑːlˈkeɪnoʊ/",
+  "watermelon": "/ˈwɔːtərmelən/",
+  "web": "/web/",
+  "whale": "/weɪl/",
+  "wheel": "/wiːl/",
+  "white": "/waɪt/",
+  "window": "/ˈwɪndoʊ/",
+  "wind": "/wɪnd/",
+  "x-ray": "/ˈeks reɪ/",
+  "yak": "/jæk/",
+  "yellow": "/ˈjeloʊ/",
+  "yo-yo": "/ˈjoʊ joʊ/",
+  "zebra": "/ˈziːbrə/",
+  "zip": "/zɪp/",
+  "zoo": "/zuː/",
+};
+
+Object.assign(wordPhoneticMap, {
+  "acorn": "/ˈeɪkɔːrn/",
+  "brick": "/brɪk/",
+  "buzz": "/bʌz/",
+  "cent": "/sent/",
+  "circle": "/ˈsɜːrkəl/",
+  "clip": "/klɪp/",
+  "cried": "/kraɪd/",
+  "doe": "/doʊ/",
+  "dragon": "/ˈdræɡən/",
+  "fizz": "/fɪz/",
+  "flip": "/flɪp/",
+  "fries": "/fraɪz/",
+  "glow": "/ɡloʊ/",
+  "hoe": "/hoʊ/",
+  "jazz": "/dʒæz/",
+  "jersey": "/ˈdʒɜːrzi/",
+  "off": "/ɔːf/",
+  "pew": "/pjuː/",
+  "pretzel": "/ˈpretsəl/",
+  "prince": "/prɪns/",
+  "prize": "/praɪz/",
+  "puff": "/pʌf/",
+  "quack": "/kwæk/",
+  "scale": "/skeɪl/",
+  "scarf": "/skɑːrf/",
+  "scooter": "/ˈskuːtər/",
+  "skateboard": "/ˈskeɪtbɔːrd/",
+  "skip": "/skɪp/",
+  "skunk": "/skʌŋk/",
+  "sled": "/sled/",
+  "small": "/smɔːl/",
+  "smell": "/smel/",
+  "spider": "/ˈspaɪdər/",
+  "spin": "/spɪn/",
+  "swan": "/swɑːn/",
+  "sweet": "/swiːt/",
+  "toe": "/toʊ/",
+  "turkey": "/ˈtɜːrki/",
+});
+
+function normalizeWordKey(word) {
+  return String(word).trim().toLowerCase();
+}
+
+function getWordPhonetic(word, card) {
+  const mapped = wordPhoneticMap[normalizeWordKey(word)];
+  if (mapped) return mapped;
+  const match = String(card.sound || "").match(/\/[^/]+\//);
+  return match ? match[0] : "";
+}
+
+function getTargetPhoneticParts(card) {
+  const sound = String(card.sound || "").toLowerCase();
+  const highlight = String(card.highlight || "").toLowerCase();
+  const phoneme = String(card.phoneme || "").toLowerCase();
+  const table = [
+    [/voiced\s+\/th\//, ["ð"]],
+    [/voiceless\s+\/th\//, ["θ"]],
+    [/soft\s+\/s\//, ["s"]],
+    [/hard\s+\/k\//, ["k"]],
+    [/soft\s+\/j\//, ["dʒ"]],
+    [/hard\s+\/g\//, ["ɡ", "g"]],
+    [/short\s+\/a\//, ["æ"]],
+    [/short\s+\/e\//, ["e"]],
+    [/short\s+\/i\//, ["ɪ"]],
+    [/short\s+\/o\//, ["ɑː", "ɒ"]],
+    [/short\s+\/u\//, ["ʌ"]],
+    [/long\s+\/a\//, ["eɪ"]],
+    [/long\s+\/e\//, ["iː"]],
+    [/long\s+\/i\//, ["aɪ"]],
+    [/long\s+\/o\//, ["oʊ"]],
+    [/long\s+\/u\//, ["juː", "uː"]],
+    [/\/ay\//, ["eɪ"]],
+    [/\/ie\//, ["aɪ"]],
+    [/\/oa\//, ["oʊ"]],
+    [/\/ue\//, ["juː", "uː"]],
+    [/\/ee\//, ["iː"]],
+    [/\/ow\//, ["aʊ"]],
+    [/\/oy\//, ["ɔɪ"]],
+    [/\/aw\//, ["ɔː"]],
+    [/\/oo\//, ["uː"]],
+    [/\/ar\//, ["ɑːr", "ɑː"]],
+    [/\/or\//, ["ɔːr", "ɔː"]],
+    [/\/er\//, ["ɜːr", "ɜː"]],
+    [/\/sh\//, ["ʃ"]],
+    [/\/ch\//, ["tʃ"]],
+    [/\/kw\//, ["kw"]],
+    [/\/ks\//, ["ks"]],
+    [/\/th\//, ["θ", "ð"]],
+  ];
+  const matched = table.find(([pattern]) => pattern.test(sound));
+  if (matched) return matched[1];
+
+  if (highlight === "qu") return ["kw"];
+  if (highlight === "ph") return ["f"];
+  if (highlight === "ck" || highlight === "c" || highlight === "k") return ["k"];
+  if (highlight === "sh") return ["ʃ"];
+  if (highlight === "ch") return ["tʃ"];
+  if (highlight === "th") return ["θ", "ð"];
+  if (phoneme === "a" || phoneme === "aa") return ["æ"];
+  if (phoneme === "e" || phoneme === "ee") return ["e"];
+  if (phoneme === "i" || phoneme === "ii") return ["ɪ"];
+  if (phoneme === "o" || phoneme === "oo") return ["ɑː", "ɒ"];
+  if (phoneme === "u" || phoneme === "uu") return ["ʌ"];
+  return [highlight].filter(Boolean);
+}
+
+function renderPhonetic(phonetic, card) {
+  const parts = getTargetPhoneticParts(card).sort((a, b) => b.length - a.length);
+  const target = parts.find((part) => phonetic.includes(part));
+  if (!target) return escapeHtml(phonetic);
+  const index = phonetic.indexOf(target);
+  return [
+    escapeHtml(phonetic.slice(0, index)),
+    `<mark>${escapeHtml(target)}</mark>`,
+    escapeHtml(phonetic.slice(index + target.length)),
+  ].join("");
+}
+
+function getWordFitChars(word, phonetic) {
+  return Math.max(8, Array.from(`${word}${phonetic}`).length);
 }
 
 function visibleCards() {
@@ -170,13 +550,17 @@ function highlightWord(word, highlight) {
   ].join("");
 }
 
-function renderWordCard(word, highlight, index, print = false) {
+function renderWordCard(word, card, index, print = false) {
   const prefix = print ? "print-" : "";
-  const length = Math.max(word.length, 3);
+  const phonetic = getWordPhonetic(word, card);
+  const length = getWordFitChars(word, phonetic);
   return `
     <article class="${prefix}word-card">
       <span class="${prefix}word-index">${index + 1}</span>
-      <div class="${prefix}word" style="--chars:${length}">${highlightWord(word, highlight)}</div>
+      <div class="${prefix}word-entry" style="--chars:${length}">
+        <span class="${prefix}word">${highlightWord(word, card.highlight)}</span>
+        <span class="${prefix}phonetic">${renderPhonetic(phonetic, card)}</span>
+      </div>
     </article>
   `;
 }
@@ -193,13 +577,18 @@ function renderDots(total) {
 
 function render() {
   const list = visibleCards();
+  if (!list.length) {
+    currentStage = "all";
+    return render();
+  }
+  currentIndex = Math.max(0, Math.min(currentIndex, list.length - 1));
   const card = list[currentIndex];
-  stageLabel.textContent = `阶段 ${card.stage}`;
+  stageLabel.textContent = card.stage === "20元音" ? "20元音" : `阶段 ${card.stage}`;
   sectionLabel.textContent = card.section;
   phonemeText.textContent = card.phoneme;
   soundLabel.textContent = card.sound;
   pageCounter.textContent = `${currentIndex + 1} / ${list.length}`;
-  wordList.innerHTML = card.words.map((word, index) => renderWordCard(word, card.highlight, index)).join("");
+  wordList.innerHTML = card.words.map((word, index) => renderWordCard(word, card, index)).join("");
   prevButton.disabled = currentIndex === 0;
   nextButton.disabled = currentIndex === list.length - 1;
   renderDots(list.length);
@@ -209,7 +598,7 @@ function renderPrintDeck() {
   printDeck.innerHTML = cards.map((card, index) => `
     <article class="print-slide">
       <aside class="print-phoneme">
-        <p class="print-stage">阶段 ${escapeHtml(card.stage)}</p>
+        <p class="print-stage">${card.stage === "20元音" ? "20元音" : `阶段 ${escapeHtml(card.stage)}`}</p>
         <p class="print-section">${escapeHtml(card.section)}</p>
         <div class="print-phoneme-text">${escapeHtml(card.phoneme)}</div>
         <p class="print-sound">${escapeHtml(card.sound)}</p>
@@ -220,7 +609,7 @@ function renderPrintDeck() {
           <span>${index + 1} / ${cards.length}</span>
         </div>
         <div class="print-word-list">
-          ${card.words.map((word, wordIndex) => renderWordCard(word, card.highlight, wordIndex, true)).join("")}
+          ${card.words.map((word, wordIndex) => renderWordCard(word, card, wordIndex, true)).join("")}
         </div>
       </section>
     </article>
@@ -228,6 +617,7 @@ function renderPrintDeck() {
 }
 
 stageButtons.forEach((button) => {
+  button.classList.toggle("active", button.dataset.stage === currentStage);
   button.addEventListener("click", () => {
     stageButtons.forEach((item) => item.classList.remove("active"));
     button.classList.add("active");

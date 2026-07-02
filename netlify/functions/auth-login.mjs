@@ -16,7 +16,13 @@ export default async (req) => {
     return badRequest("请输入账号和密码。");
   }
 
-  const sql = getSql();
+  let sql;
+  try {
+    sql = getSql();
+  } catch (error) {
+    return json({ ok: false, error: "登录服务未配置数据库，请联系老师。" }, 503);
+  }
+
   const phoneHash = phone.length >= 7 ? hashPhone(phone) : null;
   let rows;
   try {
@@ -31,7 +37,7 @@ export default async (req) => {
     if (error?.code === "42P01") {
       return json({ ok: false, error: "登录服务还未完成初始化，请联系老师。" }, 503);
     }
-    throw error;
+    return json({ ok: false, error: "登录服务连接数据库失败，请联系老师检查云端配置。" }, 503);
   }
 
   const user = rows[0];
@@ -39,7 +45,16 @@ export default async (req) => {
     return json({ ok: false, error: "账号或密码不正确。" }, 401);
   }
 
-  const token = await createSession(user.id);
+  let token;
+  try {
+    token = await createSession(user.id);
+  } catch (error) {
+    if (error?.code === "42P01") {
+      return json({ ok: false, error: "登录服务还未完成初始化，请联系老师。" }, 503);
+    }
+    return json({ ok: false, error: "登录状态创建失败，请联系老师检查云端配置。" }, 503);
+  }
+
   return json(
     {
       ok: true,

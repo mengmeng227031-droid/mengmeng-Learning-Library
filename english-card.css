@@ -126,7 +126,7 @@ input {
     radial-gradient(circle at 90% 6%, rgba(255, 255, 255, 0.62), transparent 18%),
     var(--paper);
   box-shadow: var(--shadow);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .lesson-card::before,
@@ -221,6 +221,11 @@ h1 {
   box-shadow: 0 8px 18px rgba(255, 200, 61, 0.1);
 }
 
+.card-section:hover,
+.card-section:focus-within {
+  z-index: 40;
+}
+
 .card-section h2 {
   position: absolute;
   top: 9px;
@@ -267,12 +272,19 @@ h1 {
 }
 
 .word-card {
+  position: relative;
   display: grid;
   justify-items: center;
   align-content: center;
   min-height: 76px;
   padding: 8px 4px;
   gap: 5px;
+  cursor: help;
+}
+
+.word-card:hover,
+.word-card:focus-within {
+  z-index: 50;
 }
 
 .word-art,
@@ -313,6 +325,204 @@ img.exercise-art {
   white-space: nowrap;
 }
 
+.hover-word,
+.hover-sentence {
+  position: relative;
+  display: inline-flex;
+  min-width: 0;
+  color: #111111;
+  outline: none;
+  cursor: help;
+}
+
+.word-label,
+.choice-word,
+.exercise-word {
+  max-width: 96px;
+  justify-content: center;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 1000;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.hover-word-text,
+.sentence-token {
+  position: relative;
+  display: inline-block;
+  color: #111111;
+  transition: transform 220ms ease;
+}
+
+.hover-word-text::after,
+.sentence-token::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--token-color, #4d8bff) 30%, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.hover-word:hover .hover-word-text,
+.hover-word:focus-visible .hover-word-text,
+.word-card:hover .hover-word-text,
+.word-card:focus-within .hover-word-text,
+.hover-sentence:hover .sentence-token,
+.hover-sentence:focus-visible .sentence-token {
+  transform: translateY(-2px);
+}
+
+.hover-word:hover .hover-word-text::after,
+.hover-word:focus-visible .hover-word-text::after,
+.word-card:hover .hover-word-text::after,
+.word-card:focus-within .hover-word-text::after,
+.hover-sentence:hover .sentence-token::after,
+.hover-sentence:focus-visible .sentence-token::after {
+  transform: scaleX(1);
+}
+
+.hover-card {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  z-index: 30;
+  width: max-content;
+  max-width: 330px;
+  padding: 10px 12px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #111111;
+  box-shadow: 0 16px 28px rgba(77, 139, 255, 0.16);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 10px) scale(0.98);
+  transition:
+    opacity 180ms ease,
+    transform 260ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.hover-word:hover .hover-card,
+.hover-word:focus-visible .hover-card,
+.word-card:hover .hover-word .hover-card,
+.word-card:focus-within .hover-word .hover-card,
+.hover-sentence:hover .hover-card,
+.hover-sentence:focus-visible .hover-card {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1);
+}
+
+.word-hover-card {
+  display: grid;
+  gap: 9px;
+  min-width: 220px;
+}
+
+.word-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: baseline;
+  color: #111111;
+}
+
+.word-meta-row strong,
+.word-meta-row em,
+.word-meta-row b {
+  color: #111111;
+  font-style: normal;
+  font-weight: 1000;
+}
+
+.word-meta-row strong {
+  font-size: 18px;
+}
+
+.word-meta-row em,
+.word-meta-row b {
+  font-size: 14px;
+}
+
+.phonics-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid #edf2f7;
+  border-radius: 10px;
+}
+
+.phonics-part {
+  display: grid;
+  gap: 3px;
+  min-height: 44px;
+  padding: 5px 6px;
+  place-items: center;
+  color: #111111;
+  border-right: 1px solid #edf2f7;
+}
+
+.phonics-part:last-child {
+  border-right: 0;
+}
+
+.phonics-part span,
+.phonics-part i {
+  color: #111111;
+  font-style: normal;
+  font-weight: 1000;
+}
+
+.phonics-part.is-highlight span,
+.phonics-part.is-highlight i {
+  color: var(--token-color);
+}
+
+.sentence-hover {
+  display: inline;
+}
+
+.sentence-english {
+  display: inline;
+}
+
+.sentence-token {
+  color: var(--token-color);
+  font-weight: 1000;
+}
+
+.sentence-hover-card {
+  display: grid;
+  gap: 7px;
+  min-width: 220px;
+  max-width: 360px;
+  text-align: left;
+}
+
+.sentence-zh-full {
+  color: #111111;
+  font-size: 14px;
+  font-weight: 1000;
+}
+
+.sentence-token-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sentence-zh-token {
+  color: var(--token-color);
+  font-size: 13px;
+  font-weight: 1000;
+}
+
 .sentence-section,
 .talk-section {
   min-height: 154px;
@@ -348,6 +558,23 @@ img.exercise-art {
   color: #2f3a4c;
   font-size: 18px;
   font-weight: 900;
+}
+
+.bubble .hover-card {
+  bottom: auto;
+  top: calc(100% + 8px);
+  transform: translate(-50%, -8px) scale(0.98);
+}
+
+.bubble .hover-sentence:hover .hover-card,
+.bubble .hover-sentence:focus-visible .hover-card {
+  transform: translate(-50%, 0) scale(1);
+}
+
+.dialogue-list .hover-card,
+.read-layout .hover-card,
+.grammar-layout .hover-card {
+  bottom: calc(100% + 6px);
 }
 
 .pencil-art {
@@ -676,6 +903,17 @@ img.exercise-art {
     box-shadow: none;
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+
+  .hover-card {
+    display: none;
+  }
+
+  .hover-word,
+  .hover-sentence,
+  .sentence-token,
+  .hover-word-text {
+    color: #111111;
   }
 
   .card-section h2 {
