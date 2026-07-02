@@ -1,0 +1,13 @@
+.git/
+.netlify/
+node_modules/
+local/
+outputs/
+tmp_uni_chunks/
+__pycache__/
+*.pyc
+*.log
+server-*.log
+照片素材库/
+音标练习/cards/
+emoji-test.png
